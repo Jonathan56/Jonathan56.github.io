@@ -22,6 +22,11 @@
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
+    <!-- Render the equation -->
+    <script type="text/javascript"
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>    
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -88,15 +93,24 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h1>Me</h1>
-                <p>I am a young civil slash electrical engineer working as a researcher assistant at the Lawrence Berkeley National Laboratory.<br>
+                <h1>Let me introduce myself</h1>
+                <p>I am a young civil / electrical engineer working as a research assistant at the Lawrence Berkeley National Laboratory.<br>
                 I have recently finished my Master thesis at the Technical University of Compiegne (UTC) and will soon be looking for a PhD. I am eager to learn and happy to work hard on cutting edge projects.</p>
+                
                 <h3>Here is an little bit of what I can do</h3>
                 <p>The following graph shows an interactive CV.
-                    A basic timeline has been used to place my project in time, and a force layout from d3.js holds bubbles representing my current skills</p>
+                    A basic timeline has been used to place my project in time, and a force layout from d3.js holds bubbles representing my current skills
+                </p>
                 <p>The size of each bubble is given by my ability in a skill calculated as follow:
-                    Skil = (L * T) * (1/2) ^ (t / h) Where: - L is my estimated level
-                    - T is the time spent practising - t is the time since last use - h is the half life time (4years) </p>
+                </p>
+                <p style="font-size:150%">$$index = (expertise \times timeInUse){\left(\frac{1}{2}\right)}^{\frac{t}{half \, life}}$$</p>
+                <p>Where:</p> 
+                     <ul>
+                      <li>expertise is scored on a scale of 0 to 10</li>
+                      <li>timeInUse is the number of year I practised on a skill</li>
+                      <li>t is the time in year since last use</li>
+                      <li>half life time of a skill considered 4 years</li>
+                    </ul> 
                 <p>This is a work in progress, I am sure the force layout could be used to emphasis relationships (send me your ideas).</p>
 
                 <div class="row">

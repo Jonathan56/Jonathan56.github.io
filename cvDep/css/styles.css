@@ -8,10 +8,10 @@
 */
 /* ======= Base ======= */
 body {
-  font-family: 'Lato', arial, sans-serif;
-  color: #434343;
+  font-family: 'Lora', 'Times New Roman', serif;
+  font-size: 20px;
+  color: #404040;
   background: #dae3e7;
-  font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

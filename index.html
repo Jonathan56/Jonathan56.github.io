@@ -22,6 +22,8 @@
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
+    <script type="text/javascript" src="js/d3.js"></script>
+
     <!-- Render the equation -->
     <script type="text/javascript"
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -49,23 +51,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Jonathan Coignard</a>
+                <a class="navbar-brand" href="index.html" style="color: black;">Jonathan Coignard</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.html" style="color: black;">Home</a>
                     </li>
                     <li>
-                        <a href="cv.html">CV</a>
+                        <a href="cv.html" style="color: black;">CV</a>
                     </li>
                     <li>
-                        <a href="portfolio.html">Portfolio</a>
+                        <a href="portfolio.html" style="color: black;">Portfolio</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="contact.html" style="color: black;">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -76,38 +78,137 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
+<!--     <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="page-heading">
-<!--                     <h1 style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color:#E6E6E6;">Water</h1>
-                    <h2 class="subheading">Who should do the most rationing ?</h2> -->
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </header> -->
 
     <!-- Main Content -->
-    <div class="container">
+    <div class="container" style="margin-top: 100px">
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <div class="row">
+                   <div id="CVplot"></div>
+                </div>
                 <h1>Let me introduce myself</h1>
                 <p>I am a civil / electrical engineer working as a research assistant at the Lawrence Berkeley National Laboratory.
                 I have recently finished my Master thesis at the Technical University of Compiegne (UTC) and will soon be looking for a PhD. I am eager to learn and happy to work hard on cutting edge projects.</p>
                 
-                <h3>Here is a little bit of what I can do</h3>
-                <p>The following graph feature the d3.js force layout. The size of each buble represents my abilities calculated from the below equation.</p>
+                <h3>Some of my competences</h3>
+                <p>The following graph feature a d3.js force layout. The size of each buble represents my ability calculated from the below equation.</p>
+                <p style="font-size:150%">$$bubleSize = (expertise \times timeInUse){\left(\frac{1}{2}\right)}^{\frac{timeSinceUsed}{half \, life}}$$</p>                
                 <div class="row">
-                   <div class="col-lg-12 col-md-12" id="CVplot">
-                   </div>
+                   <div id="CVplot"></div>
                 </div>
-                <p style="font-size:150%">$$bubleSize = (expertise \times timeInUse){\left(\frac{1}{2}\right)}^{\frac{timeSinceUsed}{half \, life}}$$</p>
             </div>
         </div>
     </div>
+    <script>
 
+    var width = 960,
+        height = 500;
+
+    var skill = [ 
+        {'name': 'invisible'},
+        {'name': 'Python'},
+        {'name': 'MATLAB'},
+        {'name': 'D3.js'},
+        {'name': 'Latex'},
+        {'name': 'Photoshop'},
+        {'name': 'SQL'},
+        {'name': 'PowerFactory'},
+        {'name': 'Office'},
+        {'name': 'AutoCAD'},
+        {'name': 'Django'},
+        {'name': 'Linux'},
+    ];
+
+    var nodes = d3.range(skill.length).map(function(i) { 
+            return {radius: Math.random() * 70 + 4, name: skill[i]['name']}; 
+        }),
+        root = nodes[0],
+        color = d3.scale.category10();
+
+    root.radius = 0;
+    root.fixed = true;
+
+    var force = d3.layout.force()
+        .gravity(0.05)
+        .charge(function(d, i) { return i ? 0 : -2000; })
+        .nodes(nodes)
+        .size([width, height]);
+
+    force.start();
+
+    var svg = d3.select("#CVplot").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    groupe = svg.selectAll("circle")
+        .data(nodes.slice(1))
+      .enter().append("g").attr("class", "node");
+
+    groupe.append("circle")
+        .attr("r", function(d) { return d.radius; })
+        .style("fill", function(d, i) { return color(i % 3); });
+
+    groupe.append("text")
+        .attr({x: 0, y: 0})
+        .text(function(d) {return d.name})
+
+    force.on("tick", function(e) {
+      var q = d3.geom.quadtree(nodes),
+          i = 0,
+          n = nodes.length;
+
+      while (++i < n) q.visit(collide(nodes[i]));
+
+      svg.selectAll("circle")
+          .attr("cx", function(d) { return d.x; })
+          .attr("cy", function(d) { return d.y; });
+      svg.selectAll("text")
+        .attr("x", function (d) {return d.x-25;})
+        .attr("y", function (d) {return d.y+5;});
+    });
+
+    svg.on("mousemove", function() {
+      var p1 = d3.mouse(this);
+      root.px = p1[0];
+      root.py = p1[1];
+      force.resume();
+    });
+
+    function collide(node) {
+      var r = node.radius + 16,
+          nx1 = node.x - r,
+          nx2 = node.x + r,
+          ny1 = node.y - r,
+          ny2 = node.y + r;
+      return function(quad, x1, y1, x2, y2) {
+        if (quad.point && (quad.point !== node)) {
+          var x = node.x - quad.point.x,
+              y = node.y - quad.point.y,
+              l = Math.sqrt(x * x + y * y),
+              r = node.radius + quad.point.radius;
+          if (l < r) {
+            l = (l - r) / l * .5;
+            node.x -= x *= l;
+            node.y -= y *= l;
+            quad.point.x += x;
+            quad.point.y += y;
+          }
+        }
+        return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+      };
+    }
+
+    </script>
     <hr>
 
     <!-- Footer -->

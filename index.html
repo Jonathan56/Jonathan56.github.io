@@ -19,8 +19,8 @@
 
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+<!--     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> -->
+    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript" src="js/d3.js"></script>
 
@@ -51,7 +51,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html" style="color: white;">Jonathan Coignard</a>
+                <a class="navbar-brand" href="index.html" style="color: black;">
+                    <!-- <span class="glyphicon glyphicon-globe" style="font-size: 150%"></span> -->
+                </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -78,7 +80,7 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-color: white">
+<!--     <header class="intro-header" style="background-color: white">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -88,27 +90,45 @@
                 </div>
             </div>
         </div>
-    </header>
+    </header> -->
 
     <!-- Main Content -->
-    <div class="container" style="margin-top: 100px">
+    <div class="container" style="margin-top: 50px">
         <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
-                <div class="row">
-                   <div id="CVplot"></div>
-                </div>
-                <h1>Let me introduce myself</h1>
-                <p>I am a civil / electrical engineer working as a research assistant at the Lawrence Berkeley National Laboratory.
-                I have recently finished my Master thesis at the Technical University of Compiegne (UTC) and will soon be looking for a PhD. I am eager to learn and happy to work hard on cutting edge projects.</p>
-                <h3>Some of my competences</h3>
-                <p>The following graph feature a d3.js force layout. The size of each buble represents my ability calculated from the below equation.</p>
-                <p style="font-size:150%">$$bubleSize = (expertise \times timeInUse){\left(\frac{1}{2}\right)}^{\frac{timeSinceUsed}{half \, life}}$$</p>
-                <div class="row">
-                   <div id="CVplot"></div>
-                </div>
+
+            <div class="row">
+            <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1 col-xs-offset-1"><h1 style="font-size:300%; font-weight: normal;">Hello, I am Jonathan</h1></div>
+            </div> 
+
+            <div class="row">
+            <div class="col-lg-6 col-lg-offset-2 col-md-6 col-md-offset-2 col-xs-6 col-xs-offset-2">
+            <div id="CVplot"></div>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3"><p style="font-size:140%">$$buble\_size = (expertise \times time\_in\_use){\left(\frac{1}{2}\right)}^{\frac{time\_since\_used}{half\_life}}$$</p></div>
             </div>
         </div>
     </div>
+
+            <div class="jumbotron">
+            <div class="row">
+
+                <h2 class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1" style="font-size:230%; font-weight: normal; margin-bottom: 75px;">I am a civil / electrical engineer at my core</h2>
+
+
+                <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1">
+                <img class="profile-image img-responsive"  style="border-radius: 50%;overflow: hidden;" src="cvDep/images/profile.png" alt="James Lee" />
+                </div>
+
+                <div class="col-lg-7 col-lg-offset-0 col-md-7 col-md-offset-0">
+                <p>I currently work as a research assistant at the Lawrence Berkeley National Laboratory.
+                I have recently finished my Master thesis at the Technical University of Compiegne (UTC) and will soon be looking for a PhD. I am eager to learn and happy to work hard on cutting edge projects.</p>
+                </div>
+
+            </div>
+            </div>
     <script>
 
     var width = 960,
@@ -140,15 +160,17 @@
 
     var force = d3.layout.force()
         .gravity(0.05)
-        .charge(function(d, i) { return i ? 0 : -2000; })
-        .nodes(nodes)
-        .size([width, height]);
-
-    force.start();
+        .charge(function(d, i) { return i ? 0 : -1000; })
+        .nodes(nodes);
+        // .size([width, height]);
 
     var svg = d3.select("#CVplot").append("svg")
         .attr("width", width)
         .attr("height", height);
+
+    resize();
+    d3.select(window).on("resize", resize);
+    force.start();
 
     groupe = svg.selectAll("circle")
         .data(nodes.slice(1))
@@ -207,7 +229,13 @@
         return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
       };
     }
-
+    
+    function resize() {
+        width = window.innerWidth/1.5, height = window.innerHeight;
+        height = 450;
+        svg.attr("width", width).attr("height", height);
+        force.size([width, height]).resume();
+    }
     </script>
     <hr>
 

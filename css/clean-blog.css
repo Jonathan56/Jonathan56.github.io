@@ -327,7 +327,8 @@ form .row:first-child .floating-label-form-group {
 }
 .btn {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
+/*  border: 1px solid #808080;*/
+  background-color: #D8D8D8;
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 1px;
@@ -338,10 +339,17 @@ form .row:first-child .floating-label-form-group {
   font-size: 16px;
   padding: 25px 35px;
 }
+
+.btn:hover,
+.btn:focus {
+  background-color: white;
+  border: 1px solid #808080;
+}
+
 .btn-default:hover,
 .btn-default:focus {
-  background-color: #0085a1;
-  border: 1px solid #0085a1;
+  background-color: #000000;
+  border: 1px solid #808080;
   color: white;
 }
 .pager {

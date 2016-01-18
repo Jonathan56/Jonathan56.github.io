@@ -1,0 +1,44 @@
+# # # # # # # #
+#   K i k o   #
+# # # # # # # #
+
+# Basic
+name:               "Jonathan"
+
+# URL
+baseurl:            ""
+#baseurl:            "" #For Root Domain
+permalink:          /:year/:month/:day/:title.html
+
+# Markdown
+markdown:           kramdown
+
+# Navigation
+nav:
+  - name:           "Resume"
+    href:           "/resume"
+  - name:           "Portfolio"
+    href:           "/portfolio"
+  - name:           "Blog"
+    href:           "/blog"
+  - name:           "Contact"
+    href:           "/contact"
+
+# Sass
+sass:
+  style:            :compressed
+
+# Scopes
+defaults:
+  -
+    scope:
+      path:         ""
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      path:         ""
+      type:         "posts"
+    values:
+      layout:       "post"

@@ -3,16 +3,8 @@ title: Blog
 permalink: /blog/
 ---
 
-<header class="masthead">
-  <h1 class="masthead-title">
-    <a href="{{ site.baseurl }}/">{{ site.name }}<span>&#39;s blog</span></a>
-  </h1>
-  <nav class="masthead-nav">
-    {% for nav in site.nav %}
-    <a href="{{ nav.href }}">{{ nav.name }}</a>
-    {% endfor %}
-  </nav>
-</header>
+Here are some of my thought and general ideas I would like to share.
+
 <div class="content list">
 {% if site.posts.size == 0 %}
   <h2>No post found</h2>

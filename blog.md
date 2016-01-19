@@ -3,7 +3,8 @@ title: Blog
 permalink: /blog/
 ---
 
-Here are some of my thought and general ideas I would like to share.
+Here are some of my thoughts and general ideas I would like to share.
+<hr>
 
 <div class="content list">
 {% if site.posts.size == 0 %}

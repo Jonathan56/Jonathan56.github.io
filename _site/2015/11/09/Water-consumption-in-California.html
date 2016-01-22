@@ -42,17 +42,346 @@ In my view, parallel coordinates (PCs) enable meaningful comparison by consideri
 <p>Beyond studying how water resources are shared in California, this work aims to create a tool for a broader data analysis. The javascript behind the scene is generic enough to accept any dataset in a .csv file. The visualization consist of parallel coordinates, a map and a distribution graph for each dimension. However, this disposition is flexible, if time-series are more representative they could replace the map (see <a href="#">Power consumption in California</a> for the use of time-series). The project is available on <a href="https://github.com/waterequity/waterequity.github.io.git">github</a>, replace “data.csv” with your own data including “name”, “lat”, “long” and any number of dimensions.</p>
 
 <h1 id="the-visualization">The visualization</h1>
+<style type="text/css">
+svg {
+  font: 10px sans-serif;
+}
+
+.background path {
+  fill: none;
+  stroke: #ddd;
+  shape-rendering: crispEdges;
+}
+
+.foreground path {
+  fill: none;
+  stroke: steelblue;
+}
+
+.brush .extent {
+  fill-opacity: .3;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+  cursor: move;
+}
+
+#map {
+  width: 600px;
+  height: 600px;
+}
+
+
+#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+#floating-panel {
+  background-color: #fff;
+  border: 1px solid #999;
+  left: 25%;
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  z-index: 5;
+}
+</style>
 
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=visualization"></script>
 
 <div id="label"></div>
-<div id="chartContainer1"></div>
+<div id="chartContainer1" style="margin-left: -200px;"></div>
 <div id="selected"></div>
 <div id="map" style="border:6px solid #E4E4E4;"></div>
 <div id="histogram"></div>
-<script src="/assets/js/waterequity.js"></script>
+<script type="text/javascript">
+// Some global scope variables
+var csvData;
+var map;
+var heatmap, binList;
+var town = new Array();
+
+// Size of the main container with magins
+var margin = {top: 30, right: 10, bottom: 50, left: 10},
+    width =  1200 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+//parseInt(d3.select('#mainContainer').style('width'))
+
+// Scale to place the dimensions
+var x = d3.scale.ordinal().rangePoints([0, width], 1);
+// Scale for each of the dimensions
+var  y = {};
+// Line 
+var line = d3.svg.line();
+// Dimension axis
+var axis = d3.svg.axis().orient("left");
+// Variable holding a subgroup of lines in gray
+var background;
+// Variable holding a subgroup of lines in color
+var foreground;
+// Color scale
+var color = d3.scale.category20();
+
+// Add a SVG which will contain the parallel coordinates
+var svg = d3.select("#chartContainer1").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// Add a SVG to hold the selection text (--> replace text with a table under parallel coord.)
+var svgtext = d3.select("#label").append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", 50)
+.append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// Add a scale to show the bar
+var xSelected = d3.scale.ordinal().range([0, width/2]).domain([0, 100]);
+// Add a space to show the percentage of data selected 
+// dataSelectedInit();
+
+// Add a text hint
+svg.append("text")      
+    .attr("y", height + margin.bottom/2 - 5)
+    .attr("x", 10)
+    .text("Click me!");
+
+// Load the data
+d3.csv("/assets/data/data.csv", function(error, data) {
+
+  // Creating a new variable to hold the visibility status and colors
+  data.forEach(function(d, i) { 
+    d.visible = true;
+    d.color = color(i);
+   });
+
+  // Saving data in a global scope (use outside of d3.csv)
+  csvData = data;
+
+  // Extract the list of dimensions and create a scale for each.
+  x.domain(dimensions = d3.keys(data[0]).filter(function(d) {
+    // Avoid dimensions with the following names
+    return d != "name" &&  d != "visible" && d != "color" && d != "lat" && d !="long" && d != "lat2" && d !="long2" &&
+    (y[d] = d3.scale.linear()
+    // Get the min and max to scale the domain
+        .domain(d3.extent(data, function(p) { return +p[d]; }))
+        .range([height, 0]));
+  }));
+
+  // Add grey background lines for context.
+  background = svg.append("g")
+      .attr("class", "background")
+    .selectAll("path")
+      .data(data)
+    .enter().append("path")
+      .attr("d", path);
+
+  // Add colored foreground lines for focus.
+  foreground = svg.append("g")
+      .attr("class", "foreground")
+    .selectAll("path")
+      .data(data)
+    .enter().append("path")
+      .attr("d", path)
+      .style('stroke-width', '1.5')
+      .style('stroke', function(d) { return d.color; })
+      // Add text when mouseover
+      .on("mouseover", function(d){
+         svgtext.select("text").remove();
+         svgtext.append("text")
+        .attr("font-size", '150%')
+        .attr("x", '50px')
+        .attr("y", '5px')
+        .text( function () { return 'Line name: ' + String(d.name); });
+      });
+
+  // Add a group element for each dimension.
+  var g = svg.selectAll(".dimension")
+      .data(dimensions)
+    .enter().append("g")
+      .attr("class", "dimension")
+      .attr("transform", function(d) { return "translate(" + x(d) + ")"; });
+
+  // Add an axis and title.
+  g.append("g")
+      .attr("class", "axis")
+      .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
+    .append("text")
+      .style("text-anchor", "middle")
+      .attr("y", -9)
+      .text(function(d) { return d; });
+
+  // Add and store a brush for each axis.
+  g.append("g")
+      .attr("class", "brush")
+      .each(function(d) { d3.select(this)
+        .call(y[d].brush = d3.svg.brush().y(y[d])
+        .on("brush", brush).on("brushend", brushend)); })
+    .selectAll("rect")
+      .attr("x", -8)
+      .attr("width", 16);
+
+  // Add a rectange to toggle dimensions
+  g.append("rect")
+    .attr("class", "rectLegend")
+    .attr("x", -15)
+    .attr("y", height + margin.bottom/2)
+    .attr("width", 30)
+    .attr("height", 20)
+    .attr("stroke", "#000000")
+    .attr("fill", "#F1F1F2")
+    .on("click", histoUpdate);
+
+  initialize();
+});
+
+function path(d) {
+  return line(dimensions.map(function(p) { return [x(p), y[p](d[p])]; }));
+}
+
+// Handles a brush event, toggling the display of foreground lines.
+function brush() {
+  // Get all the active brushes (the one that are not empty)
+  var actives = dimensions.filter(function(p) { return !y[p].brush.empty(); });
+  // Get the min and max covered by active brushes
+  var extents = actives.map(function(p) { return y[p].brush.extent(); });
+
+  // For all the foreground lines change the display property
+  foreground.style("display", function(d) {
+    // True only if every active brush cross the line
+    bool = actives.every(function(p, i) {
+      return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+    }) ? null : "none";
+    
+    if (bool == "none"){
+      d.visible = false;
+    }
+    else {
+      d.visible = true;
+    }
+    return bool;
+  }); 
+}
+
+// Once the brush event is finished (mouse released)
+function brushend() {
+  mapUpdate();
+}
+
+function mapUpdate() {
+  // Empty town array
+  while(town.length > 0) {
+        town.pop();
+  }
+
+  for (i = 0; i < csvData.length; i++) {
+    if (csvData[i].visible) {
+      town.push(new google.maps.LatLng(csvData[i].lat, csvData[i].long));
+    }
+  }
+
+  heatmap.setData(town);
+}
+
+function histoUpdate(d) {
+  d3.selectAll(".rectLegend")
+    .attr("fill", "#F1F1F2");
+
+  d3.select(this)
+    .attr("fill", "#99cfff");
+
+}
+
+function dataSelectedInit() {
+  // Add a SVG to hold the bar showing the percent of data selected
+  var svgSlected = d3.select("#selected").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", 50)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // Add a text hint
+  svgSlected.append("text")      
+      .attr("y", 5)
+      .attr("x", 5)
+      .text("Percentage of data selected (%)");
+
+  svgSlected.append("rect")
+    .attr("x", 5-1)
+    .attr("y", 10-1)
+    .attr("width", xSelected(100) + 1)
+    .attr("height", 30+1)
+    .attr("stroke", "#000000")
+    .attr("fill", "##F1F1F2") 
+
+  // svgSlected.append("rect")
+  //   .attr("class", "rectPercent")
+  //   .attr("x", 5)
+  //   .attr("y", 10)
+  //   .attr("width", xSelected(70))
+  //   .attr("height", 30)
+  //   .attr("fill", "##ff751a"); 
+}
+
+function initialize() {
+    map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 6,
+    center: {lat: 36.775, lng: -119.434},
+     mapTypeId: google.maps.MapTypeId.TERRAIN,
+      panControl: true,
+      scrollwheel: false,
+      mapTypeControl: false,
+      panControlOptions: {
+          position: google.maps.ControlPosition.RIGHT_CENTER
+      },
+      zoomControl: true,
+      zoomControlOptions: {
+          style: google.maps.ZoomControlStyle.LARGE,
+          position: google.maps.ControlPosition.RIGHT_CENTER
+      },
+      scaleControl: false,
+      streetViewControl: false,
+      streetViewControlOptions: {
+          position: google.maps.ControlPosition.RIGHT_CENTER
+      }
+  });
+
+  csvData.forEach(function(d){
+       town.push(new google.maps.LatLng(d.lat, d.long))
+  });
+
+  heatmap = new google.maps.visualization.HeatmapLayer({
+    data: town,
+    map: map
+  });
+  
+  heatmap.set('radius', 15)
+  heatmap.set('opacity', 0.8)
+}
+</script>
 
 <h1 id="some-interesting-points">Some interesting points</h1>
 

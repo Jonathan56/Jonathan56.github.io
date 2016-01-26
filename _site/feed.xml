@@ -205,97 +205,377 @@
 		
 			<item>
 				<title>Water consumption in California</title>
-        <description>&lt;p class=&quot;lead&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ullamcorper est in imperdiet molestie. Curabitur aliquet sem in ante venenatis.&lt;/p&gt;
+        <description>&lt;p class=&quot;lead&quot;&gt;Our project (&lt;a href=&quot;#authors&quot;&gt;see authors&lt;/a&gt;) explores the multi-dimensional dynamics of rationing and drought in California. Inspired by similar work done by the &lt;a href=&quot;http://www2.pacinst.org/gpcd/map.html&quot;&gt;Pacific Institute&lt;/a&gt;, we use a variety of data sources (Census and California Water Resources Board) to extend earlier efforts and build a more holistic approach. Our parallel coordinates visualization, map, and time series below explore drought and rationing dynamics across the state.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
-&lt;p&gt;Morbi ultrices libero imperdiet &lt;a href=&quot;#&quot;&gt;lectus&lt;/a&gt; dignissim, sit amet bibendum nisl consectetur. Morbi erat purus, pretium at ligula tincidunt, faucibus commodo sem. Etiam vel porttitor est, vitae maximus ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien turpis, cursus non porta ac.&lt;/p&gt;
+&lt;p id=&quot;authors&quot;&gt;&lt;strong&gt;Authors&lt;/strong&gt;: Diego Ponce de Leon Barido, Karina Cucchi, Benjamin Fildier, Albert Yuen, me. Original project can be found at &lt;a href=&quot;http://waterequity.org/&quot;&gt;waterequity.org&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;lorem&quot;&gt;Lorem&lt;/h2&gt;
-&lt;p&gt;Quisque sodales euismod nibh, gravida venenatis nibh dignissim eget. Morbi gravida enim vel lectus aliquet aliquet.&lt;/p&gt;
+&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;written by Diego Ponce de Leon Barido&lt;/em&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;ipsum&quot;&gt;Ipsum&lt;/h3&gt;
-&lt;p&gt;Nunc nec aliquam tellus. Etiam faucibus magna nibh, ut fermentum velit consectetur id. Nullam vehicula iaculis tortor, in cursus enim auctor vitae. Duis semper pulvinar justo, at vestibulum dolor. Cras fermentum nibh quis nisl imperdiet ornare. Sed nisi nunc, dictum sit amet gravida in, finibus rhoncus orci. Donec scelerisque commodo turpis ac venenatis.&lt;/p&gt;
+&lt;p&gt;Since 2011 many areas across California have experienced their drighest years on record, with conditions barely improving, and in some cases worsening, since then. Reservoirs and snowpack water content have recorded some of the lowest measurements ever recorded, with users (individuals, towns and cities) using groundwater to buffer the potentially devastating effects of the drought. Among other strategies, rationing has been one of they key strategies that the state has adopted to better manage its water resources. April 1st 2015 marked the first day in California’s history when mandatory water reductions were instated state wide. By using an &lt;a href=&quot;http://www.nytimes.com/2015/04/02/us/california-imposes-first-ever-water-restrictions-to-deal-with-drought.html&quot;&gt;executive order&lt;/a&gt;, Governor Brown directed the State Water Resources Control Board to impose a 25% reduction on California’s 400 local water supply agencies, which serve 90% of California residents. Since then, local agencies have been responsible for allocating restrictions to reduce water consumption and monitor compliance.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Nam vitae commodo ex. Nunc vel tellus leo.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;A variety of research organizations and media outlets have begun exploring the equity considerations of the drought, but the analysis is often &lt;a href=&quot;http://www.nytimes.com/2015/04/27/us/drought-widens-economic-divide-for-californians.html&quot;&gt;one dimensional&lt;/a&gt;. The focus is largely on water consumption per capita, and leaves out other important societal factors such as spatial distribution, weather, drought related climate variables, economic sectors, race, localized income inequality, household size, and income per capita, among other things. More recent information has also highlighted brewing tension between neighbors regarding water restrictions and mandates. The drought has elucidated large inequalities, where high-income communities &lt;a href=&quot;http://www.nytimes.com/2015/04/27/us/drought-widens-economic-divide-for-californians.html&quot;&gt;guzzle water and poorer ones conserve water by necessity&lt;/a&gt;. While water restrictions have attempted to address these inequities by imposing tighter conservation standards on large consumers, &lt;a href=&quot;http://www.latimes.com/local/california/la-me-el-monte-drought-20150801-story.html&quot;&gt;high-income households&lt;/a&gt; still consume much more water than low-income households, &lt;a href=&quot;http://www.latimes.com/local/lanow/la-me-ln-wealthy-cities-lag-in-conservation-20150404-story.html&quot;&gt;even after a 30% reduction in their water consumption&lt;/a&gt;. Starting 2015, &lt;a href=&quot;http://www.latimes.com/science/la-me-water-regs-20151222-story.html&quot;&gt;and after complaints from several towns across California&lt;/a&gt;, restrictions will be lowered (22%) and will take into account a number of other factors (regional climate, water source, and local population growth) when setting water saving targets. Although an effort has begun to include other factors, it is hard to understand and visualize how all these dynamics relate to each other.&lt;/p&gt;
 
-&lt;h2 id=&quot;dugem&quot;&gt;Dugem&lt;/h2&gt;
-&lt;p&gt;Nullam vehicula iaculis tortor, in cursus enim auctor vitae. Duis semper pulvinar justo, at vestibulum dolor. Cras fermentum nibh quis nisl imperdiet ornare. Sed nisi nunc, dictum sit amet gravida in, finibus rhoncus orci. Donec scelerisque commodo turpis ac venenatis.&lt;/p&gt;
+&lt;h1 id=&quot;under-the-hood-of-the-visualization&quot;&gt;Under the hood of the visualization&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;my part&lt;/em&gt;&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trigger_alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Lorem Ipsum dolor sit amet&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;p&gt;What are parallel coordinates ? &lt;a href=&quot;https://en.wikipedia.org/wiki/Parallel_coordinates&quot;&gt;&lt;em&gt;Wikipedia&lt;/em&gt;&lt;/a&gt;:
+&amp;gt; Parallel coordinates is a common way of visualizing high-dimensional geometry and analyzing multivariate data.
+In my view, parallel coordinates (PCs) enable meaningful comparison by considering more dimensions (going further than just position, size, shape and color). It helps understanding your data by enabling to rearrange the dimensions and visually find patterns in the dataset. For further details, consider watching &lt;a href=&quot;https://www.youtube.com/watch?v=ypc7Ul9LkxA&quot;&gt;this video&lt;/a&gt; from the openVis Conf 2013 by Kai Chang.&lt;/p&gt;
 
-&lt;span class=&quot;nx&quot;&gt;trigger_alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;Beyond studying how water resources are shared in California, this work aims to create a tool for a broader data analysis. The javascript behind the scene is generic enough to accept any dataset in a .csv file. The visualization consist of parallel coordinates, a map and a distribution graph for each dimension. However, this disposition is flexible, if time-series are more representative they could replace the map (see &lt;a href=&quot;#&quot;&gt;Power consumption in California&lt;/a&gt; for the use of time-series). The project is available on &lt;a href=&quot;https://github.com/waterequity/waterequity.github.io.git&quot;&gt;github&lt;/a&gt;, replace “data.csv” with your own data including “name”, “lat”, “long” and any number of dimensions.&lt;/p&gt;
 
-&lt;h3 id=&quot;golem&quot;&gt;Golem&lt;/h3&gt;
-&lt;p&gt;Quisque sodales euismod nibh, gravida venenatis nibh dignissim eget. Morbi gravida enim vel lectus aliquet aliquet.&lt;/p&gt;
+&lt;h1 id=&quot;the-visualization&quot;&gt;The visualization&lt;/h1&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+svg {
+  font: 10px sans-serif;
+}
 
-&lt;ul&gt;
-  &lt;li&gt;Praesent commodo cursus magna.&lt;/li&gt;
-  &lt;li&gt;Donec id elit non mi porta gravida at eget metus.&lt;/li&gt;
-  &lt;li&gt;Nulla vitae elit libero, a pharetra augue.&lt;/li&gt;
-&lt;/ul&gt;
+.background path {
+  fill: none;
+  stroke: #ddd;
+  shape-rendering: crispEdges;
+}
 
-&lt;p&gt;Cras fermentum nibh quis nisl imperdiet ornare. Sed nisi nunc, dictum sit amet gravida in, finibus rhoncus orci. Donec scelerisque commodo turpis ac venenatis.&lt;/p&gt;
+.foreground path {
+  fill: none;
+  stroke: steelblue;
+}
 
-&lt;ol&gt;
-  &lt;li&gt;Vestibulum id ligula porta felis euismod semper.&lt;/li&gt;
-  &lt;li&gt;Cum sociis natoque penatibus.&lt;/li&gt;
-  &lt;li&gt;Maecenas sed diam eget risus.&lt;/li&gt;
-&lt;/ol&gt;
+.brush .extent {
+  fill-opacity: .3;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
 
-&lt;p&gt;Nam ante lacus, ornare ut lacus in, aliquet gravida orci. Donec non dignissim elit. Integer facilisis lorem sed porttitor elementum. Etiam a eleifend justo.&lt;/p&gt;
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
 
-&lt;dl&gt;
-  &lt;dt&gt;HyperText Markup Language (HTML)&lt;/dt&gt;
-  &lt;dd&gt;The language used to describe and define the content of a Web page&lt;/dd&gt;
+.axis text {
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+  cursor: move;
+}
 
-  &lt;dt&gt;Cascading Style Sheets (CSS)&lt;/dt&gt;
-  &lt;dd&gt;Used to describe the appearance of Web content&lt;/dd&gt;
+#map {
+  width: 600px;
+  height: 600px;
+}
 
-  &lt;dt&gt;JavaScript (JS)&lt;/dt&gt;
-  &lt;dd&gt;The programming language used to build advanced Web sites and applications&lt;/dd&gt;
-&lt;/dl&gt;
 
-&lt;p&gt;Sed nisi nunc, dictum sit amet gravida in, finibus rhoncus orci. Donec scelerisque commodo turpis ac venenatis.&lt;/p&gt;
+#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: &#39;Roboto&#39;,&#39;sans-serif&#39;;
+  line-height: 30px;
+  padding-left: 10px;
+}
 
-&lt;p&gt;&lt;img src=&quot;http://placehold.it/800x400&quot; alt=&quot;Large example image&quot; title=&quot;Large example image&quot; /&gt;
-&lt;img src=&quot;http://placehold.it/400x200&quot; alt=&quot;Medium example image&quot; title=&quot;Medium example image&quot; /&gt;
-&lt;img src=&quot;http://placehold.it/200x200&quot; alt=&quot;Small example image&quot; title=&quot;Small example image&quot; /&gt;&lt;/p&gt;
+#floating-panel {
+  background-color: #fff;
+  border: 1px solid #999;
+  left: 25%;
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  z-index: 5;
+}
+&lt;/style&gt;
 
-&lt;p&gt;Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+&lt;script src=&quot;//d3js.org/d3.v3.min.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Name&lt;/th&gt;
-      &lt;th&gt;Rank&lt;/th&gt;
-      &lt;th&gt;Score&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Cookie&lt;/td&gt;
-      &lt;td&gt;#69&lt;/td&gt;
-      &lt;td&gt;169&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Buther&lt;/td&gt;
-      &lt;td&gt;#70&lt;/td&gt;
-      &lt;td&gt;169&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Stuart&lt;/td&gt;
-      &lt;td&gt;#71&lt;/td&gt;
-      &lt;td&gt;168&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;script src=&quot;https://maps.googleapis.com/maps/api/js?v=3.exp&amp;amp;libraries=visualization&quot;&gt;&lt;/script&gt;
 
-&lt;p&gt;Nullam quis risus eget urna mollis ornare vel eu leo.&lt;/p&gt;
+&lt;div id=&quot;label&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;chartContainer1&quot; style=&quot;margin-left: -200px;&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;selected&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;map&quot; style=&quot;border:6px solid #E4E4E4;&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;histogram&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+// Some global scope variables
+var csvData;
+var map;
+var heatmap, binList;
+var town = new Array();
+
+// Size of the main container with magins
+var margin = {top: 30, right: 10, bottom: 50, left: 10},
+    width =  1200 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+//parseInt(d3.select(&#39;#mainContainer&#39;).style(&#39;width&#39;))
+
+// Scale to place the dimensions
+var x = d3.scale.ordinal().rangePoints([0, width], 1);
+// Scale for each of the dimensions
+var  y = {};
+// Line 
+var line = d3.svg.line();
+// Dimension axis
+var axis = d3.svg.axis().orient(&quot;left&quot;);
+// Variable holding a subgroup of lines in gray
+var background;
+// Variable holding a subgroup of lines in color
+var foreground;
+// Color scale
+var color = d3.scale.category20();
+
+// Add a SVG which will contain the parallel coordinates
+var svg = d3.select(&quot;#chartContainer1&quot;).append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, width + margin.left + margin.right)
+    .attr(&quot;height&quot;, height + margin.top + margin.bottom)
+  .append(&quot;g&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+
+// Add a SVG to hold the selection text (--&gt; replace text with a table under parallel coord.)
+var svgtext = d3.select(&quot;#label&quot;).append(&quot;svg&quot;)
+  .attr(&quot;width&quot;, width + margin.left + margin.right)
+  .attr(&quot;height&quot;, 50)
+.append(&quot;g&quot;)
+  .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+
+// Add a scale to show the bar
+var xSelected = d3.scale.ordinal().range([0, width/2]).domain([0, 100]);
+// Add a space to show the percentage of data selected 
+// dataSelectedInit();
+
+// Add a text hint
+svg.append(&quot;text&quot;)      
+    .attr(&quot;y&quot;, height + margin.bottom/2 - 5)
+    .attr(&quot;x&quot;, 10)
+    .text(&quot;Click me!&quot;);
+
+// Load the data
+d3.csv(&quot;/assets/data/data.csv&quot;, function(error, data) {
+
+  // Creating a new variable to hold the visibility status and colors
+  data.forEach(function(d, i) { 
+    d.visible = true;
+    d.color = color(i);
+   });
+
+  // Saving data in a global scope (use outside of d3.csv)
+  csvData = data;
+
+  // Extract the list of dimensions and create a scale for each.
+  x.domain(dimensions = d3.keys(data[0]).filter(function(d) {
+    // Avoid dimensions with the following names
+    return d != &quot;name&quot; &amp;&amp;  d != &quot;visible&quot; &amp;&amp; d != &quot;color&quot; &amp;&amp; d != &quot;lat&quot; &amp;&amp; d !=&quot;long&quot; &amp;&amp; d != &quot;lat2&quot; &amp;&amp; d !=&quot;long2&quot; &amp;&amp;
+    (y[d] = d3.scale.linear()
+    // Get the min and max to scale the domain
+        .domain(d3.extent(data, function(p) { return +p[d]; }))
+        .range([height, 0]));
+  }));
+
+  // Add grey background lines for context.
+  background = svg.append(&quot;g&quot;)
+      .attr(&quot;class&quot;, &quot;background&quot;)
+    .selectAll(&quot;path&quot;)
+      .data(data)
+    .enter().append(&quot;path&quot;)
+      .attr(&quot;d&quot;, path);
+
+  // Add colored foreground lines for focus.
+  foreground = svg.append(&quot;g&quot;)
+      .attr(&quot;class&quot;, &quot;foreground&quot;)
+    .selectAll(&quot;path&quot;)
+      .data(data)
+    .enter().append(&quot;path&quot;)
+      .attr(&quot;d&quot;, path)
+      .style(&#39;stroke-width&#39;, &#39;1.5&#39;)
+      .style(&#39;stroke&#39;, function(d) { return d.color; })
+      // Add text when mouseover
+      .on(&quot;mouseover&quot;, function(d){
+         svgtext.select(&quot;text&quot;).remove();
+         svgtext.append(&quot;text&quot;)
+        .attr(&quot;font-size&quot;, &#39;150%&#39;)
+        .attr(&quot;x&quot;, &#39;50px&#39;)
+        .attr(&quot;y&quot;, &#39;5px&#39;)
+        .text( function () { return &#39;Line name: &#39; + String(d.name); });
+      });
+
+  // Add a group element for each dimension.
+  var g = svg.selectAll(&quot;.dimension&quot;)
+      .data(dimensions)
+    .enter().append(&quot;g&quot;)
+      .attr(&quot;class&quot;, &quot;dimension&quot;)
+      .attr(&quot;transform&quot;, function(d) { return &quot;translate(&quot; + x(d) + &quot;)&quot;; });
+
+  // Add an axis and title.
+  g.append(&quot;g&quot;)
+      .attr(&quot;class&quot;, &quot;axis&quot;)
+      .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
+    .append(&quot;text&quot;)
+      .style(&quot;text-anchor&quot;, &quot;middle&quot;)
+      .attr(&quot;y&quot;, -9)
+      .text(function(d) { return d; });
+
+  // Add and store a brush for each axis.
+  g.append(&quot;g&quot;)
+      .attr(&quot;class&quot;, &quot;brush&quot;)
+      .each(function(d) { d3.select(this)
+        .call(y[d].brush = d3.svg.brush().y(y[d])
+        .on(&quot;brush&quot;, brush).on(&quot;brushend&quot;, brushend)); })
+    .selectAll(&quot;rect&quot;)
+      .attr(&quot;x&quot;, -8)
+      .attr(&quot;width&quot;, 16);
+
+  // Add a rectange to toggle dimensions
+  g.append(&quot;rect&quot;)
+    .attr(&quot;class&quot;, &quot;rectLegend&quot;)
+    .attr(&quot;x&quot;, -15)
+    .attr(&quot;y&quot;, height + margin.bottom/2)
+    .attr(&quot;width&quot;, 30)
+    .attr(&quot;height&quot;, 20)
+    .attr(&quot;stroke&quot;, &quot;#000000&quot;)
+    .attr(&quot;fill&quot;, &quot;#F1F1F2&quot;)
+    .on(&quot;click&quot;, histoUpdate);
+
+  initialize();
+});
+
+function path(d) {
+  return line(dimensions.map(function(p) { return [x(p), y[p](d[p])]; }));
+}
+
+// Handles a brush event, toggling the display of foreground lines.
+function brush() {
+  // Get all the active brushes (the one that are not empty)
+  var actives = dimensions.filter(function(p) { return !y[p].brush.empty(); });
+  // Get the min and max covered by active brushes
+  var extents = actives.map(function(p) { return y[p].brush.extent(); });
+
+  // For all the foreground lines change the display property
+  foreground.style(&quot;display&quot;, function(d) {
+    // True only if every active brush cross the line
+    bool = actives.every(function(p, i) {
+      return extents[i][0] &lt;= d[p] &amp;&amp; d[p] &lt;= extents[i][1];
+    }) ? null : &quot;none&quot;;
+    
+    if (bool == &quot;none&quot;){
+      d.visible = false;
+    }
+    else {
+      d.visible = true;
+    }
+    return bool;
+  }); 
+}
+
+// Once the brush event is finished (mouse released)
+function brushend() {
+  mapUpdate();
+}
+
+function mapUpdate() {
+  // Empty town array
+  while(town.length &gt; 0) {
+        town.pop();
+  }
+
+  for (i = 0; i &lt; csvData.length; i++) {
+    if (csvData[i].visible) {
+      town.push(new google.maps.LatLng(csvData[i].lat, csvData[i].long));
+    }
+  }
+
+  heatmap.setData(town);
+}
+
+function histoUpdate(d) {
+  d3.selectAll(&quot;.rectLegend&quot;)
+    .attr(&quot;fill&quot;, &quot;#F1F1F2&quot;);
+
+  d3.select(this)
+    .attr(&quot;fill&quot;, &quot;#99cfff&quot;);
+
+}
+
+function dataSelectedInit() {
+  // Add a SVG to hold the bar showing the percent of data selected
+  var svgSlected = d3.select(&quot;#selected&quot;).append(&quot;svg&quot;)
+      .attr(&quot;width&quot;, width + margin.left + margin.right)
+      .attr(&quot;height&quot;, 50)
+    .append(&quot;g&quot;)
+      .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+
+  // Add a text hint
+  svgSlected.append(&quot;text&quot;)      
+      .attr(&quot;y&quot;, 5)
+      .attr(&quot;x&quot;, 5)
+      .text(&quot;Percentage of data selected (%)&quot;);
+
+  svgSlected.append(&quot;rect&quot;)
+    .attr(&quot;x&quot;, 5-1)
+    .attr(&quot;y&quot;, 10-1)
+    .attr(&quot;width&quot;, xSelected(100) + 1)
+    .attr(&quot;height&quot;, 30+1)
+    .attr(&quot;stroke&quot;, &quot;#000000&quot;)
+    .attr(&quot;fill&quot;, &quot;##F1F1F2&quot;) 
+
+  // svgSlected.append(&quot;rect&quot;)
+  //   .attr(&quot;class&quot;, &quot;rectPercent&quot;)
+  //   .attr(&quot;x&quot;, 5)
+  //   .attr(&quot;y&quot;, 10)
+  //   .attr(&quot;width&quot;, xSelected(70))
+  //   .attr(&quot;height&quot;, 30)
+  //   .attr(&quot;fill&quot;, &quot;##ff751a&quot;); 
+}
+
+function initialize() {
+    map = new google.maps.Map(document.getElementById(&#39;map&#39;), {
+    zoom: 6,
+    center: {lat: 36.775, lng: -119.434},
+     mapTypeId: google.maps.MapTypeId.TERRAIN,
+      panControl: true,
+      scrollwheel: false,
+      mapTypeControl: false,
+      panControlOptions: {
+          position: google.maps.ControlPosition.RIGHT_CENTER
+      },
+      zoomControl: true,
+      zoomControlOptions: {
+          style: google.maps.ZoomControlStyle.LARGE,
+          position: google.maps.ControlPosition.RIGHT_CENTER
+      },
+      scaleControl: false,
+      streetViewControl: false,
+      streetViewControlOptions: {
+          position: google.maps.ControlPosition.RIGHT_CENTER
+      }
+  });
+
+  csvData.forEach(function(d){
+       town.push(new google.maps.LatLng(d.lat, d.long))
+  });
+
+  heatmap = new google.maps.visualization.HeatmapLayer({
+    data: town,
+    map: map
+  });
+  
+  heatmap.set(&#39;radius&#39;, 15)
+  heatmap.set(&#39;opacity&#39;, 0.8)
+}
+&lt;/script&gt;
+
+&lt;h1 id=&quot;some-interesting-points&quot;&gt;Some interesting points&lt;/h1&gt;
+
+&lt;p&gt;coming soon… (waiting for some update on the data)&lt;/p&gt;
+
+&lt;h1 id=&quot;data-source&quot;&gt;Data source&lt;/h1&gt;
+
+&lt;p&gt;The data shown in the visualization is in open access. More details on the exact provenance soon…&lt;/p&gt;
 </description>
 				<pubDate>Mon, 09 Nov 2015 00:00:00 -0800</pubDate>
 				<link>/2015/11/09/Water-consumption-in-California.html</link>

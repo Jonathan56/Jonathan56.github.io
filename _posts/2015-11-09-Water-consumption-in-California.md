@@ -90,6 +90,15 @@ svg {
   top: 10px;
   z-index: 5;
 }
+
+.bar rect {
+  fill: steelblue;
+  shape-rendering: crispEdges;
+}
+
+.bar text {
+  fill: #fff;
+}
 </style>
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
@@ -145,11 +154,25 @@ var xSelected = d3.scale.ordinal().range([0, width/2]).domain([0, 100]);
 // Add a space to show the percentage of data selected 
 // dataSelectedInit();
 
-// Add a text hint
-svg.append("text")      
-    .attr("y", height + margin.bottom/2 - 5)
-    .attr("x", 10)
-    .text("Click me!");
+// Add the necessary for the histograms
+var xhisto = d3.scale.linear()
+    .range([0, width]);
+
+// Generate a histogram using twenty uniformly-spaced bins.
+var xAxisHisto = d3.svg.axis()
+    .scale(xhisto)
+    .orient("bottom");
+
+var svgHisto = d3.select("#histogram").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+svgHisto.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxisHisto);
 
 // Load the data
 d3.csv("{{ site.baseurl }}/assets/data/data.csv", function(error, data) {
@@ -295,38 +318,107 @@ function histoUpdate(d) {
   d3.select(this)
     .attr("fill", "#99cfff");
 
+  getHistoData(this.__data__);
 }
 
-function dataSelectedInit() {
-  // Add a SVG to hold the bar showing the percent of data selected
-  var svgSlected = d3.select("#selected").append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", 50)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+function getHistoData(name) {
+  var greyData = []
+  var blueData = []
 
-  // Add a text hint
-  svgSlected.append("text")      
-      .attr("y", 5)
-      .attr("x", 5)
-      .text("Percentage of data selected (%)");
+  csvData.forEach(function(d, i) { 
+      if (d.visible == true){
+        blueData.push(d[name])
+      }
+      greyData.push(d[name])
+   });
 
-  svgSlected.append("rect")
-    .attr("x", 5-1)
-    .attr("y", 10-1)
-    .attr("width", xSelected(100) + 1)
-    .attr("height", 30+1)
-    .attr("stroke", "#000000")
-    .attr("fill", "##F1F1F2") 
+  svgHisto.selectAll('.bar').remove()
+  svgHisto.selectAll('.bar2').remove()
 
-  // svgSlected.append("rect")
-  //   .attr("class", "rectPercent")
-  //   .attr("x", 5)
-  //   .attr("y", 10)
-  //   .attr("width", xSelected(70))
-  //   .attr("height", 30)
-  //   .attr("fill", "##ff751a"); 
+  var greyData = d3.layout.histogram()
+      .bins(xhisto.ticks(20))
+      (greyData);
+
+  var blueData = d3.layout.histogram()
+      .bins(xhisto.ticks(20))
+      (blueData);
+
+  xhisto.domain(d3.extent(greyData, function(d) { return d.x; }));
+  var yhisto = d3.scale.linear()
+      .domain([0, d3.max(greyData, function(d) { return d.y; })])
+      .range([height, 0]);
+
+  var bar = svgHisto.selectAll(".bar")
+      .data(greyData)
+    .enter().append("g")
+      .attr("class", "bar")
+      .attr("transform", function(d) { return "translate(" + xhisto(d.x) + "," + yhisto(d.y) + ")"; });
+
+  bar.append("rect")
+      .attr("x", 1)
+      .attr("width", xhisto(greyData[0].dx) - 1)
+      .attr("height", function(d) { return height - yhisto(d.y); });
+
+  bar.append("text")
+      .attr("dy", ".75em")
+      .attr("y", 6)
+      .attr("x", xhisto(greyData[0].dx) / 2)
+      .attr("text-anchor", "middle")
+      .text(function(d) { return d.y; });
+
+/////////////////////////////////////////////////////////////////////////
+  var bar = svgHisto.selectAll(".bar2")
+      .data(blueData)
+    .enter().append("g")
+      .attr("class", "bar2")
+      .attr("transform", function(d) { return "translate(" + xhisto(d.x) + "," + yhisto(d.y) + ")"; });
+
+  bar.append("rect")
+      .attr("x", 1)
+      .attr("width", x(blueData[0].dx) - 1)
+      .attr("height", function(d) { return height - yhisto(d.y); });
+
+  bar.append("text")
+      .attr("dy", ".75em")
+      .attr("y", 6)
+      .attr("x", xhisto(blueData[0].dx) / 2)
+      .attr("text-anchor", "middle")
+      .text(function(d) { return d.y; });
+
+  svgHisto.select(".x.axis")
+      .transition()
+      .call(xAxisHisto);
 }
+// function dataSelectedInit() {
+//   // Add a SVG to hold the bar showing the percent of data selected
+//   var svgSlected = d3.select("#selected").append("svg")
+//       .attr("width", width + margin.left + margin.right)
+//       .attr("height", 50)
+//     .append("g")
+//       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+//   // Add a text hint
+//   svgSlected.append("text")      
+//       .attr("y", 5)
+//       .attr("x", 5)
+//       .text("Percentage of data selected (%)");
+
+//   svgSlected.append("rect")
+//     .attr("x", 5-1)
+//     .attr("y", 10-1)
+//     .attr("width", xSelected(100) + 1)
+//     .attr("height", 30+1)
+//     .attr("stroke", "#000000")
+//     .attr("fill", "##F1F1F2") 
+
+//   // svgSlected.append("rect")
+//   //   .attr("class", "rectPercent")
+//   //   .attr("x", 5)
+//   //   .attr("y", 10)
+//   //   .attr("width", xSelected(70))
+//   //   .attr("height", 30)
+//   //   .attr("fill", "##ff751a"); 
+// }
 
 function initialize() {
     map = new google.maps.Map(document.getElementById('map'), {

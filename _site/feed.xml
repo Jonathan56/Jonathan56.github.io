@@ -291,6 +291,15 @@ svg {
   top: 10px;
   z-index: 5;
 }
+
+.bar rect {
+  fill: steelblue;
+  shape-rendering: crispEdges;
+}
+
+.bar text {
+  fill: #fff;
+}
 &lt;/style&gt;
 
 &lt;script src=&quot;//d3js.org/d3.v3.min.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
@@ -349,11 +358,25 @@ var xSelected = d3.scale.ordinal().range([0, width/2]).domain([0, 100]);
 // Add a space to show the percentage of data selected 
 // dataSelectedInit();
 
-// Add a text hint
-svg.append(&quot;text&quot;)      
-    .attr(&quot;y&quot;, height + margin.bottom/2 - 5)
-    .attr(&quot;x&quot;, 10)
-    .text(&quot;Click me!&quot;);
+// Add the necessary for the histograms
+var xhisto = d3.scale.linear()
+    .range([0, width]);
+
+// Generate a histogram using twenty uniformly-spaced bins.
+var xAxisHisto = d3.svg.axis()
+    .scale(xhisto)
+    .orient(&quot;bottom&quot;);
+
+var svgHisto = d3.select(&quot;#histogram&quot;).append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, width + margin.left + margin.right)
+    .attr(&quot;height&quot;, height + margin.top + margin.bottom)
+  .append(&quot;g&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+
+svgHisto.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;x axis&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(0,&quot; + height + &quot;)&quot;)
+    .call(xAxisHisto);
 
 // Load the data
 d3.csv(&quot;/assets/data/data.csv&quot;, function(error, data) {
@@ -499,38 +522,107 @@ function histoUpdate(d) {
   d3.select(this)
     .attr(&quot;fill&quot;, &quot;#99cfff&quot;);
 
+  getHistoData(this.__data__);
 }
 
-function dataSelectedInit() {
-  // Add a SVG to hold the bar showing the percent of data selected
-  var svgSlected = d3.select(&quot;#selected&quot;).append(&quot;svg&quot;)
-      .attr(&quot;width&quot;, width + margin.left + margin.right)
-      .attr(&quot;height&quot;, 50)
-    .append(&quot;g&quot;)
-      .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+function getHistoData(name) {
+  var greyData = []
+  var blueData = []
 
-  // Add a text hint
-  svgSlected.append(&quot;text&quot;)      
-      .attr(&quot;y&quot;, 5)
-      .attr(&quot;x&quot;, 5)
-      .text(&quot;Percentage of data selected (%)&quot;);
+  csvData.forEach(function(d, i) { 
+      if (d.visible == true){
+        blueData.push(d[name])
+      }
+      greyData.push(d[name])
+   });
 
-  svgSlected.append(&quot;rect&quot;)
-    .attr(&quot;x&quot;, 5-1)
-    .attr(&quot;y&quot;, 10-1)
-    .attr(&quot;width&quot;, xSelected(100) + 1)
-    .attr(&quot;height&quot;, 30+1)
-    .attr(&quot;stroke&quot;, &quot;#000000&quot;)
-    .attr(&quot;fill&quot;, &quot;##F1F1F2&quot;) 
+  svgHisto.selectAll(&#39;.bar&#39;).remove()
+  svgHisto.selectAll(&#39;.bar2&#39;).remove()
 
-  // svgSlected.append(&quot;rect&quot;)
-  //   .attr(&quot;class&quot;, &quot;rectPercent&quot;)
-  //   .attr(&quot;x&quot;, 5)
-  //   .attr(&quot;y&quot;, 10)
-  //   .attr(&quot;width&quot;, xSelected(70))
-  //   .attr(&quot;height&quot;, 30)
-  //   .attr(&quot;fill&quot;, &quot;##ff751a&quot;); 
+  var greyData = d3.layout.histogram()
+      .bins(xhisto.ticks(20))
+      (greyData);
+
+  var blueData = d3.layout.histogram()
+      .bins(xhisto.ticks(20))
+      (blueData);
+
+  xhisto.domain(d3.extent(greyData, function(d) { return d.x; }));
+  var yhisto = d3.scale.linear()
+      .domain([0, d3.max(greyData, function(d) { return d.y; })])
+      .range([height, 0]);
+
+  var bar = svgHisto.selectAll(&quot;.bar&quot;)
+      .data(greyData)
+    .enter().append(&quot;g&quot;)
+      .attr(&quot;class&quot;, &quot;bar&quot;)
+      .attr(&quot;transform&quot;, function(d) { return &quot;translate(&quot; + xhisto(d.x) + &quot;,&quot; + yhisto(d.y) + &quot;)&quot;; });
+
+  bar.append(&quot;rect&quot;)
+      .attr(&quot;x&quot;, 1)
+      .attr(&quot;width&quot;, xhisto(greyData[0].dx) - 1)
+      .attr(&quot;height&quot;, function(d) { return height - yhisto(d.y); });
+
+  bar.append(&quot;text&quot;)
+      .attr(&quot;dy&quot;, &quot;.75em&quot;)
+      .attr(&quot;y&quot;, 6)
+      .attr(&quot;x&quot;, xhisto(greyData[0].dx) / 2)
+      .attr(&quot;text-anchor&quot;, &quot;middle&quot;)
+      .text(function(d) { return d.y; });
+
+/////////////////////////////////////////////////////////////////////////
+  var bar = svgHisto.selectAll(&quot;.bar2&quot;)
+      .data(blueData)
+    .enter().append(&quot;g&quot;)
+      .attr(&quot;class&quot;, &quot;bar2&quot;)
+      .attr(&quot;transform&quot;, function(d) { return &quot;translate(&quot; + xhisto(d.x) + &quot;,&quot; + yhisto(d.y) + &quot;)&quot;; });
+
+  bar.append(&quot;rect&quot;)
+      .attr(&quot;x&quot;, 1)
+      .attr(&quot;width&quot;, x(blueData[0].dx) - 1)
+      .attr(&quot;height&quot;, function(d) { return height - yhisto(d.y); });
+
+  bar.append(&quot;text&quot;)
+      .attr(&quot;dy&quot;, &quot;.75em&quot;)
+      .attr(&quot;y&quot;, 6)
+      .attr(&quot;x&quot;, xhisto(blueData[0].dx) / 2)
+      .attr(&quot;text-anchor&quot;, &quot;middle&quot;)
+      .text(function(d) { return d.y; });
+
+  svgHisto.select(&quot;.x.axis&quot;)
+      .transition()
+      .call(xAxisHisto);
 }
+// function dataSelectedInit() {
+//   // Add a SVG to hold the bar showing the percent of data selected
+//   var svgSlected = d3.select(&quot;#selected&quot;).append(&quot;svg&quot;)
+//       .attr(&quot;width&quot;, width + margin.left + margin.right)
+//       .attr(&quot;height&quot;, 50)
+//     .append(&quot;g&quot;)
+//       .attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);
+
+//   // Add a text hint
+//   svgSlected.append(&quot;text&quot;)      
+//       .attr(&quot;y&quot;, 5)
+//       .attr(&quot;x&quot;, 5)
+//       .text(&quot;Percentage of data selected (%)&quot;);
+
+//   svgSlected.append(&quot;rect&quot;)
+//     .attr(&quot;x&quot;, 5-1)
+//     .attr(&quot;y&quot;, 10-1)
+//     .attr(&quot;width&quot;, xSelected(100) + 1)
+//     .attr(&quot;height&quot;, 30+1)
+//     .attr(&quot;stroke&quot;, &quot;#000000&quot;)
+//     .attr(&quot;fill&quot;, &quot;##F1F1F2&quot;) 
+
+//   // svgSlected.append(&quot;rect&quot;)
+//   //   .attr(&quot;class&quot;, &quot;rectPercent&quot;)
+//   //   .attr(&quot;x&quot;, 5)
+//   //   .attr(&quot;y&quot;, 10)
+//   //   .attr(&quot;width&quot;, xSelected(70))
+//   //   .attr(&quot;height&quot;, 30)
+//   //   .attr(&quot;fill&quot;, &quot;##ff751a&quot;); 
+// }
 
 function initialize() {
     map = new google.maps.Map(document.getElementById(&#39;map&#39;), {

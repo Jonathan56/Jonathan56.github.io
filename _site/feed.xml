@@ -26,11 +26,11 @@
 &lt;h2 id=&quot;dugem&quot;&gt;Dugem&lt;/h2&gt;
 &lt;p&gt;Nullam vehicula iaculis tortor, in cursus enim auctor vitae. Duis semper pulvinar justo, at vestibulum dolor. Cras fermentum nibh quis nisl imperdiet ornare. Sed nisi nunc, dictum sit amet gravida in, finibus rhoncus orci. Donec scelerisque commodo turpis ac venenatis.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trigger_alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Lorem Ipsum dolor sit amet&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trigger_alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Lorem Ipsum dolor sit amet&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-&lt;span class=&quot;nx&quot;&gt;trigger_alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;nx&quot;&gt;trigger_alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;golem&quot;&gt;Golem&lt;/h3&gt;
 &lt;p&gt;Quisque sodales euismod nibh, gravida venenatis nibh dignissim eget. Morbi gravida enim vel lectus aliquet aliquet.&lt;/p&gt;
@@ -125,11 +125,11 @@
 &lt;h2 id=&quot;dugem&quot;&gt;Dugem&lt;/h2&gt;
 &lt;p&gt;Nullam vehicula iaculis tortor, in cursus enim auctor vitae. Duis semper pulvinar justo, at vestibulum dolor. Cras fermentum nibh quis nisl imperdiet ornare. Sed nisi nunc, dictum sit amet gravida in, finibus rhoncus orci. Donec scelerisque commodo turpis ac venenatis.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trigger_alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Lorem Ipsum dolor sit amet&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trigger_alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Lorem Ipsum dolor sit amet&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-&lt;span class=&quot;nx&quot;&gt;trigger_alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;nx&quot;&gt;trigger_alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;golem&quot;&gt;Golem&lt;/h3&gt;
 &lt;p&gt;Quisque sodales euismod nibh, gravida venenatis nibh dignissim eget. Morbi gravida enim vel lectus aliquet aliquet.&lt;/p&gt;
@@ -277,7 +277,7 @@ svg {
   padding: 5px;
   border: 1px solid #999;
   text-align: center;
-  font-family: &#39;Roboto&#39;,&#39;sans-serif&#39;;
+  font-family: 'Roboto','sans-serif';
   line-height: 30px;
   padding-left: 10px;
 }
@@ -322,7 +322,7 @@ var town = new Array();
 var margin = {top: 30, right: 10, bottom: 50, left: 10},
     width =  1200 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
-//parseInt(d3.select(&#39;#mainContainer&#39;).style(&#39;width&#39;))
+//parseInt(d3.select('#mainContainer').style('width'))
 
 // Scale to place the dimensions
 var x = d3.scale.ordinal().rangePoints([0, width], 1);
@@ -415,16 +415,16 @@ d3.csv(&quot;/assets/data/data.csv&quot;, function(error, data) {
       .data(data)
     .enter().append(&quot;path&quot;)
       .attr(&quot;d&quot;, path)
-      .style(&#39;stroke-width&#39;, &#39;1.5&#39;)
-      .style(&#39;stroke&#39;, function(d) { return d.color; })
+      .style('stroke-width', '1.5')
+      .style('stroke', function(d) { return d.color; })
       // Add text when mouseover
       .on(&quot;mouseover&quot;, function(d){
          svgtext.select(&quot;text&quot;).remove();
          svgtext.append(&quot;text&quot;)
-        .attr(&quot;font-size&quot;, &#39;150%&#39;)
-        .attr(&quot;x&quot;, &#39;50px&#39;)
-        .attr(&quot;y&quot;, &#39;5px&#39;)
-        .text( function () { return &#39;Line name: &#39; + String(d.name); });
+        .attr(&quot;font-size&quot;, '150%')
+        .attr(&quot;x&quot;, '50px')
+        .attr(&quot;y&quot;, '5px')
+        .text( function () { return 'Line name: ' + String(d.name); });
       });
 
   // Add a group element for each dimension.
@@ -536,8 +536,8 @@ function getHistoData(name) {
       greyData.push(d[name])
    });
 
-  svgHisto.selectAll(&#39;.bar&#39;).remove()
-  svgHisto.selectAll(&#39;.bar2&#39;).remove()
+  svgHisto.selectAll('.bar').remove()
+  svgHisto.selectAll('.bar2').remove()
 
   var greyData = d3.layout.histogram()
       .bins(xhisto.ticks(20))
@@ -625,7 +625,7 @@ function getHistoData(name) {
 // }
 
 function initialize() {
-    map = new google.maps.Map(document.getElementById(&#39;map&#39;), {
+    map = new google.maps.Map(document.getElementById('map'), {
     zoom: 6,
     center: {lat: 36.775, lng: -119.434},
      mapTypeId: google.maps.MapTypeId.TERRAIN,
@@ -656,8 +656,8 @@ function initialize() {
     map: map
   });
   
-  heatmap.set(&#39;radius&#39;, 15)
-  heatmap.set(&#39;opacity&#39;, 0.8)
+  heatmap.set('radius', 15)
+  heatmap.set('opacity', 0.8)
 }
 &lt;/script&gt;
 
@@ -695,11 +695,11 @@ function initialize() {
 &lt;h2 id=&quot;dugem&quot;&gt;Dugem&lt;/h2&gt;
 &lt;p&gt;Nullam vehicula iaculis tortor, in cursus enim auctor vitae. Duis semper pulvinar justo, at vestibulum dolor. Cras fermentum nibh quis nisl imperdiet ornare. Sed nisi nunc, dictum sit amet gravida in, finibus rhoncus orci. Donec scelerisque commodo turpis ac venenatis.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trigger_alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Lorem Ipsum dolor sit amet&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;trigger_alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Lorem Ipsum dolor sit amet&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-&lt;span class=&quot;nx&quot;&gt;trigger_alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;nx&quot;&gt;trigger_alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;golem&quot;&gt;Golem&lt;/h3&gt;
 &lt;p&gt;Quisque sodales euismod nibh, gravida venenatis nibh dignissim eget. Morbi gravida enim vel lectus aliquet aliquet.&lt;/p&gt;

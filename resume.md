@@ -7,7 +7,7 @@ permalink: /resume/
 *The next sections will bring some more details on certain key points*.
 
 
-##1) Education
+## 1) Education
 <img src="{{ site.url }}/assets/image/UTC_logo.png" alt="UTC logo" width="350">
 I have done most of my study at the [*Technical University of Compiegne*](https://www.utc.fr/en.html) (2010-2015), a French top ranking engineering institution. I have obtained my Master from the civil engineering department, but I equaly shared my time with the electrical department. Here is a [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
 
@@ -25,7 +25,7 @@ Through my work at the UTC I obtained recommandation letters, here are the lates
 I have also spent a semester of study abroad in Riga (Latvia). Here is a [transcript]({{ site.baseurl }}/assets/image/transcript_Riga.jpg) of my semester.
 
 
-##2) Work experiences
+## 2) Work experiences
 <img style="float: left; margin-right: 20px;" src="{{ site.url }}/assets/image/LBNL_logo.png" alt="LBNL logo" width="250">
 At the Lawrence Berkeley National Laboratory my work has been focused on [V2G-Sim](http://v2gsim.lbl.gov/) and [MyGreenCar](http://mygreencar-01.lbl.gov/greencar_app/) (described in my «&nbsp;Portfolio&nbsp;» section).
 
@@ -39,7 +39,7 @@ In November 2015 the V2G-Sim project won an R&D100 Award.
 <img style="float: left; margin-right: 20px;" src="{{ site.url }}/assets/image/cerema_logo.jpg" alt="Cerema logo" width="250">
 At the CEREMA (Centre For Studies and Expertise on Risks, Environment, Mobility, and Urban and Country planning) I studied the best emplacement to harvest wave's energy at the shore in [Audierne's bay](https://www.google.com/maps/place/Esquibien,+France/@48.019122,-4.6068608,1225z/data=!4m2!3m1!1s0x4816e058cded9379:0x40ca5cd36e56db0). The project involved the use of [SWASH](http://swash.sourceforge.net/) to provide a general basis for describing wave transformations from deep water to a beach, port or harbour. [The study (final report in French)]({{ site.baseurl }}/assets/pdf/internship_CEREMA.pdf) also includes a cost analysis for different devices. 
 
-##3) Publications
+## 3) Publications
 [*EMACOP project: characterising the wave energy resources of hot spots in Brittany for on-shore WEC*](#)
 The European Wave and Tidal Energy Conference (2015 EWTEC)
 

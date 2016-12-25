@@ -7,7 +7,7 @@
 		
 			<item>
 				<title>Power consumption in California</title>
-        <description>&lt;p class=&quot;lead&quot;&gt;This post aims to provide a fast look into Californian&#39;s net load&lt;/p&gt;
+        <description>&lt;p class=&quot;lead&quot;&gt;This post aims to provide a fast look into Californian's net load&lt;/p&gt;
 
 &lt;p&gt;The data is collected through the &lt;a href=&quot;http://pyiso.readthedocs.org/en/latest/&quot;&gt;Pyiso API&lt;/a&gt;, the data can also be fetched on &lt;a href=&quot;http://www.caiso.com/green/renewableswatch.html&quot;&gt;CAISO&lt;/a&gt;&lt;/p&gt;
 
@@ -169,7 +169,7 @@ var colorGen = d3.scale.category20();
 
 // a scale for the time
 var xLoadGen = d3.time.scale().nice().range([0, width])
-.domain([parseDate(&#39;2015-01-01 00:00:00&#39;), parseDate(&#39;2015-01-31 23:00:00&#39;)]);
+.domain([parseDate('2015-01-01 00:00:00'), parseDate('2015-01-31 23:00:00')]);
 
 //a scale for netload y axis
 var minNetload = 999999999999;
@@ -245,8 +245,8 @@ svgNetload.append(&quot;g&quot;)
 svgNetload.append(&quot;g&quot;)
     .attr(&quot;class&quot;, &quot;brush2&quot;)
     .call(brushLoadGen)
-  .selectAll(&#39;rect&#39;)
-    .attr(&#39;height&#39;, height);
+  .selectAll('rect')
+    .attr('height', height);
 
 // append clip path for lines plotted, hiding those part out of bounds
 svgNetload.append(&quot;defs&quot;)
@@ -284,8 +284,8 @@ svgLoad.append(&quot;g&quot;)
 svgLoad.append(&quot;g&quot;)
     .attr(&quot;class&quot;, &quot;brush2&quot;)
     .call(brushLoadGen)
-  .selectAll(&#39;rect&#39;)
-    .attr(&#39;height&#39;, height);
+  .selectAll('rect')
+    .attr('height', height);
 
 // append clip path for lines plotted, hiding those part out of bounds
 svgLoad.append(&quot;defs&quot;)
@@ -323,8 +323,8 @@ svgGen.append(&quot;g&quot;)
 svgGen.append(&quot;g&quot;)
     .attr(&quot;class&quot;, &quot;brush1&quot;)
     .call(brushLoadGen)
-  .selectAll(&#39;rect&#39;)
-    .attr(&#39;height&#39;, height);
+  .selectAll('rect')
+    .attr('height', height);
 
 // append clip path for lines plotted, hiding those part out of bounds
 svgGen.append(&quot;defs&quot;)
@@ -376,15 +376,15 @@ d3.csv(&quot;../../../someMoreData/parallel.csv&quot;, function(error, data) {
       .data(data)
     .enter().append(&quot;path&quot;)
       .attr(&quot;d&quot;, path)
-      .style(&#39;stroke-width&#39;, &#39;1.5&#39;)
-      .style(&#39;stroke&#39;, function(d) { return d.color; })
+      .style('stroke-width', '1.5')
+      .style('stroke', function(d) { return d.color; })
       .on(&quot;mouseover&quot;, function(d){
         // Change stroke-width when mouseover
-        d3.select(this).style(&#39;stroke-width&#39;, &#39;7&#39;)
+        d3.select(this).style('stroke-width', '7')
       })
       .on(&quot;mouseout&quot;, function(d){
         // Change stroke-width when mouseover
-        d3.select(this).style(&#39;stroke-width&#39;, &#39;1.5&#39;)
+        d3.select(this).style('stroke-width', '1.5')
       })
       .on(&quot;click&quot;, function(d){
         // Append a path on the bottom graphs
@@ -448,7 +448,7 @@ function brush() {
 
 function add_curve(year, month){
   // Get filename
-  filename = &#39;../../../someMoreData/csv_result/&#39; + String(year) + &#39;-&#39; + String(month) + &#39;.csv&#39;;
+  filename = '../../../someMoreData/csv_result/' + String(year) + '-' + String(month) + '.csv';
   console.log(filename)
 
   // Load the data
@@ -457,7 +457,7 @@ function add_curve(year, month){
     // Parse the date
     data.forEach(function(d, i) {
       a = d.time.slice(8, d.time.length);
-      d.time = &#39;2015-01-&#39; + a;
+      d.time = '2015-01-' + a;
       d.time = parseDate(d.time);
       d.solar = parseFloat(d.solar) / 1000;
       d.load = parseFloat(d.load) / 1000;
@@ -470,17 +470,17 @@ function add_curve(year, month){
     // creating color domain for load curve
     // colorLoad.domain(d3.keys(data[0]).filter(function(key) { return key !== &quot;time&quot; &amp;&amp; key !==&quot;solar&quot;
     //   &amp;&amp; key !== &quot;wind&quot;; }));
-    colorLoad.domain([&#39;load&#39;]);
+    colorLoad.domain(['load']);
 
     // creating color domain for gen curves
     // colorGen.domain(d3.keys(data[0]).filter(function(key) { return key !== &quot;time&quot; &amp;&amp; key !==&quot;load&quot;; }));
-    colorGen.domain([&#39;solar&#39;, &#39;wind&#39;]);
-    colorNetload.domain([&#39;netload&#39;]);
+    colorGen.domain(['solar', 'wind']);
+    colorNetload.domain(['netload']);
 
     netloadData = colorNetload.domain().map(function(name) {
         return {
             name: name,
-            label: String(year) + &#39;-&#39; + String(month) + &#39; &#39; + name,
+            label: String(year) + '-' + String(month) + ' ' + name,
             values: data.map(function(d) {
                 return {time: d.time, data: +d[name]}; 
             })
@@ -490,7 +490,7 @@ function add_curve(year, month){
     loadData = colorLoad.domain().map(function(name) {
         return {
             name: name,
-            label: String(year) + &#39;-&#39; + String(month) + &#39; &#39; + name,
+            label: String(year) + '-' + String(month) + ' ' + name,
             values: data.map(function(d) {
                 return {time: d.time, data: +d[name]}; 
             })
@@ -500,7 +500,7 @@ function add_curve(year, month){
     genData = colorGen.domain().map(function(name) {
         return {
             name: name,
-            label: String(year) + &#39;-&#39; + String(month) + &#39; &#39; + name,
+            label: String(year) + '-' + String(month) + ' ' + name,
             values: data.map(function(d) {
                 return {time: d.time, data: +d[name]}; 
             })
@@ -618,14 +618,14 @@ function add_curve(year, month){
 
 function append_legend(year, month, color){
   // Append the legend list
-  legend.push({&#39;label&#39;: String(month) + &#39;-&#39; + String(year), &#39;color&#39;: color})
+  legend.push({'label': String(month) + '-' + String(year), 'color': color})
 
   // Remove the list
   d3.select(&quot;svgLegend&quot;).remove();
 
   // Draw each legend in the list
   legend.forEach(function(d, i) {
-    svgLegend.append(&#39;text&#39;)
+    svgLegend.append('text')
       .attr(&quot;y&quot;, 10)
       .attr(&quot;x&quot;, i*100)
       .text(d.label)
@@ -643,7 +643,7 @@ function reset_all(){
 function brushend() {
   get_button = d3.select(&quot;.clear-button&quot;);
   if(get_button.empty() === true) {
-    clear_button = svgGen.append(&#39;text&#39;)
+    clear_button = svgGen.append('text')
       .attr(&quot;y&quot;, height)
       .attr(&quot;x&quot;, width + 10)
       .attr(&quot;class&quot;, &quot;clear-button&quot;)
@@ -658,8 +658,8 @@ function brushend() {
   d3.select(&quot;.brush1&quot;).call(brushLoadGen.clear());
   d3.select(&quot;.brush2&quot;).call(brushLoadGen.clear());
 
-  clear_button.on(&#39;click&#39;, function(){
-    xLoadGen.domain([parseDate(&#39;2015-01-01 00:00:00&#39;), parseDate(&#39;2015-01-31 23:00:00&#39;)]);
+  clear_button.on('click', function(){
+    xLoadGen.domain([parseDate('2015-01-01 00:00:00'), parseDate('2015-01-31 23:00:00')]);
     transition_data();
     reset_axis();               
     clear_button.remove();
@@ -702,7 +702,7 @@ function reset_axis() {
 &lt;/script&gt;
 
 </description>
-				<pubDate>Sat, 09 Jan 2016 00:00:00 -0800</pubDate>
+				<pubDate>Sat, 09 Jan 2016 00:00:00 +0000</pubDate>
 				<link>/2016/01/09/Power-consumption-in-California.html</link>
 				<guid isPermaLink="true">/2016/01/09/Power-consumption-in-California.html</guid>
 			</item>
@@ -801,7 +801,7 @@ function reset_axis() {
 
 &lt;p&gt;Nullam quis risus eget urna mollis ornare vel eu leo.&lt;/p&gt;
 </description>
-				<pubDate>Sun, 09 Aug 2015 00:00:00 -0700</pubDate>
+				<pubDate>Sun, 09 Aug 2015 00:00:00 +0000</pubDate>
 				<link>/2015/08/09/example-content.html</link>
 				<guid isPermaLink="true">/2015/08/09/example-content.html</guid>
 			</item>

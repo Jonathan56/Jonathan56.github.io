@@ -4,10 +4,16 @@
 
 # Basic
 name:               "Jonathan"
+include:            ["_pages"]
 
 # URL
 baseurl:            ""
 #baseurl:            "" #For Root Domain
+permalink:          /404/
+permalink:          /blog/
+permalink:          /contact/
+permalink:          /portfolio/
+permalink:          /resume/
 permalink:          /:year/:month/:day/:title.html
 
 # Markdown
@@ -44,3 +50,9 @@ defaults:
       type:         "posts"
     values:
       layout:       "post"
+
+# Exclude
+exclude:
+  - README.md
+  - docker-compose.yml
+  - LICENSE

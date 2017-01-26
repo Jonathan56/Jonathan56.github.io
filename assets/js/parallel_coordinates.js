@@ -125,13 +125,14 @@ function basic_parallel_coordinates(filename) {
         .attr("class", "dimension_text")
         .style("text-anchor", "middle")
         .style('font-size', '14px')
+        .style("border-style", 'solid')
         .attr("y", -9)
         .text(function(d) {
           selected_name = d;
           return d; })
         .on("click", function(d){
           // Reset the size of all the text to the normal one
-          d3.selectAll(".dimension_text").style('font-size', '11px')
+          d3.selectAll(".dimension_text").style('font-size', '14px')
           // Change text size
           d3.select(this).style('font-size', '20px')
 

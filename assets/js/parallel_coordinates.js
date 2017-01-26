@@ -125,7 +125,6 @@ function basic_parallel_coordinates(filename) {
         .attr("class", "dimension_text")
         .style("text-anchor", "middle")
         .style('font-size', '14px')
-        .style("border-style", 'solid')
         .attr("y", -9)
         .text(function(d) {
           selected_name = d;

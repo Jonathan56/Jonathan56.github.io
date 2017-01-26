@@ -239,6 +239,4 @@ function basic_parallel_coordinates(filename) {
       }
     };
 
-    Plotly.newPlot('myDiv', data, layout);
-  }
-}
+    Plotl

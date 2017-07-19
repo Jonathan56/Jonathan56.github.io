@@ -36,28 +36,41 @@ I have recently finished my <strong>Master thesis</strong> at the <strong>Techni
 
 <script type="text/javascript">
 var width = 960,
-    height = 500;
+    height = 650;
 
 var skill = [
-    {'name': 'invisible'},
-    {'name': 'Python'},
-    {'name': 'MATLAB'},
-    {'name': 'D3.js'},
-    {'name': 'Latex'},
-    {'name': 'Photoshop'},
-    {'name': 'SQL'},
-    {'name': 'PowerFactory'},
-    {'name': 'Office'},
-    {'name': 'AutoCAD'},
-    {'name': 'Django'},
-    {'name': 'Linux'},
+    {'name': 'invisible', 'radius': 50},
+    {'name': 'AutoCAD', 'radius': 20},
+    {'name': 'SQL', 'radius': 50},
+    {'name': 'Photoshop', 'radius': 20},
+    {'name': 'Opal-RT', 'radius': 50},
+    {'name': 'Simulink', 'radius': 50},
+    {'name': 'MATLAB', 'radius': 50},
+    {'name': 'CymDIST', 'radius': 65},
+    {'name': 'PowerFactory', 'radius': 55},
+    {'name': 'Latex', 'radius': 50},
+    {'name': 'D3.js', 'radius': 55},
+    {'name': 'Git', 'radius': 80},
+    {'name': 'FMI', 'radius': 30},
+    {'name': 'Django', 'radius': 70},
+    {'name': 'Docker', 'radius': 60},
+    {'name': 'PyFMI', 'radius': 50},
+    {'name': 'Simpy', 'radius': 70},
+    {'name': 'Pyomo', 'radius': 50},
+    {'name': 'Ethereum', 'radius': 60},
+    {'name': 'Python', 'radius': 100},
 ];
 
 var nodes = d3.range(skill.length).map(function(i) {
-        return {radius: Math.random() * 70 + 4, name: skill[i]['name']};
+        return {radius: skill[i]['radius'], name: skill[i]['name']};
     }),
-    root = nodes[0],
-    color = d3.scale.category10();
+// Math.random() * 70 + 4
+root = nodes[0];
+// color = d3.scale.category20();
+color = d3.scale.linear().domain([20, 100])
+  .interpolate(d3.interpolateHcl)
+  .range([d3.rgb("#cceeff"), d3.rgb('#ffa366')]);
+
 
 root.radius = 0;
 root.fixed = true;
@@ -82,11 +95,12 @@ groupe = svg.selectAll("circle")
 
 groupe.append("circle")
     .attr("r", function(d) { return d.radius; })
-    .style("fill", function(d, i) { return color(i % 3); });
+    .style("fill", function(d, i) { return color(d.radius); });
 
 groupe.append("text")
-    .attr({x: 0, y: 0})
+    .attr("text-anchor", "middle")
     .text(function(d) {return d.name})
+    // .attr({x: 0, y: 0})
 
 force.on("tick", function(e) {
   var q = d3.geom.quadtree(nodes),
@@ -99,8 +113,8 @@ force.on("tick", function(e) {
       .attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; });
   svg.selectAll("text")
-    .attr("x", function (d) {return d.x-25;})
-    .attr("y", function (d) {return d.y+5;});
+    .attr("x", function (d) {return d.x;})
+    .attr("y", function (d) {return d.y;});
 });
 
 svg.on("mousemove", function() {
@@ -136,7 +150,7 @@ function collide(node) {
 
 function resize() {
     width = window.innerWidth/2, height = window.innerHeight;
-    height = 450;
+    height = 650;
     svg.attr("width", width).attr("height", height);
     force.size([width, height]).resume();
 }

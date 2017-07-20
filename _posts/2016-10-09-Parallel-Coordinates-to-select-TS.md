@@ -1,14 +1,25 @@
 ---
 title: Parallel Coordinates to select Time-Series
-excerpt_separator:
+excerpt_separator: <!--more-->
 ---
 
-<p class="lead">This post aims to provide a fast look into Californian's net load</p>
+Parallel coordinates as a way to select a subset of the data to
+show a Time-Series for instance.
 
-The data is collected through the [Pyiso API](http://pyiso.readthedocs.org/en/latest/), the data can also be fetched on [CAISO](http://www.caiso.com/green/renewableswatch.html)
+<!--more-->
 
-## How is power generation evolving ?
-A couple of plots from making the parallel coordinate plot.
+# Usage
+
+Same old, but now if you click in a line, the time-serie is displayed on the
+graph below.
+
+# Example
+
+Select ...
+
+# Demonstration
+
+The data is collected through the [Pyiso API](http://pyiso.readthedocs.org/en/latest/), the data can also be fetched on the [CAISO website](http://www.caiso.com/green/renewableswatch.html)
 
 <link rel="stylesheet" href="/assets/css/parallel_coordinates_graph.css">
 <script src="/assets/js/parallel_coordinates_graph.js" charset="utf-8"></script>

@@ -4,27 +4,27 @@ permalink: /resume/
 ---
 
 **You can [download a pdf version of my cv]({{ site.baseurl }}/assets/pdf/jonathancoignard.pdf)**.
-*The next sections will bring some details about my publications, education and work experiences*.
+*The next sections detail my publications, education and work experiences*.
 
 ## 1) Publications
-[*Quantifying electric vehicle battery degradation from driving vs. V2G services*](#) Dai Wang, S. Saxena, J. Coignard, E. A. Iosifidou and Xiaohong Guan, 2016 IEEE Power and Energy Society General Meeting (PESGM), Boston, MA, 2016, pp. 1-5.
+[*Quantifying electric vehicle battery degradation from driving vs. V2G services*](https://doi.org/10.1016/j.jpowsour.2016.09.116) Dai Wang, S. Saxena, J. Coignard, E. A. Iosifidou and Xiaohong Guan, 2016 IEEE Power and Energy Society General Meeting (PESGM), Boston, MA, 2016, pp. 1-5.
 
-[*EMACOP project: characterising the wave energy resources of hot spots in Brittany for on-shore WEC*](#)
+[*EMACOP project: characterising the wave energy resources of hot spots in Brittany for on-shore WEC*]({{ site.baseurl }}/assets/pdf/Michard_etal_EWTEC2015_paper.pdf)
 The European Wave and Tidal Energy Conference (2015 EWTEC)
 
 
-[*EMACOP project : Digital modelling of the waves toward Esquibien’s dam using SWASH*](#)
+[*EMACOP project : Digital modelling of the waves toward Esquibien’s dam using SWASH*]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf)
 Available in the online journal Paralia. Presented at The National days of Coastal Engineering and Civil Engineering (2014 congress)
 
 ## 2) Education
 <img src="{{ site.url }}/assets/image/UTC_logo.png" alt="UTC logo" width="350">
 I have done most of my study at the [*Technical University of Compiegne*](https://www.utc.fr/en.html) (2010-2015), a French top ranking engineering institution. I have obtained my Master from the civil engineering department, but I have equaly shared my time with the electrical department. Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
 
-The most influent lecture I had during my Master were «&nbsp;*Renewable energy conversion and management*&nbsp;» «&nbsp;*Power electronics*&nbsp;» «&nbsp;*Electrical machines*&nbsp;» and «&nbsp;Urban management&nbsp;». The design of a small scale wind turbine controller has been one of my biggest academic project ([short report]({{ site.baseurl }}/assets/pdf/TX_Small_scale_wind_turbine.pdf)).
+The most influent lecture I had during my Master were «&nbsp;*Renewable energy conversion and management*&nbsp;» «&nbsp;*Power electronics*&nbsp;» «&nbsp;*Electrical machines*&nbsp;» and «&nbsp;Urban management&nbsp;». The design of a small scale wind turbine controller has been one of my biggest academic project ([short report]({{ site.baseurl }}/assets/pdf/Tx_Small_scale_wind_turbine.pdf)).
 
-Through my work at the UTC I obtained recommandation letters from: [Fabrice Locment and Manuela Sechilariu]({{ site.baseurl }}/assets/pdf/1_recommandation_FL.pdf), [Phillipe Sergent]({{ site.baseurl }}/assets/pdf/2_recommandation_CEREMA.pdf) and [Vincent Lanfranchi]({{ site.baseurl }}/assets/pdf/3_recommandation_VL.pdf).
+Through my work at the UTC I obtained recommandation letters from: [Fabrice Locment and Manuela Sechilariu]({{ site.baseurl }}/assets/pdf/1_recommendation_FL.pdf), [Phillipe Sergent]({{ site.baseurl }}/assets/pdf/2_recommendation_CEREMA.pdf) and [Vincent Lanfranchi]({{ site.baseurl }}/assets/pdf/3_recommendation_VL.pdf).
 
-I have also spent a semester of study abroad in Riga (Latvia). Here is a [transcript]({{ site.baseurl }}/assets/image/transcript_Riga.jpg) of my semester.
+I have also spent a semester of study abroad in Riga (Latvia). Here is a [transcript]({{ site.baseurl }}/assets/pdf/transcript_Riga.jpg) of my semester.
 
 ## 3) Work experiences
 <img style="float: left; margin-right: 20px;" src="{{ site.url }}/assets/image/LBNL_logo.png" alt="LBNL logo" width="250">

@@ -16,7 +16,7 @@ each column of a table as its own dimension.
 The javascript template takes a ".csv" file as an input, with the only
 constraint of having a column called "name" to name each line.
 
-!['Table']({{ site.url }}/assets/image/parallel_coord_csv.png)
+!['Table']({{ site.baseurl }}/assets/image/parallel_coord_csv.png)
 Table 1 - Data format for the parallel coordinates
 
 D3.js allows for interactive plots. Brush any of the axis to select
@@ -24,14 +24,10 @@ certain data points. Observe the sample you have selected using the distribution
 in the lower right corner. In order to move the distribution plot on a different
 axis, click on the axis title (e.g. "Income").
 
-## Example:
-
-Select the lowest income on the "Income axis", then click on "White %" to observe
-the influence of low income on the distribution of "White %".
-And Vice-versa, select the towns with the lowest white people population and
-observe where they end up on the "Income" axis.
-
 # Demonstration:
+
+Select the 16% widest sepal and look at the distribution of petal length.
+
 <!-- ######## Parallel code snipet-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="/assets/js/d3.js" charset="utf-8"></script>

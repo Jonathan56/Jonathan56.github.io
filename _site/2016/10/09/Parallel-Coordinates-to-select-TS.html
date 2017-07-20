@@ -19,27 +19,32 @@
   <div class="post-date">
     <time>09 Oct 2016</time>
   </div>
-  <p>Parallel coordinates as a way to select a subset of the data to
-show a Time-Series for instance.</p>
+  <p>Parallel coordinates as a way to select a subset and explore time-series.</p>
 
 <!--more-->
 
 <h1 id="usage">Usage</h1>
 
-<p>Same old, but now if you click in a line, the time-serie is displayed on the
-graph below.</p>
+<p>The javascript template takes a “.csv” file to display the parallel coordinates (
+as described in this <a href="/2016/04/01/Parallel-coordinates.html">post</a>). In
+addition to that, the template requires a “.csv” file to represent each time-serie,
+where the name of the line matches with the time-serie’s filename.</p>
 
-<h1 id="example">Example</h1>
-
-<p>Select …</p>
+<p>On this template you can brush any axis and narrow down a few lines, click on a line
+to display its corresponding time-serie on the graph below. Compare multiple time-series
+together, you can also zoom in and out by brushing the graph. Reset the zoom by clicking
+on “clear” in the lower right corner.</p>
 
 <h1 id="demonstration">Demonstration</h1>
 
-<p>The data is collected through the <a href="http://pyiso.readthedocs.org/en/latest/">Pyiso API</a>, the data can also be fetched on the <a href="http://www.caiso.com/green/renewableswatch.html">CAISO website</a></p>
+<p>Note: This dataset was put together to look at Californian net loads, this is an
+early version (dimensions are processed to get monthly values).</p>
+
+<p>The data was collected through the <a href="http://pyiso.readthedocs.org/en/latest/">Pyiso API</a>, the data can also be directly fetched on the <a href="http://www.caiso.com/green/renewableswatch.html">CAISO website</a>.</p>
 
 <link rel="stylesheet" href="/assets/css/parallel_coordinates_graph.css" />
 
-<script src="/assets/js/parallel_coordinates_graph.js" charset="utf-8"></script>
+<script src="/assets/js/pcgraphv1.js" charset="utf-8"></script>
 
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
@@ -51,7 +56,7 @@ graph below.</p>
   <div style="margin-left: -200px" id="gen"></div>
 </div>
 <script type="text/javascript">
-graph_parallel_coordinates("../../../someMoreData/parallel.csv");
+graph_parallel_coordinates("/assets/data/parallel_caiso.csv");
 </script>
 
 

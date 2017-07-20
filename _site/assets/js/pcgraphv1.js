@@ -115,13 +115,13 @@ function graph_parallel_coordinates(first_filename) {
     // Creating a new variable to hold the visibility status and colors
     data.forEach(function(d, i) {
       d.year = String(d.year)
-      d.loadE = d.loadE / 1000
-      d.loadPmax = d.loadPmax / 1000
-      d.solarE = d.solarE / 1000
-      d.solarPmax = d.solarPmax / 1000
-      d.windE = d.windE / 1000
-      d.windPmax = d.windPmax / 1000
-      d.netLoadmin = d.netLoadmin / 1000
+      // d.loadE = d.loadE / 1000
+      // d.loadPmax = d.loadPmax / 1000
+      // d.solarE = d.solarE / 1000
+      // d.solarPmax = d.solarPmax / 1000
+      // d.windE = d.windE / 1000
+      // d.windPmax = d.windPmax / 1000
+      // d.netLoadmin = d.netLoadmin / 1000
       d.visible = true;
       d.color = color(i);
      });
@@ -222,7 +222,7 @@ function graph_parallel_coordinates(first_filename) {
 
   function add_curve(year, month){
     // Get filename
-    filename = '../../../someMoreData/csv_result/' + String(year) + '-' + String(month) + '.csv';
+    filename = '/assets/data/csv_result/' + String(year) + '-' + String(month) + '.csv';
     console.log(filename);
 
     // Load the data
@@ -352,5 +352,5 @@ function graph_parallel_coordinates(first_filename) {
     svgNetload.transition().duration(500)
      .select(".x.axis")
      .call(xAxis);
-  }
-}
+   }
+ }

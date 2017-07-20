@@ -1,5 +1,5 @@
 ---
-title: Power consumption in California
+title: Parallel Coordinates to select Time-Series
 excerpt_separator:
 ---
 

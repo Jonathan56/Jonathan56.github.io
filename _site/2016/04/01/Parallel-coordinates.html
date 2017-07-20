@@ -17,12 +17,39 @@
 <div class="content post">
   <h1 class="post-title">Parallel Coordinates</h1>
   <div class="post-date">
-    <time>01 Jan 2017</time>
+    <time>01 Apr 2016</time>
   </div>
-  <p class="lead">Playing with parallel coordinates Yaayy!</p>
+  <p>Parallel coordinates template to explore CSV data files. Plot
+each column of a table as its own dimension.</p>
 
 <!--more-->
 
+<h1 id="usage">Usage:</h1>
+
+<blockquote>
+  <p>“Parallel coordinates are a common way of visualizing high-dimensional
+geometry and analyzing multivariate data.” <a href="https://en.wikipedia.org/wiki/Parallel_coordinates">Wikipedia</a></p>
+</blockquote>
+
+<p>The javascript template takes a “.csv” file as an input, with the only
+constraint of having a column called “name” to name each line.</p>
+
+<p><img src="/assets/image/parallel_coord_csv.png" alt="'Table'" />
+Table 1 - Data format for the parallel coordinates</p>
+
+<p>D3.js allows for interactive plots. Brush any of the axis to select
+certain data points. Observe the sample you have selected using the distribution plot
+in the lower right corner. In order to move the distribution plot on a different
+axis, click on the axis title (e.g. “Income”).</p>
+
+<h2 id="example">Example:</h2>
+
+<p>Select the lowest income on the “Income axis”, then click on “White %” to observe
+the influence of low income on the distribution of “White %”.
+And Vice-versa, select the towns with the lowest white people population and
+observe where they end up on the “Income” axis.</p>
+
+<h1 id="demonstration">Demonstration:</h1>
 <!-- ######## Parallel code snipet-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 

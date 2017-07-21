@@ -22,7 +22,7 @@ Table 1 - Data format for the parallel coordinates
 D3.js allows for interactive plots. Brush any of the axis to select
 certain data points. Observe the sample you have selected using the distribution plot
 in the lower right corner. In order to move the distribution plot on a different
-axis, click on the axis title (e.g. "Income").
+axis, click on the axis title (e.g. "sepal length").
 
 # Demonstration:
 

@@ -13,14 +13,14 @@ permalink: /resume/
 The European Wave and Tidal Energy Conference (2015 EWTEC)
 
 
-[*EMACOP project : Digital modelling of the waves toward Esquibien’s dam using SWASH*]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf)
+[*EMACOP project: Digital modelling of the waves toward Esquibien’s dam using SWASH*]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf)
 Available in the online journal Paralia. Presented at The National days of Coastal Engineering and Civil Engineering (2014 congress)
 
 ## 2) Education
 <img src="{{ site.baseurl }}/assets/image/UTC_logo.png" alt="UTC logo" width="350">
-I have done most of my study at the [*Technical University of Compiegne*](https://www.utc.fr/en.html) (2010-2015), a French top ranking engineering institution. I have obtained my Master from the civil engineering department, but I have equaly shared my time with the electrical department. Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
+I have done most of my studies at the [*Technical University of Compiegne*](https://www.utc.fr/en.html) (2010-2015), a French top ranking engineering institution. I have obtained my degree from the civil engineering department, but I have equaly shared my time with the electrical department. Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
 
-The most influent lecture I had during my Master were «&nbsp;*Renewable energy conversion and management*&nbsp;» «&nbsp;*Power electronics*&nbsp;» «&nbsp;*Electrical machines*&nbsp;» and «&nbsp;Urban management&nbsp;». The design of a small scale wind turbine controller has been one of my biggest academic project ([short report]({{ site.baseurl }}/assets/pdf/Tx_Small_scale_wind_turbine.pdf)).
+The most influent lecture I had during my studies were «&nbsp;*Renewable energy conversion and management*&nbsp;» «&nbsp;*Power electronics*&nbsp;» «&nbsp;*Electrical machines*&nbsp;» and «&nbsp;Urban management&nbsp;». The design of a small scale wind turbine controller has been one of my biggest academic project ([short report]({{ site.baseurl }}/assets/pdf/Tx_Small_scale_wind_turbine.pdf)).
 
 Through my work at the UTC I obtained recommandation letters from: [Fabrice Locment and Manuela Sechilariu]({{ site.baseurl }}/assets/pdf/1_recommendation_FL.pdf), [Phillipe Sergent]({{ site.baseurl }}/assets/pdf/2_recommendation_CEREMA.pdf) and [Vincent Lanfranchi]({{ site.baseurl }}/assets/pdf/3_recommendation_VL.pdf).
 

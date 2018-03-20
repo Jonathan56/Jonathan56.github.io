@@ -24,7 +24,7 @@ Available in the online journal Paralia. Presented at The National days of Coast
 
 ## 2) Education
 <img src="{{ site.baseurl }}/assets/image/UTC_logo.png" alt="UTC logo" width="350">
-I have done most of my studies at the [*Technical University of Compiegne*](https://www.utc.fr/en.html) (2010-2015), a French top ranking engineering institution. I have obtained my degree from the civil engineering department, but I have equaly shared my time with the electrical department. Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
+I have done most of my studies at the [*Technical University of Compiegne*](https://www.utc.fr/en.html) (2010-2015), a French top ranking engineering institution. I have obtained my degree from the urban engineering department, but I have equaly shared my time with the electrical department. Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
 
 The most influent lecture I had during my studies were «&nbsp;*Renewable energy conversion and management*&nbsp;» «&nbsp;*Power electronics*&nbsp;» «&nbsp;*Electrical machines*&nbsp;» and «&nbsp;Urban management&nbsp;». The design of a small scale wind turbine controller has been one of my biggest academic project ([short report]({{ site.baseurl }}/assets/pdf/Tx_Small_scale_wind_turbine.pdf)).
 

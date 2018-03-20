@@ -7,11 +7,17 @@ permalink: /resume/
 *The next sections detail my publications, education and work experiences*.
 
 ## 1) Publications
+*Co-simulation Framework for Blockchain Based Market Designs and Grid Simulations*
+Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 2018
+
+*CyDER - A Co-Simulation Platform for Grid Analysis and Planning for High Penetration of Distributed Energy Resources* Jonathan Coignard, Thierry Nouidui, Christoph Gehbauer, Michael Wetter, Jhi-Young Joo, Philip Top, Rafael Rivera Soto, Brian Kelley, Emma Stewart; PES GM 2018
+
+*Clean Vehicles as an Enabler for a Clean Electricity Grid* Coignard, Jonathan; Saxena, Samveg; Greenblatt, Jeffery; Wang, Dai; Environmental Research Letters.
+
 [*Quantifying electric vehicle battery degradation from driving vs. V2G services*](https://doi.org/10.1016/j.jpowsour.2016.09.116) Dai Wang, S. Saxena, J. Coignard, E. A. Iosifidou and Xiaohong Guan, 2016 IEEE Power and Energy Society General Meeting (PESGM), Boston, MA, 2016, pp. 1-5.
 
 [*EMACOP project: characterising the wave energy resources of hot spots in Brittany for on-shore WEC*]({{ site.baseurl }}/assets/pdf/Michard_etal_EWTEC2015_paper.pdf)
 The European Wave and Tidal Energy Conference (2015 EWTEC)
-
 
 [*EMACOP project: Digital modelling of the waves toward Esquibien’s dam using SWASH*]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf)
 Available in the online journal Paralia. Presented at The National days of Coastal Engineering and Civil Engineering (2014 congress)

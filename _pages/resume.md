@@ -7,12 +7,12 @@ permalink: /resume/
 *The next sections detail my publications, education and work experiences*.
 
 ## 1) Publications
-*Co-simulation Framework for Blockchain Based Market Designs and Grid Simulations*
+**Co-simulation Framework for Blockchain Based Market Designs and Grid Simulations**
 Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 2018
 
-*CyDER - A Co-Simulation Platform for Grid Analysis and Planning for High Penetration of Distributed Energy Resources* Jonathan Coignard, Thierry Nouidui, Christoph Gehbauer, Michael Wetter, Jhi-Young Joo, Philip Top, Rafael Rivera Soto, Brian Kelley, Emma Stewart; PES GM 2018
+**CyDER - A Co-Simulation Platform for Grid Analysis and Planning for High Penetration of Distributed Energy Resources** Jonathan Coignard, Thierry Nouidui, Christoph Gehbauer, Michael Wetter, Jhi-Young Joo, Philip Top, Rafael Rivera Soto, Brian Kelley, Emma Stewart; PES GM 2018
 
-*Clean Vehicles as an Enabler for a Clean Electricity Grid* Coignard, Jonathan; Saxena, Samveg; Greenblatt, Jeffery; Wang, Dai; Environmental Research Letters.
+**Clean Vehicles as an Enabler for a Clean Electricity Grid** Coignard, Jonathan; Saxena, Samveg; Greenblatt, Jeffery; Wang, Dai; Environmental Research Letters.
 
 [*Quantifying electric vehicle battery degradation from driving vs. V2G services*](https://doi.org/10.1016/j.jpowsour.2016.09.116) Dai Wang, S. Saxena, J. Coignard, E. A. Iosifidou and Xiaohong Guan, 2016 IEEE Power and Energy Society General Meeting (PESGM), Boston, MA, 2016, pp. 1-5.
 

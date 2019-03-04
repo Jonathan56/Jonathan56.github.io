@@ -3,6 +3,10 @@ title: Contact
 permalink: /contact/
 ---
 
+You can contact me at **JCoignard@lbl.gov**
+
+<img src="{{ site.baseurl }}/assets/image/me.jpg" alt="me" width="350">
+
 <div style="display:inline-block;">
   <a href="https://github.com/Jonathan56"
   style="display:inline-block;">
@@ -19,7 +23,3 @@ permalink: /contact/
   <img src="{{ site.baseurl }}/assets/image/linkedin.png" alt="linkedin" width="185">
   </a>
 </div>
-
-you can contact me at **JCoignard@lbl.gov**
-
-<img src="{{ site.baseurl }}/assets/image/me.jpg" alt="me" width="350">

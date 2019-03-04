@@ -33,11 +33,11 @@ Through my work at the UTC I obtained recommandation letters from: [Fabrice Locm
 I have also spent a semester of study abroad in Riga (Latvia). Here is a [transcript]({{ site.baseurl }}/assets/pdf/transcript_Riga.jpg) of my semester.
 
 ## 3) Work experiences
-<img style="float: left; margin-right: 20px;" src="{{ site.baseurl }}/assets/image/LBNL_logo.png" alt="LBNL logo" width="250">
-[The Lawrence Berkeley National Laboratory](http://www.lbl.gov/) from 2015 to nowadays, my work is focused on vehicle to grid interactions, and grid reliability.
+<img style="float: left; margin-right: 0px;" src="{{ site.baseurl }}/assets/image/LBNL_logo.png" alt="LBNL logo" width="250">
+[Lawrence Berkeley National Laboratory](http://www.lbl.gov/) from 2015 to nowadays, my work is focused on vehicle to grid interactions, and grid reliability.
 
 <br>
 <br>
 
-<img style="float: left; margin-right: 20px;" src="{{ site.baseurl }}/assets/image/cerema_logo.jpg" alt="Cerema logo" width="250">
-[The CEREMA](http://www.cerema.fr/) (Centre For Studies and Expertise on Risks, Environment, Mobility, and Urban and Country planning). I studied the best emplacement to harvest wave's energy at the shore in [Audierne's bay](https://www.google.com/maps/place/Esquibien,+France/@48.019122,-4.6068608,1225z/data=!4m2!3m1!1s0x4816e058cded9379:0x40ca5cd36e56db0). The project involved the use of [SWASH](http://swash.sourceforge.net/) to provide a general basis for describing wave transformations from deep water to a beach, port or harbour. [The study (final report in French)]({{ site.baseurl }}/assets/pdf/internship_CEREMA.pdf) also includes a cost analysis for different devices.
+<img style="float: left; margin-right: 0px;" src="{{ site.baseurl }}/assets/image/cerema_logo.jpg" alt="Cerema logo" width="250">
+[CEREMA](http://www.cerema.fr/) (Centre For Studies and Expertise on Risks, Environment, Mobility, and Urban and Country planning). I studied the best emplacement to harvest wave's energy at the shore in [Audierne's bay](https://www.google.com/maps/place/Esquibien,+France/@48.019122,-4.6068608,1225z/data=!4m2!3m1!1s0x4816e058cded9379:0x40ca5cd36e56db0). The project involved the use of [SWASH](http://swash.sourceforge.net/) to provide a general basis for describing wave transformations from deep water to a beach, port or harbour. [The study (final report in French)]({{ site.baseurl }}/assets/pdf/internship_CEREMA.pdf) also includes a cost analysis for different devices.

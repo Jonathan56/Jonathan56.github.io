@@ -9,7 +9,8 @@
 </head>
 <body>
   <div class="container">
-    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <!-- Header -->
+<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
 <header class="masthead">
   <h1 class="masthead-title">
@@ -28,18 +29,36 @@
   </nav>
 </header>
 
+<!-- Styles to maitain D3.js in the center -->
 <style>
-#CVplot {margin-left:auto; margin-right:auto; display:block;}
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    vertical-align: top;
+    overflow: hidden;
+}
+.svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
 </style>
 
-
+<!-- Equation -->
 <img src="/assets/image/equation.svg"
-alt="skill\_level \equiv bubble\_size = (expertise \times duration) \frac{1}{2}^{\frac{last\_use}{half\_life}}"
+alt="skill\_level \equiv bubble\_size = (expertise \times duration)
+ \frac{1}{2}^{\frac{last\_use}{half\_life}}"
 width="800">
+
+<!-- D3.js plot -->
 <div id="CVplot"></div>
 
+<!-- Text -->
 <p>
-I combine <strong>civil</strong> and <strong>electrical</strong> engineering with <strong>computer sciences</strong> to solve problems.
+I combine <strong>electrical</strong> and <strong>urban</strong> engineering with <strong>computer sciences</strong> to solve problems.
 I currently work as a Scientific Engineering Associate at the <strong>Lawrence Berkeley National Laboratory</strong>.
 I obtained my <strong>Master degree</strong> at the <strong>Technical University of Compiegne</strong> (UTC).
 </p>
@@ -50,28 +69,29 @@ I obtained my <strong>Master degree</strong> at the <strong>Technical University
 <p>Powered by Jekyll and Github Page.</p>
 
 <script type="text/javascript">
-var width = 960,
-    height = 650;
+var width = 600,
+    height = 600;
 
 var skill = [
     {'name': 'invisible', 'radius': 50},
     {'name': 'AutoCAD', 'radius': 20},
-    {'name': 'SQL', 'radius': 50},
+    {'name': 'SQL', 'radius': 30},
     {'name': 'Photoshop', 'radius': 20},
-    {'name': 'Opal-RT', 'radius': 50},
-    {'name': 'Simulink', 'radius': 50},
-    {'name': 'MATLAB', 'radius': 50},
+    {'name': 'Opal-RT', 'radius': 40},
+    {'name': 'Simulink', 'radius': 40},
+    {'name': 'MATLAB', 'radius': 40},
     {'name': 'CymDIST', 'radius': 65},
-    {'name': 'PowerFactory', 'radius': 55},
+    {'name': 'PowerFactory', 'radius': 30},
     {'name': 'Latex', 'radius': 50},
-    {'name': 'D3.js', 'radius': 55},
+    {'name': 'D3.js', 'radius': 30},
     {'name': 'Git', 'radius': 80},
-    {'name': 'FMI', 'radius': 30},
-    {'name': 'Django', 'radius': 70},
-    {'name': 'Docker', 'radius': 60},
-    {'name': 'PyFMI', 'radius': 50},
-    {'name': 'Simpy', 'radius': 70},
-    {'name': 'Pyomo', 'radius': 50},
+    {'name': 'FMI', 'radius': 50},
+    {'name': 'Django', 'radius': 40},
+    {'name': 'Flask', 'radius': 60},
+    {'name': 'Docker', 'radius': 50},
+    {'name': 'PyFMI', 'radius': 70},
+    {'name': 'Simpy', 'radius': 50},
+    {'name': 'Pyomo', 'radius': 60},
     {'name': 'Ethereum', 'radius': 60},
     {'name': 'Python', 'radius': 100},
 ];
@@ -79,13 +99,12 @@ var skill = [
 var nodes = d3.range(skill.length).map(function(i) {
         return {radius: skill[i]['radius'], name: skill[i]['name']};
     }),
-// Math.random() * 70 + 4
+
 root = nodes[0];
-// color = d3.scale.category20();
+
 color = d3.scale.linear().domain([20, 100])
   .interpolate(d3.interpolateHcl)
   .range([d3.rgb("#cceeff"), d3.rgb('#ffa366')]);
-
 
 root.radius = 0;
 root.fixed = true;
@@ -93,15 +112,19 @@ root.fixed = true;
 var force = d3.layout.force()
     .gravity(0.05)
     .charge(function(d, i) { return i ? 0 : -1000; })
-    .nodes(nodes);
-    // .size([width, height]);
+    .nodes(nodes)
+    .size([width, height]);
 
-var svg = d3.select("#CVplot").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+var svg = d3.select("#CVplot")
+   .append("div")
+   .classed("svg-container", true) //container class to make it responsive
+   .append("svg")
+   //responsive SVG needs these 2 attributes and no width and height attr
+   .attr("preserveAspectRatio", "xMinYMin meet")
+   .attr("viewBox", "0 0 " + width + " " + height)
+   //class to make it responsive
+   .classed("svg-content-responsive", true);
 
-resize();
-d3.select(window).on("resize", resize);
 force.start();
 
 groupe = svg.selectAll("circle")
@@ -125,8 +148,8 @@ force.on("tick", function(e) {
   while (++i < n) q.visit(collide(nodes[i]));
 
   svg.selectAll("circle")
-      .attr("cx", function(d) { return d.x; })
-      .attr("cy", function(d) { return d.y; });
+      .attr("cx", function(d) { return d.x = Math.max(30, Math.min(width - 30, d.x)); })
+      .attr("cy", function(d) { return d.y = Math.max(30, Math.min(height - 30, d.y)); });
   svg.selectAll("text")
     .attr("x", function (d) {return d.x;})
     .attr("y", function (d) {return d.y;});
@@ -169,7 +192,6 @@ function resize() {
     svg.attr("width", width).attr("height", height);
     force.size([width, height]).resume();
 }
-
 </script>
 
   </div>

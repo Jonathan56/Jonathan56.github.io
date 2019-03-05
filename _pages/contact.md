@@ -5,8 +5,6 @@ permalink: /contact/
 
 You can contact me at **JCoignard@lbl.gov**
 
-<img src="{{ site.baseurl }}/assets/image/me.jpg" alt="me" width="350">
-
 <div style="display:inline-block;">
   <a href="https://github.com/Jonathan56"
   style="display:inline-block;">

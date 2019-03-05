@@ -1,79 +1,66 @@
 ---
-layout: default
+layout: header
 ---
-<!-- Header -->
-<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<header class="masthead">
-  <h1 class="masthead-title">
-    <a href="{{ site.baseurl }}/">{{ site.name }}<span>&#39;s website</span></a>
-  </h1>
-  <nav class="masthead-nav">
-    {% for nav in site.nav %}
-    <a href="{{ nav.href }}">{{ nav.name }}</a>
-    {% endfor %}
-  </nav>
-</header>
 
-<!-- Content  -->
-<div markdown="1">
-!['equation']({{ site.baseurl }}/assets/image/me.jpg){: .align-right width="150px"}
+!['Self']({{ site.baseurl }}/assets/image/me.jpg){: .align-right width="150px"}
 Hi there, my name is Jonathan Coignard. I currently work in California at the
-Lawrence Berkeley Lab. I am exploring ideas to organize distributed energy resources on the grid.
+Lawrence Berkeley Lab. **I am exploring ideas to organize distributed energy resources on the grid.**
 You can download my CV **[here]({{ site.baseurl }}/assets/pdf/jonathancoignard.pdf)**.
 
-
 !['equation']({{ site.baseurl }}/assets/image/equation.svg){:width="800px"}
-</div>
 
 <!-- D3.js plot -->
 <div id="CVplot"></div>
 
-<!-- Text -->
-<div markdown="1">
 ## Publications
+
+### - 2019 -
+{: style="text-align: center;"}
+[*Will Electric Vehicles Drive Distribution Grid Upgrades? The Case of California*](#), **Jonathan Coignard**, Pamela MacDougall, Franz Stadtmueller, and Evangelos Vrettos.
 
 ### - 2018 -
 {: style="text-align: center;"}
-[*Co-simulation Framework for Blockchain Based Market Designs and Grid Simulations*](#)
-Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 2018
+[*CyDER – an FMI-based co-simulation platform for distributed energy resources*](https://doi.org/10.1080/19401493.2018.1535623), Thierry S. Nouidui, **Jonathan Coignard**, Christoph Gehbauer, Michael Wetter, Jhi-Young Joo & Evangelos Vrettos, Journal of Building Performance Simulation.
 
-[*CyDER - A Co-Simulation Platform for Grid Analysis and Planning for High Penetration of Distributed Energy Resources*](#) Jonathan Coignard, Thierry Nouidui, Christoph Gehbauer, Michael Wetter, Jhi-Young Joo, Philip Top, Rafael Rivera Soto, Brian Kelley, Emma Stewart; PES GM 2018
+[*Co-simulation Framework for Blockchain Based Market Designs and Grid Simulations*](https://doi.org/10.1109/PESGM.2018.8586124),
+**Jonathan Coignard**, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 2018.
+
+[*CyDER - A Co-Simulation Platform for Grid Analysis and Planning for High Penetration of Distributed Energy Resources*](https://doi.org/10.1109/PESGM.2018.8586006), **Jonathan Coignard**, Thierry Nouidui, Christoph Gehbauer, Michael Wetter, Jhi-Young Joo, Philip Top, Rafael Rivera Soto, Brian Kelley, Emma Stewart; PES GM 2018.
 
 ### - 2017 -
 {: style="text-align: center;"}
-[*Clean Vehicles as an Enabler for a Clean Electricity Grid*](#) Coignard, Jonathan; Saxena, Samveg; Greenblatt, Jeffery; Wang, Dai; Environmental Research Letters.
+[*Clean Vehicles as an Enabler for a Clean Electricity Grid*](https://iopscience.iop.org/article/10.1088/1748-9326/aabe97/meta), **Jonathan Coignard**, Samveg Saxena, Jeffery Greenblatt, Dai Wang, Environmental Research Letters.
 
 ### - 2016 -
 {: style="text-align: center;"}
-[*Quantifying electric vehicle battery degradation from driving vs. V2G services*](https://doi.org/10.1016/j.jpowsour.2016.09.116) Dai Wang, S. Saxena, J. Coignard, E. A. Iosifidou and Xiaohong Guan, 2016 IEEE Power and Energy Society General Meeting (PESGM), Boston, MA, 2016, pp. 1-5.
+[*Quantifying electric vehicle battery degradation from driving vs. vehicle-to-grid services*](https://doi.org/10.1016/j.jpowsour.2016.09.116), Dai Wang, **Jonathan Coignard**, Teng Zeng, Cong Zhang, Samveg Saxena, Journal of Power Sources, 2016.
+
+[*Quantifying electric vehicle battery degradation from driving vs. V2G services*](https://doi.org/10.1109/PESGM.2016.7741180), Dai Wang, S. Saxena, **Jonathan Coignard** d, E. A. Iosifidou and Xiaohong Guan, 2016 IEEE Power and Energy Society General Meeting (PESGM).
 
 ### - 2015 -
 {: style="text-align: center;"}
-[*EMACOP project: characterising the wave energy resources of hot spots in Brittany for on-shore WEC*]({{ site.baseurl }}/assets/pdf/Michard_etal_EWTEC2015_paper.pdf)
-The European Wave and Tidal Energy Conference (2015 EWTEC)
+[*EMACOP project: characterising the wave energy resources of hot spots in Brittany for on-shore WEC*]({{ site.baseurl }}/assets/pdf/Michard_etal_EWTEC2015_paper.pdf), Bertrand Michard et al, The European Wave and Tidal Energy Conference (2015 EWTEC).
 
-[*EMACOP project: Digital modelling of the waves toward Esquibien’s dam using SWASH*]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf)
-Available in the online journal Paralia. Presented at The National days of Coastal Engineering and Civil Engineering (2014 congress)
+[*EMACOP project: Digital modeling of the waves toward Esquibien’s dam using SWASH*]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf), **Jonathan Coignard**, Bertrand Michard, Jean-François Filipot, Philippe Sergent, available in the online journal Paralia.
 
 ## Education
 !['UTC']({{ site.baseurl }}/assets/image/UTC_logo.png){:width="350px"}
-I have done most of my studies at the [*Technical University of Compiegne*](https://www.utc.fr/en.html) (2010-2015), a French top ranking engineering institution. I have obtained my degree from the urban engineering department, but I have equaly shared my time with the electrical department. Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
+Master degree at the [*Technical University of Compiegne*](https://www.utc.fr/en.html) (2010-2015). I have received my degree from the urban engineering department, but I have equally shared my time with the electrical engineering department. Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
 
 The most influent lecture I had during my studies were «&nbsp;*Renewable energy conversion and management*&nbsp;» «&nbsp;*Power electronics*&nbsp;» «&nbsp;*Electrical machines*&nbsp;» and «&nbsp;Urban management&nbsp;». The design of a small scale wind turbine controller has been one of my biggest academic project ([short report]({{ site.baseurl }}/assets/pdf/Tx_Small_scale_wind_turbine.pdf)).
 
-Through my work at the UTC I obtained recommandation letters from: [Fabrice Locment and Manuela Sechilariu]({{ site.baseurl }}/assets/pdf/1_recommendation_FL.pdf), [Phillipe Sergent]({{ site.baseurl }}/assets/pdf/2_recommendation_CEREMA.pdf) and [Vincent Lanfranchi]({{ site.baseurl }}/assets/pdf/3_recommendation_VL.pdf).
+Through my work at the UTC I obtained recommendation letters from: [Fabrice Locment and Manuela Sechilariu]({{ site.baseurl }}/assets/pdf/1_recommendation_FL.pdf), [Phillipe Sergent]({{ site.baseurl }}/assets/pdf/2_recommendation_CEREMA.pdf) and [Vincent Lanfranchi]({{ site.baseurl }}/assets/pdf/3_recommendation_VL.pdf).
 
 I have also spent a semester of study abroad in Riga (Latvia). Here is a [transcript]({{ site.baseurl }}/assets/pdf/transcript_Riga.jpg) of my semester.
 
 ## Work experiences
 !['LBNL']({{ site.baseurl }}/assets/image/LBNL_logo.png){:width="350px"}
-[Lawrence Berkeley National Laboratory](http://www.lbl.gov/) from 2015 to nowadays, my work is focused on vehicle to grid interactions, and grid reliability.
+[Lawrence Berkeley National Laboratory](http://www.lbl.gov/) from 2015 to 2019, my work was focused on vehicle to grid interactions, and grid reliability assessment. I have participated in several projects: CyDER, V2G-Sim, DERCAM, MyGreenCar and wrote multiple journal papers.   
 
 !['CEREMA']({{ site.baseurl }}/assets/image/cerema_logo.jpg){:width="350px"}
 [CEREMA](http://www.cerema.fr/) (Centre For Studies and Expertise on Risks, Environment, Mobility, and Urban and Country planning). I studied the best emplacement to harvest wave's energy at the shore in [Audierne's bay](https://www.google.com/maps/place/Esquibien,+France/@48.019122,-4.6068608,1225z/data=!4m2!3m1!1s0x4816e058cded9379:0x40ca5cd36e56db0). The project involved the use of [SWASH](http://swash.sourceforge.net/) to provide a general basis for describing wave transformations from deep water to a beach, port or harbour. [The study (final report in French)]({{ site.baseurl }}/assets/pdf/internship_CEREMA.pdf) also includes a cost analysis for different devices.
 
-**Powered by Jekyll and Github Page.**
-</div>
+*Powered by Jekyll and Github Page.*
 
 <!-- Styles to maintain D3.js in the center -->
 <style>

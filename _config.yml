@@ -13,7 +13,6 @@ permalink:          /404/
 permalink:          /blog/
 permalink:          /contact/
 permalink:          /portfolio/
-permalink:          /resume/
 permalink:          /:year/:month/:day/:title.html
 
 # Markdown
@@ -23,8 +22,6 @@ excerpt_separator: <!--more-->
 
 # Navigation
 nav:
-  - name:           "Resume"
-    href:           "/resume"
   - name:           "Portfolio"
     href:           "/portfolio"
   - name:           "Blog"

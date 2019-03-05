@@ -30,7 +30,7 @@ You can download my CV **[here]({{ site.baseurl }}/assets/pdf/jonathancoignard.p
 
 <!-- Text -->
 <div markdown="1">
-## 1) Publications
+## Publications
 
 ### - 2018 -
 {: style="text-align: center;"}
@@ -55,7 +55,7 @@ The European Wave and Tidal Energy Conference (2015 EWTEC)
 [*EMACOP project: Digital modelling of the waves toward Esquibien’s dam using SWASH*]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf)
 Available in the online journal Paralia. Presented at The National days of Coastal Engineering and Civil Engineering (2014 congress)
 
-## 2) Education
+## Education
 !['UTC']({{ site.baseurl }}/assets/image/UTC_logo.png){:width="350px"}
 I have done most of my studies at the [*Technical University of Compiegne*](https://www.utc.fr/en.html) (2010-2015), a French top ranking engineering institution. I have obtained my degree from the urban engineering department, but I have equaly shared my time with the electrical department. Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
 
@@ -65,7 +65,7 @@ Through my work at the UTC I obtained recommandation letters from: [Fabrice Locm
 
 I have also spent a semester of study abroad in Riga (Latvia). Here is a [transcript]({{ site.baseurl }}/assets/pdf/transcript_Riga.jpg) of my semester.
 
-## 3) Work experiences
+## Work experiences
 !['LBNL']({{ site.baseurl }}/assets/image/LBNL_logo.png){:width="350px"}
 [Lawrence Berkeley National Laboratory](http://www.lbl.gov/) from 2015 to nowadays, my work is focused on vehicle to grid interactions, and grid reliability.
 

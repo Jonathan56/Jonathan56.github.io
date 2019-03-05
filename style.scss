@@ -126,6 +126,8 @@ ol + h3 {
   margin-top: 1.5rem;
 }
 
+
+
 hr {
   border: 0;
   border-top: .5px solid #eee;
@@ -193,6 +195,12 @@ pre code {
   font-size: 100%;
   color: inherit;
   background-color: transparent;
+}
+
+.align-right {
+  margin-right: 20px;
+  overflow: hidden;
+  float: left;
 }
 
 .highlight {

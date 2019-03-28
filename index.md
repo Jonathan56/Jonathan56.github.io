@@ -16,32 +16,32 @@ You can download my CV **[here]({{ site.baseurl }}/assets/pdf/jonathancoignard.p
 
 ### - 2019 -
 {: style="text-align: center;"}
-[*Will Electric Vehicles Drive Distribution Grid Upgrades? The Case of California*](#), **Jonathan Coignard**, Pamela MacDougall, Franz Stadtmueller, and Evangelos Vrettos.
+[*Will Electric Vehicles Drive Distribution Grid Upgrades? The Case of California*](#), Jonathan Coignard, Pamela MacDougall, Franz Stadtmueller, and Evangelos Vrettos.
 
 ### - 2018 -
 {: style="text-align: center;"}
-[*CyDER – an FMI-based co-simulation platform for distributed energy resources*](https://doi.org/10.1080/19401493.2018.1535623), Thierry S. Nouidui, **Jonathan Coignard**, Christoph Gehbauer, Michael Wetter, Jhi-Young Joo & Evangelos Vrettos, Journal of Building Performance Simulation.
+[*CyDER – an FMI-based co-simulation platform for distributed energy resources*](https://doi.org/10.1080/19401493.2018.1535623), Thierry S. Nouidui, Jonathan Coignard, Christoph Gehbauer, Michael Wetter, Jhi-Young Joo & Evangelos Vrettos, Journal of Building Performance Simulation.
 
 [*Co-simulation Framework for Blockchain Based Market Designs and Grid Simulations*](https://doi.org/10.1109/PESGM.2018.8586124),
-**Jonathan Coignard**, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 2018.
+Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 2018.
 
-[*CyDER - A Co-Simulation Platform for Grid Analysis and Planning for High Penetration of Distributed Energy Resources*](https://doi.org/10.1109/PESGM.2018.8586006), **Jonathan Coignard**, Thierry Nouidui, Christoph Gehbauer, Michael Wetter, Jhi-Young Joo, Philip Top, Rafael Rivera Soto, Brian Kelley, Emma Stewart; PES GM 2018.
+[*CyDER - A Co-Simulation Platform for Grid Analysis and Planning for High Penetration of Distributed Energy Resources*](https://doi.org/10.1109/PESGM.2018.8586006), Jonathan Coignard, Thierry Nouidui, Christoph Gehbauer, Michael Wetter, Jhi-Young Joo, Philip Top, Rafael Rivera Soto, Brian Kelley, Emma Stewart; PES GM 2018.
 
 ### - 2017 -
 {: style="text-align: center;"}
-[*Clean Vehicles as an Enabler for a Clean Electricity Grid*](https://iopscience.iop.org/article/10.1088/1748-9326/aabe97/meta), **Jonathan Coignard**, Samveg Saxena, Jeffery Greenblatt, Dai Wang, Environmental Research Letters.
+[*Clean Vehicles as an Enabler for a Clean Electricity Grid*](https://iopscience.iop.org/article/10.1088/1748-9326/aabe97/meta), Jonathan Coignard, Samveg Saxena, Jeffery Greenblatt, Dai Wang, Environmental Research Letters.
 
 ### - 2016 -
 {: style="text-align: center;"}
-[*Quantifying electric vehicle battery degradation from driving vs. vehicle-to-grid services*](https://doi.org/10.1016/j.jpowsour.2016.09.116), Dai Wang, **Jonathan Coignard**, Teng Zeng, Cong Zhang, Samveg Saxena, Journal of Power Sources, 2016.
+[*Quantifying electric vehicle battery degradation from driving vs. vehicle-to-grid services*](https://doi.org/10.1016/j.jpowsour.2016.09.116), Dai Wang, Jonathan Coignard, Teng Zeng, Cong Zhang, Samveg Saxena, Journal of Power Sources, 2016.
 
-[*Quantifying electric vehicle battery degradation from driving vs. V2G services*](https://doi.org/10.1109/PESGM.2016.7741180), Dai Wang, S. Saxena, **Jonathan Coignard** d, E. A. Iosifidou and Xiaohong Guan, 2016 IEEE Power and Energy Society General Meeting (PESGM).
+[*Quantifying electric vehicle battery degradation from driving vs. V2G services*](https://doi.org/10.1109/PESGM.2016.7741180), Dai Wang, S. Saxena, Jonathan Coignard, E. A. Iosifidou and Xiaohong Guan, 2016 IEEE Power and Energy Society General Meeting (PESGM).
 
 ### - 2015 -
 {: style="text-align: center;"}
 [*EMACOP project: characterising the wave energy resources of hot spots in Brittany for on-shore WEC*]({{ site.baseurl }}/assets/pdf/Michard_etal_EWTEC2015_paper.pdf), Bertrand Michard et al, The European Wave and Tidal Energy Conference (2015 EWTEC).
 
-[*EMACOP project: Digital modeling of the waves toward Esquibien’s dam using SWASH*]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf), **Jonathan Coignard**, Bertrand Michard, Jean-François Filipot, Philippe Sergent, available in the online journal Paralia.
+[*EMACOP project: Digital modeling of the waves toward Esquibien’s dam using SWASH*]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf), Jonathan Coignard, Bertrand Michard, Jean-François Filipot, Philippe Sergent, available in the online journal Paralia.
 
 ## Education
 !['UTC']({{ site.baseurl }}/assets/image/UTC_logo.png){:width="350px"}

@@ -12,7 +12,6 @@ baseurl:            ""
 permalink:          /404/
 permalink:          /blog/
 permalink:          /contact/
-permalink:          /portfolio/
 permalink:          /:year/:month/:day/:title.html
 
 # Markdown
@@ -22,8 +21,6 @@ excerpt_separator: <!--more-->
 
 # Navigation
 nav:
-  - name:           "Portfolio"
-    href:           "/portfolio"
   - name:           "Blog"
     href:           "/blog"
   - name:           "Contact"

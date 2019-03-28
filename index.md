@@ -3,9 +3,8 @@ layout: header
 ---
 
 !['Self']({{ site.baseurl }}/assets/image/me.jpg){: .align-right width="150px"}
-Hi there, my name is Jonathan Coignard. I currently work in California at the
-Lawrence Berkeley Lab. **I am exploring ideas to organize distributed energy resources on the grid.**
-You can download my CV **[here]({{ site.baseurl }}/assets/pdf/jonathancoignard.pdf)**.
+Hi there, my name is Jonathan Coignard. I currently work at the
+Lawrence Berkeley Lab. You can download my CV **[here]({{ site.baseurl }}/assets/pdf/jonathancoignard.pdf)**.
 
 !['equation']({{ site.baseurl }}/assets/image/equation.svg){:width="800px"}
 
@@ -45,13 +44,13 @@ Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 20
 
 ## Education
 !['UTC']({{ site.baseurl }}/assets/image/UTC_logo.png){:width="350px"}
-Master degree at the [*Technical University of Compiegne*](https://www.utc.fr/en.html) (2010-2015). I have received my degree from the urban engineering department, but I have equally shared my time with the electrical engineering department. Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
+Master degree in urban engineering (with a focus on power systems) from the [*Technical University of Compiegne*](https://www.utc.fr/en.html) (2010-2015). Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
 
-The most influent lecture I had during my studies were «&nbsp;*Renewable energy conversion and management*&nbsp;» «&nbsp;*Power electronics*&nbsp;» «&nbsp;*Electrical machines*&nbsp;» and «&nbsp;Urban management&nbsp;». The design of a small scale wind turbine controller has been one of my biggest academic project ([short report]({{ site.baseurl }}/assets/pdf/Tx_Small_scale_wind_turbine.pdf)).
+The most influent lectures I took were «&nbsp;*Renewable energy conversion and management*&nbsp;» «&nbsp;*Power electronics*&nbsp;» «&nbsp;*Electrical machines*&nbsp;» and «&nbsp;Urban management&nbsp;». The design of a small scale wind turbine controller has been my biggest academic project ([short report]({{ site.baseurl }}/assets/pdf/Tx_Small_scale_wind_turbine.pdf)).
 
 Through my work at the UTC I obtained recommendation letters from: [Fabrice Locment and Manuela Sechilariu]({{ site.baseurl }}/assets/pdf/1_recommendation_FL.pdf), [Phillipe Sergent]({{ site.baseurl }}/assets/pdf/2_recommendation_CEREMA.pdf) and [Vincent Lanfranchi]({{ site.baseurl }}/assets/pdf/3_recommendation_VL.pdf).
 
-I have also spent a semester of study abroad in Riga (Latvia). Here is a [transcript]({{ site.baseurl }}/assets/pdf/transcript_Riga.jpg) of my semester.
+I have also spent a semester of study abroad in Riga (Latvia). Here is a [transcript]({{ site.baseurl }}/assets/pdf/transcript_Riga.jpg).
 
 ## Work experiences
 !['LBNL']({{ site.baseurl }}/assets/image/LBNL_logo.png){:width="350px"}

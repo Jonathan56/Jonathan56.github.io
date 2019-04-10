@@ -12,6 +12,7 @@ Lawrence Berkeley Lab. You can download my CV **[here]({{ site.baseurl }}/assets
 <div id="CVplot"></div>
 
 ## Publications
+**[Here](https://scholar.google.com/citations?user=FIguFYMAAAAJ&hl=en)** is a link to my Google Scholar profile.
 
 ### - 2019 -
 {: style="text-align: center;"}

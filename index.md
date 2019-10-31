@@ -3,8 +3,7 @@ layout: header
 ---
 
 !['Self']({{ site.baseurl }}/assets/image/me.jpg){: .align-right width="150px"}
-Hi there, my name is Jonathan Coignard. I currently work at the
-Lawrence Berkeley Lab. You can download my CV **[here]({{ site.baseurl }}/assets/pdf/jonathancoignard.pdf)**.
+Hi there, my name is Jonathan Coignard. I am currently a PhD student at Grenoble INP in partnership with Lancey Energy Storage, and an affiliate of the Lawrence Berkeley National Laboratory. You can download my CV **[here]({{ site.baseurl }}/assets/pdf/jonathancoignard.pdf)**.
 
 !['equation']({{ site.baseurl }}/assets/image/equation.svg){:width="800px"}
 

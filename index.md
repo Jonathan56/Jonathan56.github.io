@@ -67,7 +67,7 @@ I have also spent a semester of study abroad in Riga (Latvia). Here is a [transc
 &nbsp;
 
 !['Lancey']({{ site.baseurl }}/assets/image/lancey_logo.jpg){:width="300px"}
-**[Lancey Energy Storage](http://www.lbl.gov/)** from 2019 to present time. My work is focused on "collective self-consumption". The objective is to foster sobriety and efficient consumption from cooperative interactions within the community.
+**[Lancey Energy Storage](https://www.lancey.fr/en/)** from 2019 to present time. My work is focused on "collective self-consumption". The objective is to foster sobriety and efficient consumption from cooperative interactions within the community.
 &nbsp;
 
 &nbsp;

@@ -3,7 +3,7 @@ title: Parallel Coordinates
 excerpt_separator: <!--more-->
 ---
 
-*[Archived]* Parallel coordinates template to explore CSV data files. Plot
+Parallel coordinates template to explore CSV data files. Plot
 each column of a table as its own dimension.
 
 <!--more-->

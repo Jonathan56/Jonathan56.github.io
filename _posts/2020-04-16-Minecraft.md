@@ -4,7 +4,7 @@ excerpt_separator: <!--more-->
 published: false
 ---
 
-*[En cours]* Le confinement oblige, il faut bien s'occuper quand on a pas de balcons au 4ème étage. Objectif : Créer une ferme virtuelle en s'inspirant du monde réel.
+Le confinement oblige, il faut bien s'occuper quand on a pas de balcons au 4ème étage. Objectif : Créer une ferme virtuelle en s'inspirant du monde réel.
 
 <!--more-->
 

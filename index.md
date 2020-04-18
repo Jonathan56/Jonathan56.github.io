@@ -10,7 +10,7 @@ Hi there, my name is Jonathan Coignard. I am currently a PhD student at Grenoble
 <!-- D3.js plot -->
 <div id="CVplot"></div>
 
-## :large_orange_diamond: Publications
+## Publications
 **[![' ']({{ site.baseurl }}/assets/image/gscholar.png){: .align-right width="30px"}Here](https://scholar.google.com/citations?user=FIguFYMAAAAJ&hl=en)** is a link to my Google Scholar profile.
 
 ### - 2020 -
@@ -46,7 +46,7 @@ Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 20
 
 **[EMACOP project: Digital modeling of the waves toward Esquibien’s dam using SWASH]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf)**, Jonathan Coignard, Bertrand Michard, Jean-François Filipot, Philippe Sergent, available in the online journal Paralia.
 
-## :large_orange_diamond: Education
+## Education
 &nbsp;
 
 !['UGA']({{ site.baseurl }}/assets/image/UGA_logo.png){:width="350px"}
@@ -63,7 +63,7 @@ Through my work at the UTC I obtained recommendation letters from: [Fabrice Locm
 I have also spent a semester of study abroad in Riga (Latvia). Here is a [transcript]({{ site.baseurl }}/assets/pdf/transcript_Riga.jpg).
 &nbsp;
 
-## :large_orange_diamond: Work experiences
+## Work experiences
 &nbsp;
 
 !['Lancey']({{ site.baseurl }}/assets/image/lancey_logo.jpg){:width="300px"}

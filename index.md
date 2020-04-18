@@ -49,7 +49,7 @@ Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 20
 ## Education
 !['UGA']({{ site.baseurl }}/assets/image/UGA_logo.png){:width="350px"}
 Currently working on a PhD degree from the [G2ELab](http://www.g2elab.grenoble-inp.fr/) at **[Communauté Université Grenoble Alpes](http://www.grenoble-inp.fr/)**.
-<br>
+<br/><br/>
 !['UTC']({{ site.baseurl }}/assets/image/UTC_logo.png){:width="350px"}
 Master degree in urban engineering (with a focus on power systems) from the **[Technical University of Compiegne](https://www.utc.fr/en.html)** (2010-2015). Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
 
@@ -62,10 +62,10 @@ I have also spent a semester of study abroad in Riga (Latvia). Here is a [transc
 ## Work experiences
 !['Lancey']({{ site.baseurl }}/assets/image/lancey_logo.jpg){:width="350px"}
 **[Lancey Energy Storage](http://www.lbl.gov/)** from 2019 to present time. My work is focused on "collective self-consumption".
-<br>
+<br/><br/>
 !['LBNL']({{ site.baseurl }}/assets/image/LBNL_logo.png){:width="350px"}
 **[Lawrence Berkeley National Laboratory](http://www.lbl.gov/)** from 2015 to 2019, my work was focused on vehicle to grid interactions, and grid reliability assessment. I have participated in several projects: CyDER, V2G-Sim, DERCAM, MyGreenCar and wrote multiple journal papers.   
-<br>
+<br/><br/>
 !['CEREMA']({{ site.baseurl }}/assets/image/cerema_logo.jpg){:width="350px"}
 **[CEREMA](http://www.cerema.fr/)** (Centre For Studies and Expertise on Risks, Environment, Mobility, and Urban and Country planning). I studied the best emplacement to harvest wave's energy at the shore in [Audierne's bay](https://www.google.com/maps/place/Esquibien,+France/@48.019122,-4.6068608,1225z/data=!4m2!3m1!1s0x4816e058cded9379:0x40ca5cd36e56db0). The project involved the use of [SWASH](http://swash.sourceforge.net/) to provide a general basis for describing wave transformations from deep water to a beach, port or harbour. [The study (final report in French)]({{ site.baseurl }}/assets/pdf/internship_CEREMA.pdf) also includes a cost analysis for different devices.
 

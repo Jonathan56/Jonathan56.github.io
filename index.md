@@ -10,7 +10,7 @@ Hi there, my name is Jonathan Coignard. I am currently a PhD student at Grenoble
 <!-- D3.js plot -->
 <div id="CVplot"></div>
 
-## Publications
+## :large_orange_diamond: Publications
 **[![' ']({{ site.baseurl }}/assets/image/gscholar.png){: .align-right width="30px"}Here](https://scholar.google.com/citations?user=FIguFYMAAAAJ&hl=en)** is a link to my Google Scholar profile.
 
 ### - 2020 -
@@ -46,26 +46,24 @@ Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 20
 
 **[EMACOP project: Digital modeling of the waves toward Esquibien’s dam using SWASH]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf)**, Jonathan Coignard, Bertrand Michard, Jean-François Filipot, Philippe Sergent, available in the online journal Paralia.
 
-## Education
+## :large_orange_diamond: Education
 &nbsp;
 
 !['UGA']({{ site.baseurl }}/assets/image/UGA_logo.png){:width="350px"}
-Currently working on a PhD degree from the [G2ELab](http://www.g2elab.grenoble-inp.fr/) at **[Communauté Université Grenoble Alpes](http://www.grenoble-inp.fr/)**.
+Currently working on a PhD degree from the [G2ELab](http://www.g2elab.grenoble-inp.fr/) at the **[Communauté Université Grenoble Alpes](http://www.grenoble-inp.fr/)**. On the topic of: "Collective self-consumtion sharing energy resources connected to the distribution grid". I also teach a class on "Electric Energy" at Grenoble INP La prépa.
 &nbsp;
 
 &nbsp;
 
 !['UTC']({{ site.baseurl }}/assets/image/UTC_logo.png){:width="350px"}
-Master degree in urban engineering (with a focus on power systems) from the **[Technical University of Compiegne](https://www.utc.fr/en.html)** (2010-2015). Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
-
-The most influent lectures I took were «&nbsp;*Renewable energy conversion and management*&nbsp;» «&nbsp;*Power electronics*&nbsp;» «&nbsp;*Electrical machines*&nbsp;» and «&nbsp;Urban management&nbsp;». The design of a small scale wind turbine controller has been my biggest academic project ([short report]({{ site.baseurl }}/assets/pdf/Tx_Small_scale_wind_turbine.pdf)).
+Master degree in urban engineering (with a focus on power systems) from the **[Technical University of Compiegne](https://www.utc.fr/en.html)** (2010-2015). Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf). The design of a small scale wind turbine controller has been my biggest academic project ([short report]({{ site.baseurl }}/assets/pdf/Tx_Small_scale_wind_turbine.pdf)).
 
 Through my work at the UTC I obtained recommendation letters from: [Fabrice Locment and Manuela Sechilariu]({{ site.baseurl }}/assets/pdf/1_recommendation_FL.pdf), [Phillipe Sergent]({{ site.baseurl }}/assets/pdf/2_recommendation_CEREMA.pdf) and [Vincent Lanfranchi]({{ site.baseurl }}/assets/pdf/3_recommendation_VL.pdf).
 
 I have also spent a semester of study abroad in Riga (Latvia). Here is a [transcript]({{ site.baseurl }}/assets/pdf/transcript_Riga.jpg).
 &nbsp;
 
-## Work experiences
+## :large_orange_diamond: Work experiences
 &nbsp;
 
 !['Lancey']({{ site.baseurl }}/assets/image/lancey_logo.jpg){:width="300px"}
@@ -81,7 +79,7 @@ I have also spent a semester of study abroad in Riga (Latvia). Here is a [transc
 !['CEREMA']({{ site.baseurl }}/assets/image/cerema_logo.jpg){:width="350px"}
 **[CEREMA](http://www.cerema.fr/)** (Centre For Studies and Expertise on Risks, Environment, Mobility, and Urban and Country planning). I studied the best emplacement to harvest wave's energy at the shore in [Audierne's bay](https://www.google.com/maps/place/Esquibien,+France/@48.019122,-4.6068608,1225z/data=!4m2!3m1!1s0x4816e058cded9379:0x40ca5cd36e56db0). The project involved the use of [SWASH](http://swash.sourceforge.net/) to provide a general basis for describing wave transformations from deep water to a beach, port or harbour. [The study (final report in French)]({{ site.baseurl }}/assets/pdf/internship_CEREMA.pdf) also includes a cost analysis for different devices.
 
-*Powered by Jekyll and Github Page.*
+*Powered with :heart: by Jekyll and Github Page :octocat:.*
 
 <!-- Styles to maintain D3.js in the center -->
 <style>

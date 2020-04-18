@@ -31,6 +31,13 @@ body {
       -ms-text-size-adjust: 100%;
 }
 
+img.emoji {
+    display: inline;
+    height: 1em;
+    width: 1em;
+    margin-bottom: 0.25em;
+}
+
 a {
   color: #268bd2;
   text-decoration: none;

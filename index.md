@@ -47,6 +47,8 @@ Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 20
 **[EMACOP project: Digital modeling of the waves toward Esquibien’s dam using SWASH]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf)**, Jonathan Coignard, Bertrand Michard, Jean-François Filipot, Philippe Sergent, available in the online journal Paralia.
 
 ## Education
+&nbsp;
+
 !['UGA']({{ site.baseurl }}/assets/image/UGA_logo.png){:width="350px"}
 Currently working on a PhD degree from the [G2ELab](http://www.g2elab.grenoble-inp.fr/) at **[Communauté Université Grenoble Alpes](http://www.grenoble-inp.fr/)**.
 &nbsp;
@@ -64,6 +66,8 @@ I have also spent a semester of study abroad in Riga (Latvia). Here is a [transc
 &nbsp;
 
 ## Work experiences
+&nbsp;
+
 !['Lancey']({{ site.baseurl }}/assets/image/lancey_logo.jpg){:width="300px"}
 **[Lancey Energy Storage](http://www.lbl.gov/)** from 2019 to present time. My work is focused on "collective self-consumption".
 &nbsp;

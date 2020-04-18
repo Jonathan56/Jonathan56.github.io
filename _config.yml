@@ -45,6 +45,10 @@ defaults:
     values:
       layout:       "post"
 
+# Emoji
+plugins:
+  - jemoji
+
 # Exclude
 exclude:
   - README.md

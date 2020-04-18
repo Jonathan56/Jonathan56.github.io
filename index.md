@@ -13,9 +13,12 @@ Hi there, my name is Jonathan Coignard. I am currently a PhD student at Grenoble
 ## Publications
 **[![' ']({{ site.baseurl }}/assets/image/gscholar.png){: .align-right width="30px"}Here](https://scholar.google.com/citations?user=FIguFYMAAAAJ&hl=en)** is a link to my Google Scholar profile.
 
+### - 2020 -
+**[Distributed Resource Coordination in the Context of European Energy Communities](#)**, Jonathan Coignard, Vincent Debusschere, Gilles Moreau, Stéphanie Chollet, and Raphaël Caire.
+
 ### - 2019 -
 {: style="text-align: center;"}
-**[Will Electric Vehicles Drive Distribution Grid Upgrades? The Case of California](#)**, Jonathan Coignard, Pamela MacDougall, Franz Stadtmueller, and Evangelos Vrettos.
+**[Will Electric Vehicles Drive Distribution Grid Upgrades? The Case of California](https://doi.org/10.1109/MELE.2019.2908794)**, Jonathan Coignard, Pamela MacDougall, Franz Stadtmueller, and Evangelos Vrettos.
 
 ### - 2018 -
 {: style="text-align: center;"}
@@ -43,6 +46,9 @@ Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 20
 **[EMACOP project: Digital modeling of the waves toward Esquibien’s dam using SWASH]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf)**, Jonathan Coignard, Bertrand Michard, Jean-François Filipot, Philippe Sergent, available in the online journal Paralia.
 
 ## Education
+!['UGA']({{ site.baseurl }}/assets/image/UGA_logo.png){:width="350px"}
+Currently working on a PhD degree from the [G2ELab](http://www.g2elab.grenoble-inp.fr/) at **Communauté Université Grenoble Alpes**.
+
 !['UTC']({{ site.baseurl }}/assets/image/UTC_logo.png){:width="350px"}
 Master degree in urban engineering (with a focus on power systems) from the **[Technical University of Compiegne](https://www.utc.fr/en.html)** (2010-2015). Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
 
@@ -53,6 +59,9 @@ Through my work at the UTC I obtained recommendation letters from: [Fabrice Locm
 I have also spent a semester of study abroad in Riga (Latvia). Here is a [transcript]({{ site.baseurl }}/assets/pdf/transcript_Riga.jpg).
 
 ## Work experiences
+!['Lancey']({{ site.baseurl }}/assets/image/lancey_logo.jpg){:width="350px"}
+**[Lancey Energy Storage](http://www.lbl.gov/)** from 2019 to present time. My work is focused on "collective self-consumption".
+
 !['LBNL']({{ site.baseurl }}/assets/image/LBNL_logo.png){:width="350px"}
 **[Lawrence Berkeley National Laboratory](http://www.lbl.gov/)** from 2015 to 2019, my work was focused on vehicle to grid interactions, and grid reliability assessment. I have participated in several projects: CyDER, V2G-Sim, DERCAM, MyGreenCar and wrote multiple journal papers.   
 

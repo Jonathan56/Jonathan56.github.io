@@ -3,7 +3,7 @@ title: Parallel Coordinates to select Time-Series
 excerpt_separator: <!--more-->
 ---
 
-Parallel coordinates as a way to select a subset and explore time-series.
+*[Archived]* Parallel coordinates as a way to select a subset and explore time-series.
 
 <!--more-->
 

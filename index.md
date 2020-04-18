@@ -51,6 +51,8 @@ Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 20
 Currently working on a PhD degree from the [G2ELab](http://www.g2elab.grenoble-inp.fr/) at **[Communauté Université Grenoble Alpes](http://www.grenoble-inp.fr/)**.
 &nbsp;
 
+&nbsp;
+
 !['UTC']({{ site.baseurl }}/assets/image/UTC_logo.png){:width="350px"}
 Master degree in urban engineering (with a focus on power systems) from the **[Technical University of Compiegne](https://www.utc.fr/en.html)** (2010-2015). Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf).
 
@@ -62,10 +64,11 @@ I have also spent a semester of study abroad in Riga (Latvia). Here is a [transc
 &nbsp;
 
 ## Work experiences
-!['Lancey']({{ site.baseurl }}/assets/image/lancey_logo.jpg){:width="350px"}
+!['Lancey']({{ site.baseurl }}/assets/image/lancey_logo.jpg){:width="300px"}
 **[Lancey Energy Storage](http://www.lbl.gov/)** from 2019 to present time. My work is focused on "collective self-consumption".
 &nbsp;
 
+&nbsp;
 
 !['LBNL']({{ site.baseurl }}/assets/image/LBNL_logo.png){:width="350px"}
 **[Lawrence Berkeley National Laboratory](http://www.lbl.gov/)** from 2015 to 2019, my work was focused on vehicle to grid interactions, and grid reliability assessment. I have participated in several projects: CyDER, V2G-Sim, DERCAM, MyGreenCar and wrote multiple journal papers.   

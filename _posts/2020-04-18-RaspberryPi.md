@@ -3,7 +3,7 @@ title: Self-powered Raspberry PI
 excerpt_separator: <!--more-->
 ---
 
-The objective is to power a raspberry pi 24/7 from a solar panel, a battery, and a power alimentation for when the battery is empty. This post is a condensed version of my personal notes, and things I would like to remember for the next time. There is probably much room for improvement.
+The objective is to power a raspberry pi 24/7 using a solar panel, a battery, and, when the battery is empty power from the grid. This post is a condensed version of my personal notes (things I would like to remember for the next time). There is probably much room for improvement.
 
 <!--more-->
 # Proposed architecture (Hardware)

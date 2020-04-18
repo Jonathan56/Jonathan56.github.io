@@ -50,7 +50,7 @@ Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 20
 &nbsp;
 
 !['UGA']({{ site.baseurl }}/assets/image/UGA_logo.png){:width="350px"}
-Currently working on a PhD degree from the [G2ELab](http://www.g2elab.grenoble-inp.fr/) at the **[Communauté Université Grenoble Alpes](http://www.grenoble-inp.fr/)**. On the topic of: "Collective self-consumtion sharing energy resources connected to the distribution grid". I also teach a class on "Electric Energy" at Grenoble INP La prépa.
+Currently working on a PhD degree from the [G2ELab](http://www.g2elab.grenoble-inp.fr/) at the **[Communauté Université Grenoble Alpes](http://www.grenoble-inp.fr/)**. On the topic of: "Collective Self-Consumtion: Sharing Energy Resources Connected to the Distribution Grid". I also teach a class on "Electric Energy" at Grenoble INP La prépa.
 &nbsp;
 
 &nbsp;
@@ -67,7 +67,7 @@ I have also spent a semester of study abroad in Riga (Latvia). Here is a [transc
 &nbsp;
 
 !['Lancey']({{ site.baseurl }}/assets/image/lancey_logo.jpg){:width="300px"}
-**[Lancey Energy Storage](https://www.lancey.fr/en/)** from 2019 to present time. My work is focused on "collective self-consumption". The objective is to foster sobriety and efficient consumption from cooperative interactions within the community.
+**[Lancey Energy Storage](https://www.lancey.fr/en/)** from 2019 to present time. My work is focused on "collective self-consumption". The objective is to foster sobriety and efficient consumption from cooperative interactions within a local community.
 &nbsp;
 
 &nbsp;

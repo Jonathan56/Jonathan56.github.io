@@ -25,8 +25,7 @@ Hi there, my name is Jonathan Coignard. I am currently a PhD student at Grenoble
 {: style="text-align: center;"}
 **[CyDER – an FMI-based co-simulation platform for distributed energy resources](https://doi.org/10.1080/19401493.2018.1535623)**, Thierry S. Nouidui, Jonathan Coignard, Christoph Gehbauer, Michael Wetter, Jhi-Young Joo & Evangelos Vrettos, Journal of Building Performance Simulation.
 
-**[Co-simulation Framework for Blockchain Based Market Designs and Grid Simulations](https://doi.org/10.1109/PESGM.2018.8586124)**,
-Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 2018.
+**[Co-simulation Framework for Blockchain Based Market Designs and Grid Simulations](https://doi.org/10.1109/PESGM.2018.8586124)**, Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 2018.
 
 **[Projected Electric Vehicle Hourly Loads for the 2017 California Energy Demand Forecast](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwjPzYnE7PboAhVOKBoKHSgPDdIQFjAAegQIAhAB&url=https%3A%2F%2Fww2.energy.ca.gov%2F2018publications%2FCEC-200-2018-007%2FCEC-200-2018-007.pdf&usg=AOvVaw0tCLu8Hw0ihQw-2rxlFzHl)**, Jonathan Coignard, Samveg Saxena, Don Scoffield, Mindy Gerdes, and John Smart; California Energy Commission consultant report.
 

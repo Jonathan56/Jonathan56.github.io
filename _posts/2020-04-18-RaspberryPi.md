@@ -14,8 +14,9 @@ I ended up buying a slightly bigger solar panel, and battery, to keep using them
 * Solar panel: [bigblue-28w](https://cachauffecachauffe.fr/bigblue-28w/)
 * Battery: [Elecjet-powerpie](https://www.chargerlab.com/elecjet-powerpie-45w-power-bank-in-depth-review/)
 
-I am also shopping for some current / tension meters to feed some of the data to the PI. For two reasons, first, I would like to visualise power from the solar panel, from the battery, and from the grid on different channels, but I also need to have an idea of the battery's state of charge to switch on the relay.
-
+I have also added a voltmeter, so the Pi can close a relay when the battery is out.
+* Relay
+* Voltmeter
 * Volt-meter: [Expensive options](http://www.yoctopuce.com/EN/products/usb-electrical-sensors/yocto-volt)
 * *[Work in progress]*
 
@@ -33,15 +34,16 @@ There are [a bunch of images](https://www.raspberrypi.org/downloads/) we could f
 
 Flash let us specify `--userdata`, and provide a solution to enable WiFi right-away with `--bootconf`. For the moment, let's just have a nice image with our WiFi enabled, and a [Portainer](https://www.portainer.io/) instance to play with. Ultimately, we might want to move manual steps done in Portainer to `--userdata`, to be more robust at re-building from scratch in case of a power outage.
 
-```shell
-flash --userdata wlan-portainer-user-data.yaml \
-      --bootconf no-uart-config.txt \
-      hypriotos-rpi-v1.12.0.img.zip
-```
-Here is our user data file `wlan-portainer-user-data.yaml` inspired from this [post](https://blog.hypriot.com/post/cloud-init-cloud-on-hypriot-x64/).
+The user data file `wlan-portainer-user-data.yaml` is inspired from this [post](https://blog.hypriot.com/post/cloud-init-cloud-on-hypriot-x64/). Ultimately, I made a whole bunch of changes because the default version wasn't working:
+* Simplified the content of wpa_supplicant.conf (ssid/psk)
+* Wrote multiple attempts to pull the portainer image (somehow it works after a while?)
+* Removed the docker swarm (mostly because I am not familiar with it and it throwing errors)
+* Created a crontab that would start a Portainer container at reboot (it wasn't working to launch it right away?)
+
+Note: you might need to reboot one more time to access Portainer, but otherwise open you browser at [http://portainer-pi64.local:9000](http://portainer-pi64.local:9000), and voila :smile:.
 
 ```yaml
-# cloud-config
+#cloud-config
 # vim: syntax=yaml
 #
 
@@ -62,7 +64,7 @@ users:
     sudo: ALL=(ALL) NOPASSWD:ALL
     shell: /bin/bash
     groups: users,docker,video
-    plain_text_passwd: jonathan
+    plain_text_passwd: password
     lock_passwd: false
     ssh_pwauth: true
     chpasswd: { expire: false }
@@ -88,16 +90,14 @@ write_files:
       iface default inet dhcp
     path: /etc/network/interfaces.d/wlan0
   - content: |
-      country=YourContryCode
       ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
       update_config=1
+      country=FR
+
       network={
-      ssid="themeows"
-      psk="e2cda882b899a493ffd13d3d0a4fb98fb107e7561b7eaa5d4aa8b31ac11b095a"
-      proto=RSN
-      key_mgmt=WPA-PSK
-      pairwise=CCMP
-      auth_alg=OPEN
+          ssid="YOURS"
+          psk="YOURS"
+          key_mgmt=WPA-PSK
       }
     path: /etc/wpa_supplicant/wpa_supplicant.conf
 
@@ -111,35 +111,77 @@ write_files:
     path: "/etc/docker/daemon.json"
     owner: "root:root"
 
+
 # These commands will be ran once on first boot only
 runcmd:
   # Pickup the hostname changes
-  - [systemctl, restart, avahi-daemon]
+  - 'systemctl restart avahi-daemon'
 
   # Activate WiFi interface
-  - [ifup, wlan0]
+  - 'ifup wlan0'
 
   # Pickup the daemon.json changes
-  - [systemctl, restart, docker]
+  - 'echo Restart Docker'
+  - 'systemctl restart docker'
 
-  # Init a swarm, because why not
-  - [docker, swarm, init]
+  # Pull latest image
+  - 'echo Try pulling image 1'
+  - 'docker pull portainer/portainer:latest'
+  - 'sleep 2'
+  - 'echo Try pulling image 2'
+  - 'docker pull portainer/portainer:latest'
+  - 'sleep 2'
+  - 'echo Try pulling image 3'
+  - 'docker pull portainer/portainer:latest'
+  - 'sleep 2'
+  - 'echo Try pulling image 4'
+  - 'docker pull portainer/portainer:latest'
+  - 'sleep 2'
+  - 'echo Try pulling image 5'
+  - 'docker pull portainer/portainer:latest'
 
-  # Run portainer, so we can control stuff from a UI
-  - [
-      docker, service, create,
-      "--detach=false",
-      "--name", "portainer",
-      "--publish", "9000:9000",
-      "--mount", "type=volume,src=portainer_data,dst=/data",
-      "--mount",
-      "type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock",
-      "portainer/portainer", "-H", "unix:///var/run/docker.sock",
-      "--no-auth"
-    ]
+  # Create a volume for Portainer
+  - 'echo Create a volume for Portainer'
+  - 'docker volume create portainer_data'
+
+  # # Run Portainer
+  # - 'echo Starting Docker 1'
+  # - [
+  #    docker, run, "-d",
+  #    "-p", "9000:9000", "-p", "8000:8000",
+  #    "--name", "portainer",
+  #    "--restart", "always",
+  #    "-v", "/var/run/docker.sock:/var/run/docker.sock",
+  #    "-v", "portainer_data:/data",
+  #    "portainer/portainer"
+  # ]
+  # - 'sleep 15'
+
+  # Create a Cron tab to launch Portainer at reboot
+  - crontab -l > mycron
+  - echo "@reboot sleep 20 && docker run -d -p 9000:9000 -p 8000:8000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer >> /tmp/job_check.log 2>&1" >> mycron
+  - crontab mycron
+  - rm mycron
+
+  # Done
+  - 'echo Done setting up system'
+
+power_state:
+  delay: "+1"
+  mode: reboot
+  timeout: 10
+  condition: True
 ```
 
-Here for `no-uart-config.txt`.
+Flashing is actually pretty fast (around a minute or so). When finished, pull out that sweet SD card, and get ready to plug in.
+
+```shell
+flash --userdata wlan-portainer-user-data.yaml \
+      --bootconf no-uart-config.txt \
+      hypriotos-rpi-v1.12.0.img
+```
+Here for `no-uart-config.txt` (no changes).
+
 ```text
 hdmi_force_hotplug=1
 enable_uart=0
@@ -152,12 +194,11 @@ gpu_mem=128
 # Enable audio (added by raspberrypi-sys-mods)
 dtparam=audio=on
 ```
-This step is actually pretty fast (around a minute or so). When finished, pull out that sweet SD card, and get ready to plug in.
 
-* Problem keep Ethernet cable to remote into - Wifi connection didn't work.
-* Look at the full booting ? plug a keyboard, not sure I can interact though (Docker is on log and attach?)
+Note, if you are tinkering with the cloud-config, and especially the runcmd part, you might find useful to access the logs: `vi /var/log/cloud-init-output.log`.
 
+# Setting up the hardware
 *[Work in progress]*
 
-# Testing the system
+# Controlling the relay
 *[Work in progress]*

@@ -1,9 +1,9 @@
 ---
-title: Cufflinks snippets
+title: Python Graph snippets
 excerpt_separator: <!--more-->
 ---
 
-Cufflinks snippets, for quick plots in Python.
+Plotly / Cufflinks snippets, for quick plots in Python.
 
 <!--more-->
 <!-- <head>
@@ -82,3 +82,15 @@ Sometimes it might be more useful to look at the actual data (without normalisin
 ![Screenshot 2020-05-04 at 17.18.24](/assets/image/Screenshot%202020-05-04%20at%2017.18.24.png)
 
 # Line graph
+Simple graph to look at various times series.
+```python
+start = '2014-05-01 00:00:00'
+end = '2014-05-31 23:45:00'
+df.loc[start:end, :].iplot(
+  kind='scatter', width=3,
+  yTitle='Agg. power demand [kW]',
+  dimensions=(1100, 600),
+  rangeslider=True, margin=(70, 20, 20, 20),
+  layout_update={'font': {'size': 16}})
+```
+![Screenshot 2020-05-04 at 17.41.12](/assets/image/Screenshot%202020-05-04%20at%2017.41.12.png)

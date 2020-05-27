@@ -12,11 +12,12 @@ Plotly / Cufflinks snippets, for quick plots in Python.
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head> -->
 
-I am organizing snippets by categories (work in progress), you can find:
+
+I am organizing snippets by categories, you can find:
 * [Bar graph](#bar-graph)
 * [Line graph](#line-graph)
 
-The only cons with offline cufflinks/plotly is the size of your Notebooks instantly bumping to about 3.3MB, which is annoying.
+The objective of this post is to provide quick notes and how to for common graphs. Snippets must be short, and customisable if needed. Plotly offer dynamic plots easily exportable and completely parametrised from a "simple" key:value format (which is quite nice compared to matplotlib). Cufflinks and Express are convenient to reduce the lengthy key:value format. One of the cons with offline cufflinks/plotly is the size of your Notebooks instantly bumping to about 3.3MB.
 
 ```python
 # Import Cufflinks offline

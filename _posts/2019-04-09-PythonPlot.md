@@ -57,7 +57,6 @@ This first example includes selecting data and normalising it, to prevent scale 
 
 ```python
 # Select data
-df = combinations.copy()
 index = df.index.tolist()
 index.remove('perfect')
 df = df.loc[index, ['Autoprod_%', 'Autoconso_%', 'MAE_kW', 'MAPE_%']]

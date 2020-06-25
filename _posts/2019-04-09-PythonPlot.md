@@ -94,3 +94,17 @@ df.loc[start:end, :].iplot(
   layout_update={'font': {'size': 16}})
 ```
 ![Screenshot 2020-05-04 at 17.41.12](/assets/image/Screenshot%202020-05-04%20at%2017.41.12.png)
+
+Similar but sampling a random column, and resampling to avoid large graphs.
+```python
+import random
+start = '2007-01-01 00:00:00'
+end = '2007-12-31 23:45:00'
+cols = random.sample(list(df.columns), 5)
+(df.loc[start:end, cols].resample('60T').sum() * 15/60).iplot(
+  kind='scatter', width=2,
+  yTitle='Agg. power demand [kW]',
+  dimensions=(1100, 600), showlegend=True,
+  rangeslider=True, margin=(70, 20, 20, 20),
+  layout_update={'font': {'size': 16}})
+```

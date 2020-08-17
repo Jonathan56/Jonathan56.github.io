@@ -1,5 +1,5 @@
 ---
-title: Python organizing simulations
+title: Organizing simulations in Python
 excerpt_separator: <!--more-->
 published: true
 ---
@@ -158,7 +158,7 @@ combinations.to_csv('simulation_matrice.csv')
 ```
 
 ## Executing notebooks with Papermill
-`_execute_ch1.ipynb` launch notebook after notebooks for all the simulations selected within `simulation_matrix.csv`. Sometimes I duplicate this notebook to accelerate the simulation process with multiple threads (`_execute_ch2.ipynb`).
+`_execute_ch1.ipynb` launch notebooks after notebooks for all the simulations selected within `simulation_matrix.csv`. Sometimes I duplicate this notebook to accelerate the simulation process with multiple threads (`_execute_ch2.ipynb`).
 
 ```python
 # Imports

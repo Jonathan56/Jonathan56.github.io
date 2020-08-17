@@ -15,6 +15,7 @@ Plotly / Cufflinks snippets, for quick plots in Python.
 
 * [Bar graph](#bar-graph)
 * [Line graph](#line-graph)
+* [Line graph](#from-layout)
 
 The objective of this post is to provide quick notes and how to for common graphs. Snippets must be short, and customisable if needed. Plotly offer dynamic plots easily exportable and completely parametrised from a "simple" key:value format (which is quite nice compared to matplotlib cryptic functions). Cufflinks and Express are convenient to reduce the lengthy key:value format. One of the cons with offline cufflinks/plotly is the size of your Notebooks instantly bumping to about 3.3MB.
 
@@ -107,7 +108,7 @@ cols = random.sample(list(df.columns), 5)
   rangeslider=True, margin=(70, 20, 20, 20),
   layout_update={'font': {'size': 16}})
 ```
-# Plot from a layout
+# From layout
 This might be useful to transform quick Cufflinks plots into paper grade plots.
 
 ```python

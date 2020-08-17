@@ -13,7 +13,6 @@ Plotly / Cufflinks snippets, for quick plots in Python.
 </head> -->
 
 
-I am organizing snippets by categories, you can find:
 * [Bar graph](#bar-graph)
 * [Line graph](#line-graph)
 
@@ -108,3 +107,75 @@ cols = random.sample(list(df.columns), 5)
   rangeslider=True, margin=(70, 20, 20, 20),
   layout_update={'font': {'size': 16}})
 ```
+# Plot from a layout
+This might be useful to transform quick Cufflinks plots into paper grade plots.
+
+```python
+# Imports
+from plotly.offline import init_notebook_mode, iplot
+import plotly.graph_objs as go
+import cufflinks as cf
+init_notebook_mode(connected=False)
+cf.set_config_file(theme='white')
+cf.go_offline()
+
+
+# Layout
+layout = {
+ "font":{"size":19, "color":"rgb(3, 3, 3)"},
+ "height":500,
+ "width":700,
+ "legend":{"x":0.5,"y":1.0},
+ "showlegend":true,
+ "margin":{"b":70,"l":50,"r":20,"t":70},
+ "title":{"font":{"color":"#4D5663"}},
+ "xaxis":{
+   "gridcolor":"#E1E5ED",
+   "showgrid":true,
+   "tickfont":{"color":"rgb(0, 0, 0)"},
+   "title":{
+     "font":{"color":"rgb(0, 0, 0)","size":22},
+     "text":"Community size"},
+   "zerolinecolor":"rgb(0, 0, 0)",
+   "type":"linear",
+   "autorange":true,
+   "zerolinewidth":2},
+ "yaxis":{
+   "gridcolor":"#E1E5ED",
+   "showgrid":true,
+   "tickfont":{"color":"rgb(0, 0, 0)"},
+   "title":{
+     "font":{"color":"rgb(0, 0, 0)","size":22},
+     "text":"MAPE [%]"},
+   "zerolinecolor":"rgb(0, 0, 0)",
+   "type":"linear",
+   "autorange":true,
+   "zerolinewidth":2}
+ }
+
+ # Custom data look
+ symbol = ['diamond-open', 'star',
+           'cross-thin-open', 'x-thin-open',
+           'square-open', 'circle-open']
+ colors = ['rgba(255, 153, 51, 0.7)',
+           'rgba(55, 128, 191, 0.7)',
+           'rgba(50, 171, 96, 0.7)',
+           'rgba(128, 0, 128, 0.7)',
+           'rgba(0, 128, 128, 0.7)',
+           'rgba(219, 169, 17, 0.7)']
+
+ # Plot
+ myfig = df.iplot(
+     mode='lines+markers', symbol=symbol,
+     colors=colors, size=7, width=2,
+     layout=layout, asFigure=True)
+
+ # Custom fig
+ myfig.data[1]['marker']['size'] = 10
+
+ # Visualize and save as PDF
+ fig = go.Figure(myfig)
+ iplot(fig)
+ fig.write_image("mape.pdf")
+ ```
+It's also possible to `myfig.write_json('my_graph.plotly')` just with Cufflinks, and then edit within the JupyterLab plotly extension (this might be a good way to come up with "layout" in the first place).

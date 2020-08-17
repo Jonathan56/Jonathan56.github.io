@@ -4,10 +4,10 @@ excerpt_separator: <!--more-->
 published: true
 ---
 
-Organizing simulations in Python with Jupyter Notebooks, note to myself (work in progress).
+Organizing simulations in Python with Jupyter Notebooks, note to myself.
 
 <!--more-->
-First things first, `git clone` a repository created on GitHub, Gitlab, etc. Then I store my data in `data/` and start to explore/clear data with a Jupyter Notebbok  `_1_format_data.ipynb`.
+First things first, I usually `git clone` a repository created on GitHub, Gitlab, etc. Then I store my data in `data/` and start to explore/clear data with a Jupyter Notebbok  `_1_format_data.ipynb`.
 
 ```python
 import pandas
@@ -22,7 +22,7 @@ def display_n(df,n):
     with pandas.option_context('display.max_rows', n*2):
         display(df)
 ```
-Then comes the long step of creating a simulation prototype `my_template_v1.ipynb`. When developing a notebook I keep in mind to expose all the input variables in the first cell (later on those inputs will be replaced with Papermill).
+Then comes the long process of creating a simulation prototype `my_template_v1.ipynb`. When developing a notebook I keep in mind to expose all input variables in the first cell (later on those inputs will be replaced with Papermill).
 
 ```python
 dev = True
@@ -39,7 +39,7 @@ if dev:
 Once I have a functioning simulation, I also try to package functions into an actual Python module (a) my simulation notebook is easier to read (b) when I re-use a function I double check it, which makes it more robust.
 
 # Executing multiple notebooks
-At this stage I will archive all the versions of my simulation notebooks (`my_template_vX.ipynb`), to keep the last one. Similarly to the Netflix blog post ["scheduling notebooks"](https://netflixtechblog.com/scheduling-notebooks-348e6c14cfd6) (which I have just discovered) I use Papermill to launch our `my_template_vX.ipynb` with different inputs stored in `simulation_matrix.csv`.
+At this stage I will archive all the versions of my simulation notebooks (`my_template_vX.ipynb`), to keep the last one. Similarly to the Netflix blog post ["scheduling notebooks"](https://netflixtechblog.com/scheduling-notebooks-348e6c14cfd6) (which I have just discovered) I use Papermill to launch `my_template_vX.ipynb` with different inputs stored in `simulation_matrix.csv`.
 
 ![jupyter_workflow](/assets/image/jupyter_workflow.png)
 
@@ -83,7 +83,8 @@ for pv in pvs:
         {**const_dict,
          **{'_study': 'pv size',
             'nb_houses': 20,
-            'f_method': 'perfect', 'f_kwargs': json.dumps({}),
+            'f_method': 'perfect',
+            'f_kwargs': json.dumps({}),
             'inputfile': '../../data/20_0.pickle',
             'pv_capacity': pv * 20}})
     name = sha256(combinations[-1])[0:10]
@@ -110,7 +111,8 @@ from tqdm.notebook import tqdm
 import nbformat
 
 # Load existing matrix (or re-create it)
-combinations = pandas.read_csv('simulation_matrice.csv', index_col=[0])
+combinations = pandas.read_csv(
+  'simulation_matrice.csv', index_col=[0])
 
 # Get all the notebooks in folders
 folders = ['./executed/v1/']
@@ -165,11 +167,13 @@ import papermill as pm
 import pandas
 
 # Read and select combinations
-combinations = pandas.read_csv('simulation_matrice.csv', index_col=[0])
-combinations = combinations[(combinations._simulated == False) &
-                            (combinations._study == 'community size') &
-                            (combinations.f_method == 'Prophet') &
-                            (combinations.batch.isin([0, 1, 2, 3]))]
+combinations = pandas.read_csv(
+  'simulation_matrice.csv', index_col=[0])
+combinations = combinations[
+  (combinations._simulated == False) &
+  (combinations._study == 'community size') &
+  (combinations.f_method == 'Prophet') &
+  (combinations.batch.isin([0, 1, 2, 3]))]
 
 # Create folder
 folder = 'v1'
@@ -226,9 +230,11 @@ cf.set_config_file(theme='white')
 cf.go_offline()
 
 # Select simulation matrix
-combinations = pandas.read_csv('simulation_matrice.csv', index_col=[0])
-combinations = combinations[(combinations._study == 'community size') &
-                            (combinations['_simulated'] == True)]
+combinations = pandas.read_csv(
+  'simulation_matrice.csv', index_col=[0])
+combinations = combinations[
+  (combinations._study == 'community size') &
+  (combinations['_simulated'] == True)]
 
 # Open results process / save timeseries
 result = pandas.DataFrame()
@@ -236,7 +242,8 @@ full_result_index = combinations[
     combinations['nb_houses'] == 20].index.tolist()
 full_result = {}
 
-for index, row in tqdm(combinations.iterrows(), desc='Progress:'):
+for index, row in tqdm(
+combinations.iterrows(), desc='Progress:'):
     # Open full result file
     with open(folder + row['outputfile'], 'rb') as r_file:
         df = pickle.load(r_file)

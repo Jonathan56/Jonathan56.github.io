@@ -47,7 +47,7 @@ Hi there, my name is Jonathan Coignard. I am currently a PhD student at Grenoble
 
 **[EMACOP project: Digital modeling of the waves toward Esquibien’s dam using SWASH]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf)**, Jonathan Coignard, Bertrand Michard, Jean-François Filipot, Philippe Sergent, available in the online journal Paralia.
 
-## Education
+<!-- ## Education
 &nbsp;
 
 !['UGA']({{ site.baseurl }}/assets/image/UGA_logo.png){:width="350px"}
@@ -78,7 +78,7 @@ I have also spent a semester of study abroad in Riga (Latvia). Here is a [transc
 &nbsp;
 
 !['CEREMA']({{ site.baseurl }}/assets/image/cerema_logo.jpg){:width="350px"}
-**[CEREMA](http://www.cerema.fr/)** (Centre For Studies and Expertise on Risks, Environment, Mobility, and Urban and Country planning). I studied the best emplacement to harvest wave's energy at the shore in [Audierne's bay](https://www.google.com/maps/place/Esquibien,+France/@48.019122,-4.6068608,1225z/data=!4m2!3m1!1s0x4816e058cded9379:0x40ca5cd36e56db0). The project involved the use of [SWASH](http://swash.sourceforge.net/) to provide a general basis for describing wave transformations from deep water to a beach, port or harbour. [The study (final report in French)]({{ site.baseurl }}/assets/pdf/internship_CEREMA.pdf) also includes a cost analysis for different devices.
+**[CEREMA](http://www.cerema.fr/)** (Centre For Studies and Expertise on Risks, Environment, Mobility, and Urban and Country planning). I studied the best emplacement to harvest wave's energy at the shore in [Audierne's bay](https://www.google.com/maps/place/Esquibien,+France/@48.019122,-4.6068608,1225z/data=!4m2!3m1!1s0x4816e058cded9379:0x40ca5cd36e56db0). The project involved the use of [SWASH](http://swash.sourceforge.net/) to provide a general basis for describing wave transformations from deep water to a beach, port or harbour. [The study (final report in French)]({{ site.baseurl }}/assets/pdf/internship_CEREMA.pdf) also includes a cost analysis for different devices. -->
 
 *Powered with :heart: by Jekyll and Github Page :octocat:.*
 

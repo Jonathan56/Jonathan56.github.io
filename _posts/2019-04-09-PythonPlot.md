@@ -75,8 +75,8 @@ fig.update_traces({'line': {'width' : 3}})
 fig.data[0].update({'line': {'dash': 'dash'}})
 ```
 
-# Adding notation and shapes
-Creates an arrow with a rounded end, and display the text.
+# Adding notations and shapes
+Creates an arrow with a rounded end, and display a text.
 ```python
 fig.add_annotation(
   x=x_pos, y=y_pos,

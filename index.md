@@ -2,8 +2,8 @@
 layout: header
 ---
 
-!['Self']({{ site.baseurl }}/assets/image/me.jpg){: .align-right width="150px"}
-Hi there, my name is Jonathan Coignard. I am currently a PhD student at Grenoble INP and Lancey Energy Storage. I am also an affiliate of the Lawrence Berkeley National Laboratory. You can download my CV **[here]({{ site.baseurl }}/assets/pdf/jonathancoignard.pdf)**.
+!['Self']({{ site.baseurl }}/assets/image/me.jpg){: .align-right width="250px"}
+Hi there, my name is Jonathan Coignard. I am currently a PhD student working at Université Grenoble Alpes and Lancey Energy Storage. You can download my CV **[here]({{ site.baseurl }}/assets/pdf/jonathancoignard.pdf)**.
 
 !['equation']({{ site.baseurl }}/assets/image/equation.svg){:width="800px"}
 
@@ -88,46 +88,40 @@ I have also spent a semester of study abroad in Riga (Latvia). Here is a [transc
     display: inline-block;
     position: relative;
     width: 100%;
-    padding-bottom: 100%;
+    padding-bottom: 92%;
     vertical-align: top;
     overflow: hidden;
 }
 .svg-content-responsive {
     display: inline-block;
     position: absolute;
-    top: 10px;
+    top: 0px;
     left: 0;
 }
 </style>
 
 <script type="text/javascript">
 var width = 600,
-    height = 600;
+    height = 500;
 
 var skill = [
     {'name': 'invisible', 'radius': 50},
-    {'name': 'AutoCAD', 'radius': 20},
+    <!-- {'name': 'AutoCAD', 'radius': 20}, -->
     {'name': 'SQL', 'radius': 30},
-    {'name': 'Modelica', 'radius': 30},
-    {'name': 'Opal-RT', 'radius': 40},
-    {'name': 'Simulink', 'radius': 40},
-    {'name': 'MATLAB', 'radius': 40},
-    {'name': 'CymDIST', 'radius': 65},
-    {'name': 'PowerFactory', 'radius': 30},
-    {'name': 'Latex', 'radius': 50},
-    {'name': 'D3.js', 'radius': 30},
-    {'name': 'Git', 'radius': 80},
-    {'name': 'FMI', 'radius': 50},
-    {'name': 'Django', 'radius': 40},
-    {'name': 'Flask', 'radius': 60},
+    <!-- {'name': 'Modelica', 'radius': 20}, -->
+    <!-- {'name': 'Opal-RT', 'radius': 30}, -->
+    <!-- {'name': 'Simulink', 'radius': 40}, -->
+    {'name': 'Energy market', 'radius': 75},
+    {'name': 'Git', 'radius': 50},
+    {'name': 'Power-flow', 'radius': 55},
     {'name': 'Docker', 'radius': 50},
-    {'name': 'PyFMI', 'radius': 70},
-    {'name': 'Simpy', 'radius': 50},
-    {'name': 'Pyomo', 'radius': 60},
-    {'name': 'Ethereum', 'radius': 60},
-    {'name': 'Python', 'radius': 100},
+    {'name': 'Energy policy', 'radius': 85},
+    {'name': 'Data science', 'radius': 100},
+    {'name': 'Convex opti.', 'radius': 70},
+    {'name': 'Ethereum', 'radius': 50},
+    {'name': 'Python', 'radius': 95},
 ];
-var coef = 1.1;
+var coef = 1;
 var nodes = d3.range(skill.length).map(function(i) {
         return {radius: skill[i]['radius'] / coef, name: skill[i]['name']};
     }),
@@ -165,7 +159,9 @@ groupe = svg.selectAll("circle")
 
 groupe.append("circle")
     .attr("r", function(d) { return d.radius; })
-    .style("fill", function(d, i) { return color(d.radius); });
+    .style("fill", function(d, i) { return color(d.radius); })
+    .attr('stroke','#bab4a8')
+    .attr('stroke-width', 1.5);
 
 groupe.append("text")
     .attr("text-anchor", "middle")
@@ -220,7 +216,7 @@ function collide(node) {
 
 function resize() {
     width = window.innerWidth/2, height = window.innerHeight;
-    height = 650;
+    height = 500;
     svg.attr("width", width).attr("height", height);
     force.size([width, height]).resume();
 }

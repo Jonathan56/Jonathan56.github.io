@@ -1,6 +1,7 @@
 ---
 title: Parallel Coordinates
 excerpt_separator: <!--more-->
+published: false
 ---
 
 Parallel coordinates template to explore CSV data files. Plot

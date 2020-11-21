@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organizing simulations in Python</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title--small">
+    <a href="/blog">&lArr; Jonathan&#39;s blog</a>
+  </h1>
+</header>
+<div class="content post">
+  <h1 class="post-title">Organizing simulations in Python</h1>
+  <div class="post-date">
+    <time>17 Jul 2020</time>
+  </div>
+  <p>Organizing simulations in Python with Jupyter Notebooks, note to myself.</p>
+
+<!--more-->
+<p>First things first, I usually <code class="language-plaintext highlighter-rouge">git clone</code> a repository created on GitHub, Gitlab, etc. Then I store my data in <code class="language-plaintext highlighter-rouge">data/</code> and start to explore/clear data with a Jupyter Notebbok  <code class="language-plaintext highlighter-rouge">_1_format_data.ipynb</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">cufflinks</span> <span class="k">as</span> <span class="n">cf</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="n">cf</span><span class="p">.</span><span class="n">set_config_file</span><span class="p">(</span><span class="n">theme</span><span class="o">=</span><span class="s">'white'</span><span class="p">)</span>
+<span class="n">cf</span><span class="p">.</span><span class="n">go_offline</span><span class="p">()</span>
+
+<span class="c1"># Convenient function to display dataframe
+</span><span class="k">def</span> <span class="nf">display_n</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">pandas</span><span class="p">.</span><span class="n">option_context</span><span class="p">(</span><span class="s">'display.max_rows'</span><span class="p">,</span> <span class="n">n</span><span class="o">*</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Then comes the long process of creating a simulation prototype <code class="language-plaintext highlighter-rouge">my_template_v1.ipynb</code>. When developing a notebook I keep in mind to expose all input variables in the first cell (later on those inputs will be replaced with Papermill).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dev</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">if</span> <span class="n">dev</span><span class="p">:</span>
+    <span class="c1"># Filenames (correct folder)
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">'Running template in dev mode'</span><span class="p">)</span>
+    <span class="n">inputfile</span> <span class="o">=</span> <span class="s">'data/15min.csv'</span>
+    <span class="n">outputfile</span> <span class="o">=</span> <span class="s">'test.pickle'</span>
+
+    <span class="c1"># Simulation period
+</span>    <span class="n">start</span><span class="o">=</span> <span class="s">'2014-05-01 00:00:00'</span>
+    <span class="n">end</span><span class="o">=</span> <span class="s">'2014-05-10 23:45:00'</span>
+</code></pre></div></div>
+<p>Once I have a functioning simulation, I also try to package functions into an actual Python module (a) my simulation notebook is easier to read (b) when I re-use a function I double check it, which makes it more robust.</p>
+
+<h1 id="executing-multiple-notebooks">Executing multiple notebooks</h1>
+<p>At this stage I will archive all the versions of my simulation notebooks (<code class="language-plaintext highlighter-rouge">my_template_vX.ipynb</code>), to keep the last one. Similarly to the Netflix blog post <a href="https://netflixtechblog.com/scheduling-notebooks-348e6c14cfd6">“scheduling notebooks”</a> (which I have just discovered) I use Papermill to launch <code class="language-plaintext highlighter-rouge">my_template_vX.ipynb</code> with different inputs stored in <code class="language-plaintext highlighter-rouge">simulation_matrix.csv</code>.</p>
+
+<p><img src="/assets/image/jupyter_workflow.png" alt="jupyter_workflow" /></p>
+
+<p>To do that my folder structure looks like this:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
++-- data/
+|   +-- my_data.csv
+|   +-- simulation_matrix.csv
++-- executed/
++-- _1_format_data.ipynb
++-- _2_simulation_matrix.ipynb
++-- _execute_ch1.ipynb
++-- _my_template.ipynb
++-- README.md
+</code></pre></div></div>
+
+<h2 id="simulation-matrix">Simulation matrix</h2>
+<p><code class="language-plaintext highlighter-rouge">_2_simulation_matrix.ipynb</code> generate a CSV file with all the simulations I want to run. I add <code class="language-plaintext highlighter-rouge">_simulated</code>, and <code class="language-plaintext highlighter-rouge">_study</code> columns to quickly filter through simulations (whether they have been simulated, and for what purpose).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Imports
+</span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">dict_hash</span> <span class="kn">import</span> <span class="n">sha256</span>
+
+
+<span class="c1"># Constant inputs
+</span><span class="n">combinations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">const_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">'_simulated'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+              <span class="s">'start'</span><span class="p">:</span> <span class="s">'2019-01-15 00:00:00'</span><span class="p">,</span>
+              <span class="s">'end'</span><span class="p">:</span> <span class="s">'2019-12-31 23:45:00'</span><span class="p">,</span>
+              <span class="s">'f_horizon'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+              <span class="s">'c_method'</span><span class="p">:</span> <span class="s">'opti'</span><span class="p">}</span>
+
+<span class="c1"># Variable inputs
+</span><span class="n">pvs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">pvs</span><span class="p">:</span>
+    <span class="n">combinations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="p">{</span><span class="o">**</span><span class="n">const_dict</span><span class="p">,</span>
+         <span class="o">**</span><span class="p">{</span><span class="s">'_study'</span><span class="p">:</span> <span class="s">'pv size'</span><span class="p">,</span>
+            <span class="s">'nb_houses'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+            <span class="s">'f_method'</span><span class="p">:</span> <span class="s">'perfect'</span><span class="p">,</span>
+            <span class="s">'f_kwargs'</span><span class="p">:</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({}),</span>
+            <span class="s">'inputfile'</span><span class="p">:</span> <span class="s">'../../data/20_0.pickle'</span><span class="p">,</span>
+            <span class="s">'pv_capacity'</span><span class="p">:</span> <span class="n">pv</span> <span class="o">*</span> <span class="mi">20</span><span class="p">}})</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">sha256</span><span class="p">(</span><span class="n">combinations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+    <span class="n">combinations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s">'ID'</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="n">combinations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s">'outputfile'</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="s">'.pickle'</span>
+
+<span class="c1"># DataFrame
+</span><span class="n">combinations</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">combinations</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">combinations</span><span class="p">[</span><span class="s">'ID'</span><span class="p">].</span><span class="n">is_unique</span><span class="p">,</span> <span class="s">'Duplicate ID'</span>
+<span class="n">combinations</span><span class="p">.</span><span class="n">set_index</span><span class="p">(</span><span class="s">'ID'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">f'Number of combinations is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">combinations</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">combinations</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="n">T</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/assets/image/simulation_matrice.png" alt="simulation_matrix" /></p>
+
+<p>Furthermore, <code class="language-plaintext highlighter-rouge">_2_simulation_matrix.ipynb</code> can be run at any time to update the matrix based on the files in <code class="language-plaintext highlighter-rouge">executed/</code>. This allows to update <code class="language-plaintext highlighter-rouge">_simulated</code> to ease filtering, as well as removing old simulation results.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Imports
+</span><span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span> <span class="nn">nbformat</span>
+
+<span class="c1"># Load existing matrix (or re-create it)
+</span><span class="n">combinations</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span>
+  <span class="s">'simulation_matrice.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Get all the notebooks in folders
+</span><span class="n">folders</span> <span class="o">=</span> <span class="p">[</span><span class="s">'./executed/v1/'</span><span class="p">]</span>
+<span class="n">notebooks</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folders</span><span class="p">:</span>
+    <span class="c1"># Only select available result
+</span>    <span class="n">notebooks</span><span class="p">.</span><span class="n">extend</span><span class="p">(</span><span class="n">glob</span><span class="p">.</span><span class="n">glob</span><span class="p">(</span><span class="n">folder</span> <span class="o">+</span> <span class="s">'*.pickle'</span><span class="p">))</span>  
+<span class="n">notebooks</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">'pickl'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s">'ipynb'</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">notebooks</span><span class="p">]</span>
+
+<span class="c1"># Load results
+</span><span class="n">updated</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">purged</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">notebook</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">notebooks</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s">'Progress:'</span><span class="p">,</span> <span class="n">miniters</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">nb</span> <span class="o">=</span> <span class="n">nbformat</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">notebook</span><span class="p">,</span> <span class="n">as_version</span><span class="o">=</span><span class="n">nbformat</span><span class="p">.</span><span class="n">NO_CONVERT</span><span class="p">)</span>
+    <span class="c1"># Notebook didn't solve
+</span>    <span class="k">if</span> <span class="n">nb</span><span class="p">[</span><span class="s">'cells'</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s">'source'</span><span class="p">].</span><span class="n">split</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'# Parameters'</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+    <span class="c1"># Parse inputs
+</span>    <span class="n">inputs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">nb</span><span class="p">[</span><span class="s">'cells'</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s">'source'</span><span class="p">].</span><span class="n">split</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s">'='</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">name</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">' = '</span><span class="p">)</span>
+            <span class="n">var</span> <span class="o">=</span> <span class="n">var</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'"'</span><span class="p">,</span> <span class="s">''</span><span class="p">)</span>
+            <span class="n">inputs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">var</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="s">'outputfile'</span><span class="p">:</span>
+                <span class="k">break</span>
+
+    <span class="c1"># Hash
+</span>    <span class="n">ID</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s">'outputfile'</span><span class="p">].</span><span class="n">split</span><span class="p">(</span><span class="s">'.'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># If ID not in combination then remove pickle and notebook
+</span>
+    <span class="c1"># If same key in combination --&gt; simulated = True
+</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">combinations</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ID</span><span class="p">,</span> <span class="s">'_simulated'</span><span class="p">]:</span>
+        <span class="n">combinations</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ID</span><span class="p">,</span> <span class="s">'_simulated'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">updated</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="s">f'Updated lines in the simulation matrice </span><span class="si">{</span><span class="n">updated</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">f'Simulation purged </span><span class="si">{</span><span class="n">purged</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+
+<span class="c1"># Save simulation matrice
+</span><span class="n">combinations</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'simulation_matrice.csv'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="executing-notebooks-with-papermill">Executing notebooks with Papermill</h2>
+<p><code class="language-plaintext highlighter-rouge">_execute_ch1.ipynb</code> launch notebooks after notebooks for all the simulations selected within <code class="language-plaintext highlighter-rouge">simulation_matrix.csv</code>. Sometimes I duplicate this notebook to accelerate the simulation process with multiple threads (<code class="language-plaintext highlighter-rouge">_execute_ch2.ipynb</code>).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Imports
+</span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">papermill</span> <span class="k">as</span> <span class="n">pm</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+
+<span class="c1"># Read and select combinations
+</span><span class="n">combinations</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span>
+  <span class="s">'simulation_matrice.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">combinations</span> <span class="o">=</span> <span class="n">combinations</span><span class="p">[</span>
+  <span class="p">(</span><span class="n">combinations</span><span class="p">.</span><span class="n">_simulated</span> <span class="o">==</span> <span class="bp">False</span><span class="p">)</span> <span class="o">&amp;</span>
+  <span class="p">(</span><span class="n">combinations</span><span class="p">.</span><span class="n">_study</span> <span class="o">==</span> <span class="s">'community size'</span><span class="p">)</span> <span class="o">&amp;</span>
+  <span class="p">(</span><span class="n">combinations</span><span class="p">.</span><span class="n">f_method</span> <span class="o">==</span> <span class="s">'Prophet'</span><span class="p">)</span> <span class="o">&amp;</span>
+  <span class="p">(</span><span class="n">combinations</span><span class="p">.</span><span class="n">batch</span><span class="p">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))]</span>
+
+<span class="c1"># Create folder
+</span><span class="n">folder</span> <span class="o">=</span> <span class="s">'v1'</span>
+<span class="err">!</span><span class="n">mkdir</span> <span class="n">executed</span><span class="o">/</span><span class="p">{</span><span class="n">folder</span><span class="p">}</span>
+<span class="n">start_timer</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">()</span>
+
+<span class="c1"># Execute all the notebooks
+</span><span class="n">sim_index</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_error</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">start_timer2</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">notebook_error</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">notebook_error</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">_</span> <span class="o">=</span> <span class="n">pm</span><span class="p">.</span><span class="n">execute_notebook</span><span class="p">(</span>
+               <span class="s">'../pylec/pylec/pipeline_v1.ipynb'</span><span class="p">,</span>
+               <span class="s">'executed/'</span> <span class="o">+</span> <span class="n">folder</span> <span class="o">+</span> <span class="s">'/'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">+</span> <span class="s">'.ipynb'</span><span class="p">,</span>
+                <span class="n">parameters</span><span class="o">=</span><span class="n">row</span><span class="p">.</span><span class="n">to_dict</span><span class="p">(),</span>
+                <span class="n">cwd</span><span class="o">=</span><span class="s">'executed/'</span> <span class="o">+</span> <span class="n">folder</span> <span class="o">+</span> <span class="s">'/'</span><span class="p">,</span>
+                <span class="n">progress_bar</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">notebook_error</span> <span class="o">=</span> <span class="mi">99</span>  <span class="c1"># Error check pass
+</span>        <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'-----'</span><span class="p">)</span>
+            <span class="n">notebook_error</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">total_error</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">time_elapsed</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_timer2</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Simulation'</span><span class="p">,</span> <span class="n">sim_index</span><span class="p">,</span>
+          <span class="s">'time elapsed (hh:mm:ss.ms) {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">time_elapsed</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">.</span><span class="n">to_dict</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">)</span>
+    <span class="n">sim_index</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># Too many errors something is fischy
+</span>    <span class="k">if</span> <span class="n">total_error</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="n">time_elapsed</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_timer</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s"> Time elapsed (hh:mm:ss.ms) {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">time_elapsed</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h1 id="result--visualization">Result / visualization</h1>
+<p>Once the simulations are run we create <code class="language-plaintext highlighter-rouge">_result.ipynb</code> to explore results.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Imports
+</span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">cufflinks</span> <span class="k">as</span> <span class="n">cf</span>
+<span class="n">cf</span><span class="p">.</span><span class="n">set_config_file</span><span class="p">(</span><span class="n">theme</span><span class="o">=</span><span class="s">'white'</span><span class="p">)</span>
+<span class="n">cf</span><span class="p">.</span><span class="n">go_offline</span><span class="p">()</span>
+
+<span class="c1"># Select simulation matrix
+</span><span class="n">combinations</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span>
+  <span class="s">'simulation_matrice.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">combinations</span> <span class="o">=</span> <span class="n">combinations</span><span class="p">[</span>
+  <span class="p">(</span><span class="n">combinations</span><span class="p">.</span><span class="n">_study</span> <span class="o">==</span> <span class="s">'community size'</span><span class="p">)</span> <span class="o">&amp;</span>
+  <span class="p">(</span><span class="n">combinations</span><span class="p">[</span><span class="s">'_simulated'</span><span class="p">]</span> <span class="o">==</span> <span class="bp">True</span><span class="p">)]</span>
+
+<span class="c1"># Open results process / save timeseries
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">full_result_index</span> <span class="o">=</span> <span class="n">combinations</span><span class="p">[</span>
+    <span class="n">combinations</span><span class="p">[</span><span class="s">'nb_houses'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">20</span><span class="p">].</span><span class="n">index</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">full_result</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span>
+<span class="n">combinations</span><span class="p">.</span><span class="n">iterrows</span><span class="p">(),</span> <span class="n">desc</span><span class="o">=</span><span class="s">'Progress:'</span><span class="p">):</span>
+    <span class="c1"># Open full result file
+</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">folder</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s">'outputfile'</span><span class="p">],</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">r_file</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pickle</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">r_file</span><span class="p">)</span>
+
+    <span class="c1"># Process full result
+</span>    <span class="n">result</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s">'MAPE_%'</span><span class="p">]</span> <span class="o">=</span> <span class="n">metric</span><span class="p">.</span><span class="n">mape</span><span class="p">(</span>
+      <span class="n">df</span><span class="p">,</span> <span class="s">'vo_houses_kW'</span><span class="p">,</span> <span class="s">'f_houses_kW'</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+    <span class="c1"># Save some full results
+</span>    <span class="k">if</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">full_result_index</span><span class="p">:</span>
+        <span class="n">full_result</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>    
+</code></pre></div></div>
+
+</div>
+
+  </div>
+</body>
+</html>

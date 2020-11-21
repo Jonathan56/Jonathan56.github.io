@@ -3,7 +3,7 @@ title: Python Graph snippets
 excerpt_separator: <!--more-->
 ---
 
-Plotly / Cufflinks snippets, for quick plots in Python.
+Plotly Express snippets, for quick plots in Python.
 
 <!--more-->
 <!-- <head>
@@ -12,27 +12,32 @@ Plotly / Cufflinks snippets, for quick plots in Python.
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head> -->
 
+The objective of this post is to provide quick notes and how to for common graphs. For more inspiration check out the actual Plotly Express [website](https://plotly.com/python/plotly-express/).
 
-* [Bar graph](#bar-graph)
-* [Line graph](#line-graph)
-* [From Layout](#from-layout)
-
-The objective of this post is to provide quick notes and how to for common graphs. Snippets must be short, and customisable if needed. Plotly offer dynamic plots easily exportable and completely parametrised from a "simple" key:value format (which is quite nice compared to matplotlib cryptic functions). Cufflinks and Express are convenient to reduce the lengthy key:value format. One of the cons with offline cufflinks/plotly is the size of your Notebooks instantly bumping to about 3.3MB.
-
+# For starters
 ```python
-# Import Cufflinks offline
-import cufflinks as cf
-cf.set_config_file(theme='white')
-cf.go_offline()
+import pandas
+import plotly.express as px
+%load_ext autoreload
+%autoreload 2
+
+layout = {
+    'showlegend': False,
+    'margin': {'b':10, 'l':20, 'r':50, 't':50},
+    'font': {'size': 19},
+    'xaxis': {'zerolinewidth': 2, 'zerolinecolor':'black'},
+    'yaxis': {'zerolinewidth': 2, 'zerolinecolor':'black'},
+    'template': 'plotly_dark',
+}
+px.defaults.color_discrete_sequence = px.colors.qualitative.T10
 
 # Convenient function to display dataframe
-import pandas
 def display_n(df,n):
     with pandas.option_context('display.max_rows',n*2):
         display(df)
 ```
 
-Before getting started, here is a convinient list of Plotly's default colors :
+Here is a convinient list of Plotly's default colors :
 
     '#1f77b4', rgba(55, 128, 191, 1.0) // muted blue
     '#ff7f0e', rgba(255, 127, 14, 1.0) // safety orange
@@ -45,138 +50,50 @@ Before getting started, here is a convinient list of Plotly's default colors :
     '#bcbd22', rgba(188, 189, 34, 1.0) // curry yellow-green
     '#17becf' rgba(23, 190, 207, 1.0)  // blue-teal
 
-Cufflinks also comes with a few utility functions for colors ([tutorial](https://github.com/santosjorge/cufflinks/blob/master/Cufflinks%20Tutorial%20-%20Colors.ipynb)).
+More on discrete color sequences [here](https://plotly.com/python/discrete-color/#color-sequences-in-plotly-express), or continuous ones [here](https://plotly.com/python/builtin-colorscales/)
+
+# Time to graph
 ```python
-cf.colors.cnames
-cf.colors.scales()
-cf.colors.color_range('orange',10)
+fig = px.bar(plt, x='index', y='self_suff_%', color='algo',
+             barmode='group', opacity=0.8)
+fig.update_layout(
+    layout,
+    showlegend=True,
+    xaxis={'title': 'Data Source'},
+    yaxis={'title': 'Self Sufficiency [%]'})
+fig.show()
+```
+```python
+fig = px.line(plt)
+fig = px.scatter(plt)
 ```
 
-# Bar graph
-This first example includes selecting data and normalising it, to prevent scale issues. Note that the Dataframe is sorted before plotting to increase readability.
-
+# Changing the look of traces
+Update trace properties afterwards.
 ```python
-# Select data
-index = df.index.tolist()
-index.remove('perfect')
-df = df.loc[index, ['Autoprod_%', 'Autoconso_%', 'MAE_kW', 'MAPE_%']]
-display_n(df.T, 2)
-
-# Normalize and bar graph
-normalized_df = (df - df.min()) / (df.max() - df.min())
-normalized_df.sort_values('Autoprod_%').iplot(
-    kind='bar', dimensions=(1100, 500), yTitle='Normalized [unitless]',
-    margin=(70, 20, 50, 20), layout_update={'font': {'size': 16}})
+fig.update_traces({'line': {'width' : 3}})
+fig.data[0].update({'line': {'dash': 'dash'}})
 ```
-![Screenshot 2020-05-04 at 17.08.20](/assets/image/Screenshot%202020-05-04%20at%2017.08.20.png)
 
-Sometimes it might be more useful to look at the actual data (without normalising it). In this case subplots make sense.
-
+# Adding notation and shapes
+Creates an arrow with a rounded end, and display the text.
 ```python
-(combinations.sort_values('Autoprod_%')
- .loc[:, ['Autoprod_%', 'Autoconso_%', 'MAPE_%', 'MAE_kW']]
- .iplot(kind='bar', subplots=True, subplot_titles=True,
-        dimensions=(1100, 600), margin=(50, 20, 70, 70),
-        layout_update={'font': {'size': 16}}))
+fig.add_annotation(
+  x=x_pos, y=y_pos,
+  text=f'text',
+  arrowhead=6, arrowsize=5, ax=0, ay=-40)
 ```
-![Screenshot 2020-05-04 at 17.18.24](/assets/image/Screenshot%202020-05-04%20at%2017.18.24.png)
 
-# Line graph
-Simple graph to look at various times series.
+Adding a red dashed line.
 ```python
-start = '2014-05-01 00:00:00'
-end = '2014-05-31 23:45:00'
-df.loc[start:end, :].iplot(
-  kind='scatter', width=3,
-  yTitle='Agg. power demand [kW]',
-  dimensions=(1100, 600),
-  rangeslider=True, margin=(70, 20, 20, 20),
-  layout_update={'font': {'size': 16}})
+fig.add_shape(
+  type='line',
+  x0=x0, x1=x1, y0=y0, y1=y1,
+  line={'dash': 'dash', 'width': 3,
+        'color': 'rgba(214, 39, 40, 0.9)'})
 ```
-![Screenshot 2020-05-04 at 17.41.12](/assets/image/Screenshot%202020-05-04%20at%2017.41.12.png)
 
-Similar but sampling a random column, and resampling to avoid large graphs.
+# Vectorizing
 ```python
-import random
-start = '2007-01-01 00:00:00'
-end = '2007-12-31 23:45:00'
-cols = random.sample(list(df.columns), 5)
-(df.loc[start:end, cols].resample('60T').sum() * 15/60).iplot(
-  kind='scatter', width=2,
-  yTitle='Agg. power demand [kW]',
-  dimensions=(1100, 600), showlegend=True,
-  rangeslider=True, margin=(70, 20, 20, 20),
-  layout_update={'font': {'size': 16}})
+ fig.write_image("fig.pdf")
 ```
-# From layout
-This might be useful to transform quick Cufflinks plots into paper grade plots.
-
-```python
-# Imports
-from plotly.offline import init_notebook_mode, iplot
-import plotly.graph_objs as go
-import cufflinks as cf
-init_notebook_mode(connected=False)
-cf.set_config_file(theme='white')
-cf.go_offline()
-
-
-# Layout
-layout = {
- "font":{"size":19, "color":"rgb(3, 3, 3)"},
- "height":500,
- "width":700,
- "legend":{"x":0.5,"y":1.0},
- "showlegend":true,
- "margin":{"b":70,"l":50,"r":20,"t":70},
- "title":{"font":{"color":"#4D5663"}},
- "xaxis":{
-   "gridcolor":"#E1E5ED",
-   "showgrid":true,
-   "tickfont":{"color":"rgb(0, 0, 0)"},
-   "title":{
-     "font":{"color":"rgb(0, 0, 0)","size":22},
-     "text":"Community size"},
-   "zerolinecolor":"rgb(0, 0, 0)",
-   "type":"linear",
-   "autorange":true,
-   "zerolinewidth":2},
- "yaxis":{
-   "gridcolor":"#E1E5ED",
-   "showgrid":true,
-   "tickfont":{"color":"rgb(0, 0, 0)"},
-   "title":{
-     "font":{"color":"rgb(0, 0, 0)","size":22},
-     "text":"MAPE [%]"},
-   "zerolinecolor":"rgb(0, 0, 0)",
-   "type":"linear",
-   "autorange":true,
-   "zerolinewidth":2}
- }
-
- # Custom data look
- symbol = ['diamond-open', 'star',
-           'cross-thin-open', 'x-thin-open',
-           'square-open', 'circle-open']
- colors = ['rgba(255, 153, 51, 0.7)',
-           'rgba(55, 128, 191, 0.7)',
-           'rgba(50, 171, 96, 0.7)',
-           'rgba(128, 0, 128, 0.7)',
-           'rgba(0, 128, 128, 0.7)',
-           'rgba(219, 169, 17, 0.7)']
-
- # Plot
- myfig = df.iplot(
-     mode='lines+markers', symbol=symbol,
-     colors=colors, size=7, width=2,
-     layout=layout, asFigure=True)
-
- # Custom fig
- myfig.data[1]['marker']['size'] = 10
-
- # Visualize and save as PDF
- fig = go.Figure(myfig)
- iplot(fig)
- fig.write_image("mape.pdf")
- ```
-It's also possible to `myfig.write_json('my_graph.plotly')` just with Cufflinks, and then edit within the JupyterLab plotly extension (this might be a good way to come up with "layout" in the first place).

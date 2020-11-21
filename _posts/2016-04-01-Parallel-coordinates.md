@@ -51,4 +51,4 @@ Select the 16% widest sepal and look at the distribution of petal length.
 <script>
 basic_parallel_coordinates("/assets/data/data.csv");
 </script>
-<!-- ######## Parallel code snipet-->
+<!-- ######## Parallel code snipet -->

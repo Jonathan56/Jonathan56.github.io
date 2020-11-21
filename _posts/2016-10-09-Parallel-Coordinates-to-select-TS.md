@@ -9,11 +9,6 @@ Parallel coordinates as a way to select a subset and explore time-series.
 
 # Usage
 
-The javascript template takes a ".csv" file to display the parallel coordinates (
-as described in this [post]({% post_url 2016-04-01-Parallel-coordinates %})). In
-addition to that, the template requires a ".csv" file to represent each time-serie,
-where the name of the line matches with the time-serie's filename.
-
 On this template you can brush any axis and narrow down a few lines, click on a line
 to display its corresponding time-serie on the graph below. Compare multiple time-series
 together, you can also zoom in and out by brushing the graph. Reset the zoom by clicking

@@ -1,7 +1,7 @@
 ---
 title: Organizing simulations in Python
 excerpt_separator: <!--more-->
-published: true
+published: false
 ---
 
 Organizing simulations in Python with Jupyter Notebooks, note to myself.

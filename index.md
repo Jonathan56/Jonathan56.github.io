@@ -15,7 +15,7 @@ Hi there, my name is Jonathan Coignard. I am currently a PhD student working at 
 
 ### - 2020 -
 {: style="text-align: center;"}
-**[Distributed Resource Coordination in the Context of European Energy Communities](#)**, Jonathan Coignard, Vincent Debusschere, Gilles Moreau, Stéphanie Chollet, and Raphaël Caire; PES GM 2020.
+**[Distributed Resource Coordination in the Context of European Energy Communities](https://doi.org/10.1109/PESGM41954.2020.9282075)**, Jonathan Coignard, Vincent Debusschere, Gilles Moreau, Stéphanie Chollet, and Raphaël Caire; PES GM 2020.
 
 ### - 2019 -
 {: style="text-align: center;"}

@@ -3,11 +3,10 @@ title: The impact of natural self-sufficency
 excerpt_separator: <!--more-->
 ---
 
-Optimal sizing of PV systems for communities: the impact of natural self-sufficiency.
-*Jonathan COIGNARD, Sacha HODENCQ, Nana Kofi TWUM-DUAH, Mathieu BRUGERON and
-Rémy RIGO-MARIANI*. DOI: Coming soon.
+Interactive plots from the TATuP publication.
 
 <!--more-->
+[Optimal sizing of PV systems for communities: the impact of natural self-sufficiency](#), Jonathan COIGNARD, Sacha HODENCQ, Nana Kofi TWUM-DUAH, Mathieu BRUGERON and Rémy RIGO-MARIANI, TATuP 2022.
 
 # Abstract
 Coming soon...

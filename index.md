@@ -13,6 +13,10 @@ Hi there, my name is Jonathan Coignard. I am currently a PhD student working at 
 ## Publications
 **[![' ']({{ site.baseurl }}/assets/image/gscholar.png){: .align-right width="30px"}Here](https://scholar.google.com/citations?user=FIguFYMAAAAJ&hl=en)** is a link to my Google Scholar profile.
 
+### - 2022 -
+{: style="text-align: center;"}
+**[Including Greenhouse Gas Emissions and Behavioural Responses for PV Self-Sufficient Optimal Design](#)**, Hodencq Sacha, Jonathan Coignard, Nana Kofi Twum-Duah, and Lucas Hajiro Neves Mosquini; COMPEL 2022.
+
 ### - 2021 -
 {: style="text-align: center;"}
 **[Evaluating Forecasting Methods in the Context of Local Energy Communities](https://doi.org/10.1016/j.ijepes.2021.106956)**, Jonathan Coignard, Maxime Janvier, Vincent Debusschere, Gilles Moreau, Stéphanie Chollet, and Raphaël Caire; International Journal of Electrical Power and Energy Systems, 2021.

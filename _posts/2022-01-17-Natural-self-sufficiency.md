@@ -3,14 +3,15 @@ title: The impact of natural self-sufficency
 excerpt_separator: <!--more-->
 ---
 
-Interactive plots from the TATuP publication (DOI: ).
+Interactive plots for the publication submitted to TATuP.
 
 <!--more-->
 
 **[Optimal sizing of PV systems for communities: the impact of natural self-sufficiency](#)**, Jonathan Coignard, Sacha Hodencq, Nana Kofi Twum-Duah, Mathieu Brugeron and Rémy Rigo-Mariani, TATuP 2022.
 
 # Abstract
-Coming soon...
+The paper focuses on the integration of renewable energy sources with the concept of self-sufficiency – the ability for communities to cover part of their demand with local generation/storage assets. The paper introduces a novel metric denoted as “natural self-sufficiency” to quantitatively estimate the alignment between load and generation profiles. Indeed, the more load demand matches intermittent generation, the lower the need for additional carbon-intensive flexibilities such as storage systems. A methodology is proposed to visualize the tradeoff between the emissions of renewable energy systems over their lifetimes and the self-sufficiency achieved for any community in France and Germany. Our results show that profiles with a higher “natural self-sufficiency” always display the best performances. This approach is further validated with different real-world load profiles, and completed with an analysis of energy sufficiency measures.
+
 
 # Interactive figures
 ## Abacus with validation

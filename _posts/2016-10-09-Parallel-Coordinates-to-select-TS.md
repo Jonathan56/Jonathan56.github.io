@@ -8,6 +8,8 @@ Parallel coordinates as a way to select a subset and explore time-series.
 <!--more-->
 
 # Usage
+> "Parallel coordinates are a common way of visualizing high-dimensional
+> geometry and analyzing multivariate data." [Wikipedia](https://en.wikipedia.org/wiki/Parallel_coordinates)
 
 On this template you can brush any axis and narrow down a few lines, click on a line
 to display its corresponding time-serie on the graph below. Compare multiple time-series

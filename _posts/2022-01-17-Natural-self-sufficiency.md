@@ -20,7 +20,7 @@ To generate new load profiles, we start from an original real-world load profile
 </script>
 
 $$
-\begin{alignat}{2}
+\begin{alignat}{1}
 \text{minimize} \sum^T_t profile_{change}(t)^2 \\
 profile(t) = load(t) + profile_{change}(t) \\
 0 \leq profile(t) \leq \max(load(t)) \\
@@ -32,7 +32,7 @@ grid^+(t) - grid^-(t) = profile(t) - pv \times irradiance(t) \\
 \end{alignat}
 $$
 
-Where $load(t)$ represents the original load profile. The variables $grid^+(t)$ and $grid^-(t)$ have been added to calculate the self-sufficiency of the new load profile $profile(t)$. They represent respectively energy imports and energy exports. In order to ensure that power exports are zero when power imports are non-null and vice versa, we introduce the binary variable $\delta (t)$. Finally, $target^{selfsufficiency}$ represents the natural self-sufficiency to reach while minimizing the profile changes $profile_{change}(t)$. To solve those equations, we use the Gurobi solver.
+Where $$load(t)$$ represents the original load profile. The variables $$grid^+(t)$$ and $$grid^-(t)$$ have been added to calculate the self-sufficiency of the new load profile $$profile(t)$$. They represent respectively energy imports and energy exports. In order to ensure that power exports are zero when power imports are non-null and vice versa, we introduce the binary variable $$\delta (t)$$. Finally, $$target^{selfsufficiency}$$ represents the natural self-sufficiency to reach while minimizing the profile changes $$profile_{change}(t)$$. To solve those equations, we use the Gurobi solver.
 
 ## Interactive figures
 ### Abacus with validation

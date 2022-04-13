@@ -2,7 +2,7 @@
 title: Are more solar panels always better?
 excerpt_separator: <!--more-->
 ---
-Assessing carbon impact at the community scale. Interactive plots for the publication submitted to TATuP.
+Assessing carbon impact at the community scale.
 
 <!--more-->
 
@@ -11,7 +11,7 @@ Assessing carbon impact at the community scale. Interactive plots for the public
 # Abstract
 Are more solar panels always better in terms of carbon impact for a local energy community, and what is the influence of energy sufficiency? The answer is simple when the grid is considered as an infinite storage. However, this answer becomes uncertain if we consider that exporting power to the larger grid at the national scale is not a desired option.  Although, this is a conservative assumption, it is considered for technical and social reasons. When taking this more conservative assumption, load profiles become a key to evaluate the carbon impact of hybrid systems with solar panels plus storage units. To summarize the impact of any load profiles on the optimal sizing of solar panels, we propose a novel index denoted “natural self-sufficiency”. Our results show that, not only reducing energy demand but also being more flexible, significantly impact carbon emissions related to solar panels.
 
-# Optimization problem to modify load profiles for a given natural self-sufficiency.
+# Optimization problem to modify load profiles
 To generate new load profiles, we start from an original real-world load profile and implement an optimization-based approach. The objective of the optimization is to make as little changes as possible from the original profile (i.e., minimum mean square error as an objective) to match a certain natural self-sufficiency target. Further, we impose that the energy consumption remains unchanged and that the previous maximum power demand is not exceeded as additional constraints. The problem results in a mixed integer quadratic programming problem.
 
 $$

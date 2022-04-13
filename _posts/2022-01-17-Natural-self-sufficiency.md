@@ -18,16 +18,14 @@ To generate new load profiles, we start from an original real-world load profile
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
 </script>
 
-$$
-\text{minimize} \sum^T_t profile_{change}(t)^2 \\
+$\text{minimize} \sum^T_t profile_{change}(t)^2 \\
 profile(t) = load(t) + profile_{change}(t) \\
 0 \leq profile(t) \leq \max(load(t)) \\
 \sum^T_t profile_{change}(t) = 0 \\
 grid^+(t) - grid^-(t) = profile(t) - pv \times irradiance(t) \\
 0 \leq grid^+(t) \leq \delta (t) \times \max(load(t)) \\
 0 \leq grid^-(t) \leq (1 - \delta (t)) \times pv \times irradiance(t) \\
-\frac{\sum^T_t grid^+(t)}{\sum^T_t load(t)} = 1 - target^{selfsufficiency}
-$$
+\frac{\sum^T_t grid^+(t)}{\sum^T_t load(t)} = 1 - target^{selfsufficiency}$
 
 Where $load(t)$ represents the original load profile. The variables $grid^+(t)$ and $grid^-(t)$ have been added to calculate the self-sufficiency of the new load profile $profile(t)$. They represent respectively energy imports and energy exports. In order to ensure that power exports are zero when power imports are non-null and vice versa, we introduce the binary variable $\delta (t)$. Finally, $target^{selfsufficiency}$ represents the natural self-sufficiency to reach while minimizing the profile changes $profile_{change}(t)$. To solve those equations, we use the Gurobi solver.
 

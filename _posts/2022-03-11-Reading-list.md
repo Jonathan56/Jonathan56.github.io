@@ -9,7 +9,7 @@ Some books influencing my work, and some up-coming reads
 <!--more-->
 
 # Authors
-* XXX XXXX (Les enseignement de Dune)
+* XXX XXXX (Les enseignements de Dune)
 * Gilbert Simondon ()
 * Bruno Latour ()
 * David Edgerton (Quoi de neuf ? Du rôle des techniques...)

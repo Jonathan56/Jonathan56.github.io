@@ -125,7 +125,6 @@ var skill = [
     {'name': 'Git', 'radius': 50},
     {'name': 'Power-flow', 'radius': 85},
     {'name': 'Docker', 'radius': 50},
-    {'name': 'Energy<br>policy', 'radius': 55},
     {'name': 'Data science', 'radius': 100},
     {'name': 'Convex opti.', 'radius': 70},
     {'name': 'Ethereum', 'radius': 50},

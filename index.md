@@ -3,7 +3,7 @@ layout: header
 ---
 
 !['Self']({{ site.baseurl }}/assets/image/me.jpg){: .align-right width="250px"}
-Hi there, my name is Jonathan Coignard. I am currently a PhD student working at Université Grenoble Alpes and Lancey Energy Storage. You can download my CV **[here]({{ site.baseurl }}/assets/pdf/jonathancoignard.pdf)**.
+Hi there, my name is Jonathan Coignard. I am currently a PhD student working at Université Grenoble Alpes and Lancey Energy Storage. You can download my CV **[here in French]({{ site.baseurl }}/assets/pdf/FR_curriculum_vitae_publications.pdf)**, and **[here in English]({{ site.baseurl }}/assets/pdf/EN_curriculum_vitae_publications.pdf)**.
 
 !['equation']({{ site.baseurl }}/assets/image/equation.svg){:width="800px"}
 
@@ -15,7 +15,10 @@ Hi there, my name is Jonathan Coignard. I am currently a PhD student working at 
 
 ### - 2022 -
 {: style="text-align: center;"}
-**[Including Greenhouse Gas Emissions and Behavioural Responses for PV Self-Sufficient Optimal Design](#)**, Hodencq Sacha, Jonathan Coignard, Nana Kofi Twum-Duah, and Lucas Hajiro Neves Mosquini; COMPEL 2022.
+**[Are more solar panels always better?](#)**, Jonathan Coignard, Hodencq Sacha, Nana Kofi Twum-Duah, Rémy Rigo-Mariani; TATuP, Journal for Technology Assessment in Theory and Practice (in press).
+
+{: style="text-align: center;"}
+**[Including Greenhouse Gas Emissions and Behavioural Responses for PV Self-Sufficient Optimal Design](https://doi.org/10.1108/COMPEL-10-2021-0392)**, Hodencq Sacha, Jonathan Coignard, Nana Kofi Twum-Duah, and Lucas Hajiro Neves Mosquini; COMPEL, The international journal for computation and mathematics in electrical and electronic engineering, 2022.
 
 ### - 2021 -
 {: style="text-align: center;"}

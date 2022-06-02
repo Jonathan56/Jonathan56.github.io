@@ -17,7 +17,6 @@ Hi there, my name is Jonathan Coignard. I am currently a PhD student working at 
 {: style="text-align: center;"}
 **[Are more solar panels always better?](#)**, Jonathan Coignard, Hodencq Sacha, Nana Kofi Twum-Duah, Rémy Rigo-Mariani; TATuP, Journal for Technology Assessment in Theory and Practice (in press).
 
-{: style="text-align: center;"}
 **[Including Greenhouse Gas Emissions and Behavioural Responses for PV Self-Sufficient Optimal Design](https://doi.org/10.1108/COMPEL-10-2021-0392)**, Hodencq Sacha, Jonathan Coignard, Nana Kofi Twum-Duah, and Lucas Hajiro Neves Mosquini; COMPEL, The international journal for computation and mathematics in electrical and electronic engineering, 2022.
 
 ### - 2021 -

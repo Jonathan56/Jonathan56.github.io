@@ -123,9 +123,9 @@ var skill = [
     <!-- {'name': 'Simulink', 'radius': 40}, -->
     {'name': 'Energy market', 'radius': 75},
     {'name': 'Git', 'radius': 50},
-    {'name': 'Power-flow', 'radius': 55},
+    {'name': 'Power-flow', 'radius': 85},
     {'name': 'Docker', 'radius': 50},
-    {'name': 'Energy policy', 'radius': 85},
+    {'name': 'Energy policy', 'radius': 55},
     {'name': 'Data science', 'radius': 100},
     {'name': 'Convex opti.', 'radius': 70},
     {'name': 'Ethereum', 'radius': 50},

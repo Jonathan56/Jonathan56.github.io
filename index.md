@@ -3,7 +3,7 @@ layout: header
 ---
 
 !['Self']({{ site.baseurl }}/assets/image/me.jpg){: .align-right width="250px"}
-Hi there, my name is Jonathan Coignard. I am currently a PhD student working at Université Grenoble Alpes and Lancey Energy Storage. You can download my CV **[here in French]({{ site.baseurl }}/assets/pdf/FR_curriculum_vitae_publications.pdf)**, and **[here in English]({{ site.baseurl }}/assets/pdf/EN_curriculum_vitae_publications.pdf)**.
+Hi there, my name is Jonathan Coignard. I have a Ph.D. in electrical engineering and carry out my research at Université Grenoble Alpes. You can download my CV **[here in French]({{ site.baseurl }}/assets/pdf/FR_curriculum_vitae_publications.pdf)**, and **[here in English]({{ site.baseurl }}/assets/pdf/EN_curriculum_vitae_publications.pdf)**.
 
 !['equation']({{ site.baseurl }}/assets/image/equation.svg){:width="800px"}
 

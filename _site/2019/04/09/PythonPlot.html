@@ -23,19 +23,12 @@
   <p>Plotly Express snippets, for quick plots in Python.</p>
 
 <!--more-->
-<!-- <head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-</head> -->
 
 <p>The objective of this post is to provide quick notes and how to for common graphs. For more inspiration check out the actual Plotly Express <a href="https://plotly.com/python/plotly-express/">website</a>.</p>
 
 <h1 id="for-starters">For starters</h1>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="n">px</span>
-<span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
-<span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
 
 <span class="n">layout</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'showlegend'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
@@ -43,13 +36,13 @@
     <span class="s">'font'</span><span class="p">:</span> <span class="p">{</span><span class="s">'size'</span><span class="p">:</span> <span class="mi">19</span><span class="p">},</span>
     <span class="s">'xaxis'</span><span class="p">:</span> <span class="p">{</span><span class="s">'zerolinewidth'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'zerolinecolor'</span><span class="p">:</span><span class="s">'black'</span><span class="p">},</span>
     <span class="s">'yaxis'</span><span class="p">:</span> <span class="p">{</span><span class="s">'zerolinewidth'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'zerolinecolor'</span><span class="p">:</span><span class="s">'black'</span><span class="p">},</span>
-    <span class="s">'template'</span><span class="p">:</span> <span class="s">'plotly_dark'</span><span class="p">,</span>
+    <span class="s">'template'</span><span class="p">:</span> <span class="s">'plotly_white'</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">px</span><span class="p">.</span><span class="n">defaults</span><span class="p">.</span><span class="n">color_discrete_sequence</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">qualitative</span><span class="p">.</span><span class="n">T10</span>
 
 <span class="c1"># Convenient function to display dataframe
 </span><span class="k">def</span> <span class="nf">display_n</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">with</span> <span class="n">pandas</span><span class="p">.</span><span class="n">option_context</span><span class="p">(</span><span class="s">'display.max_rows'</span><span class="p">,</span><span class="n">n</span><span class="o">*</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">pd</span><span class="p">.</span><span class="n">option_context</span><span class="p">(</span><span class="s">'display.max_rows'</span><span class="p">,</span><span class="n">n</span><span class="o">*</span><span class="mi">2</span><span class="p">):</span>
         <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -69,44 +62,52 @@
 
 <p>More on discrete color sequences <a href="https://plotly.com/python/discrete-color/#color-sequences-in-plotly-express">here</a>, or continuous ones <a href="https://plotly.com/python/builtin-colorscales/">here</a></p>
 
-<h1 id="time-to-graph">Time to graph</h1>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">plt</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'index'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'self_suff_%'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'algo'</span><span class="p">,</span>
+<h1 id="bar-graph">Bar graph</h1>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'index'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'self_suff_%'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'algo'</span><span class="p">,</span>
              <span class="n">barmode</span><span class="o">=</span><span class="s">'group'</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="c1"># Change bar color, and surrounding line
+</span><span class="n">fig</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">update</span><span class="p">(</span>
+   <span class="p">{</span><span class="s">'marker'</span><span class="p">:</span> <span class="p">{</span><span class="s">'color'</span><span class="p">:</span> <span class="s">'rgba(55, 128, 191, 0.7)'</span><span class="p">,</span>
+               <span class="s">'line'</span><span class="p">:</span> <span class="p">{</span><span class="s">'width'</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
+               <span class="s">'color'</span><span class="p">:</span> <span class="s">'rgba(55, 128, 191, 1.0)'</span><span class="p">}}})</span>
+<span class="c1"># Red dashed line
+</span><span class="n">fig</span><span class="p">.</span><span class="n">add_shape</span><span class="p">(</span>
+ <span class="nb">type</span><span class="o">=</span><span class="s">'line'</span><span class="p">,</span>
+ <span class="n">x0</span><span class="o">=</span><span class="s">"x0"</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="s">"x1"</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span> <span class="n">y1</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>
+ <span class="n">line</span><span class="o">=</span><span class="p">{</span><span class="s">'dash'</span><span class="p">:</span> <span class="s">'dash'</span><span class="p">,</span> <span class="s">'width'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+       <span class="s">'color'</span><span class="p">:</span> <span class="s">'rgba(214, 39, 40, 0.7)'</span><span class="p">})</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">update_layout</span><span class="p">(</span>
+   <span class="n">layout</span><span class="p">,</span>
+   <span class="n">showlegend</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+   <span class="n">xaxis_title</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+   <span class="n">yaxis_title</span><span class="o">=</span><span class="s">"My Title [Unit]"</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">write_image</span><span class="p">(</span><span class="s">"fig.svg"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="line-graph">Line graph</h1>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">line</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+
+<span class="c1"># One line is filled
+</span><span class="n">fig</span><span class="p">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">line_width</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">update</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s">"tozeroy"</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                   <span class="n">fillcolor</span><span class="o">=</span><span class="s">"rgba(255, 127, 14, 0.1)"</span><span class="p">)</span>
+
 <span class="n">fig</span><span class="p">.</span><span class="n">update_layout</span><span class="p">(</span>
     <span class="n">layout</span><span class="p">,</span>
-    <span class="n">showlegend</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="n">xaxis</span><span class="o">=</span><span class="p">{</span><span class="s">'title'</span><span class="p">:</span> <span class="s">'Data Source'</span><span class="p">},</span>
-    <span class="n">yaxis</span><span class="o">=</span><span class="p">{</span><span class="s">'title'</span><span class="p">:</span> <span class="s">'Self Sufficiency [%]'</span><span class="p">})</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+    <span class="n">showlegend</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s">""</span><span class="p">,</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s">"Power [kW]"</span><span class="p">,</span>
+    <span class="n">yaxis_showline</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">yaxis_linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">yaxis_linecolor</span><span class="o">=</span><span class="s">'black'</span><span class="p">,</span>
+    <span class="n">xaxis_showline</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">xaxis_linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">xaxis_linecolor</span><span class="o">=</span><span class="s">'black'</span><span class="p">,</span>
+    <span class="n">rangeslider_visible</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">line</span><span class="p">(</span><span class="n">plt</span><span class="p">)</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plt</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h1 id="changing-the-look-of-traces">Changing the look of traces</h1>
-<p>Update trace properties afterwards.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">.</span><span class="n">update_traces</span><span class="p">({</span><span class="s">'line'</span><span class="p">:</span> <span class="p">{</span><span class="s">'width'</span> <span class="p">:</span> <span class="mi">3</span><span class="p">}})</span>
-<span class="n">fig</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">update</span><span class="p">({</span><span class="s">'line'</span><span class="p">:</span> <span class="p">{</span><span class="s">'dash'</span><span class="p">:</span> <span class="s">'dash'</span><span class="p">}})</span>
-</code></pre></div></div>
-
-<h1 id="adding-notation-and-shapes">Adding notation and shapes</h1>
-<p>Creates an arrow with a rounded end, and display the text.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">.</span><span class="n">add_annotation</span><span class="p">(</span>
-  <span class="n">x</span><span class="o">=</span><span class="n">x_pos</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_pos</span><span class="p">,</span>
-  <span class="n">text</span><span class="o">=</span><span class="s">f'text'</span><span class="p">,</span>
-  <span class="n">arrowhead</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">arrowsize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ay</span><span class="o">=-</span><span class="mi">40</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Adding a red dashed line.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">.</span><span class="n">add_shape</span><span class="p">(</span>
-  <span class="nb">type</span><span class="o">=</span><span class="s">'line'</span><span class="p">,</span>
-  <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="o">=</span><span class="n">y1</span><span class="p">,</span>
-  <span class="n">line</span><span class="o">=</span><span class="p">{</span><span class="s">'dash'</span><span class="p">:</span> <span class="s">'dash'</span><span class="p">,</span> <span class="s">'width'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-        <span class="s">'color'</span><span class="p">:</span> <span class="s">'rgba(214, 39, 40, 0.9)'</span><span class="p">})</span>
-</code></pre></div></div>
-
-<h1 id="vectorizing">Vectorizing</h1>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">fig</span><span class="p">.</span><span class="n">write_image</span><span class="p">(</span><span class="s">"fig.pdf"</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">write_image</span><span class="p">(</span><span class="s">"fig.svg"</span><span class="p">)</span>
 </code></pre></div></div>
 
 </div>

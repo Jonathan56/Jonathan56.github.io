@@ -3,94 +3,20 @@ layout: header
 ---
 
 !['Self']({{ site.baseurl }}/assets/image/me.jpg){: .align-right width="250px"}
-Hi there, my name is Jonathan Coignard. I have a Ph.D. in electrical engineering and carry out my research at Université Grenoble Alpes. You can download my CV **[here in French]({{ site.baseurl }}/assets/pdf/FR_curriculum_vitae_publications.pdf)**, and **[here in English]({{ site.baseurl }}/assets/pdf/EN_curriculum_vitae_publications.pdf)**.
+Après un diplôme en génie des systèmes urbains, et quelques années à Berkeley, Californie. J’atterris à Grenoble pour une thèse sur [le fonctionnement des communautés locales de l’énergie](https://theses.hal.science/tel-03957669/).
 
-!['equation']({{ site.baseurl }}/assets/image/equation.svg){:width="800px"}
+En tant que chargé de recherche au CNRS j'interroge : **comment les communautés peuvent se réapproprier les objets techniques liés à l’énergie ?**
+
+Du réseau de distribution électrique à l'électronique, j’étudie la faculté des objets techniques à eux-mêmes faciliter une réappropriation. Mécanicien vélo par ailleurs, j’en ai sous la pédale sans avoir la tête dans le guidon 🚲.
+
+### Mots clés :
 
 <!-- D3.js plot -->
 <div id="CVplot"></div>
 
-## Publications
-**[![' ']({{ site.baseurl }}/assets/image/gscholar.png){: .align-right width="30px"}Here](https://scholar.google.com/citations?user=FIguFYMAAAAJ&hl=en)** is a link to my Google Scholar profile.
+### Publications :
 
-### - 2022 -
-{: style="text-align: center;"}
-**[Are more solar panels always better?](#)**, Jonathan Coignard, Hodencq Sacha, Nana Kofi Twum-Duah, Rémy Rigo-Mariani; TATuP, Journal for Technology Assessment in Theory and Practice (in press).
-
-**[Planification des réseaux électriques de distribution](https://www.istegroup.com/en/produit/planification-des-reseaux-electriques-de-distribution/)**, (Book) Alvarez-Hérault M, Gouin V, Chardin-Segui T, Malot A, Coignard J, Raison B, Coulet J, ISTE editions, Collection Énergie, ISBN 9781784058241, 2022.
-
-**[Including Greenhouse Gas Emissions and Behavioural Responses for PV Self-Sufficient Optimal Design](https://doi.org/10.1108/COMPEL-10-2021-0392)**, Hodencq Sacha, Jonathan Coignard, Nana Kofi Twum-Duah, and Lucas Hajiro Neves Mosquini; COMPEL, The international journal for computation and mathematics in electrical and electronic engineering, 2022.
-
-### - 2021 -
-{: style="text-align: center;"}
-**[Evaluating Forecasting Methods in the Context of Local Energy Communities](https://doi.org/10.1016/j.ijepes.2021.106956)**, Jonathan Coignard, Maxime Janvier, Vincent Debusschere, Gilles Moreau, Stéphanie Chollet, and Raphaël Caire; International Journal of Electrical Power and Energy Systems, 2021.
-
-### - 2020 -
-{: style="text-align: center;"}
-**[Distributed Resource Coordination in the Context of European Energy Communities](https://doi.org/10.1109/PESGM41954.2020.9282075)**, Jonathan Coignard, Vincent Debusschere, Gilles Moreau, Stéphanie Chollet, and Raphaël Caire; PES GM 2020.
-
-### - 2019 -
-{: style="text-align: center;"}
-**[Will Electric Vehicles Drive Distribution Grid Upgrades? The Case of California](https://doi.org/10.1109/MELE.2019.2908794)**, Jonathan Coignard, Pamela MacDougall, Franz Stadtmueller, and Evangelos Vrettos; IEEE Electrification Magazine.
-
-### - 2018 -
-{: style="text-align: center;"}
-**[CyDER – an FMI-based co-simulation platform for distributed energy resources](https://doi.org/10.1080/19401493.2018.1535623)**, Thierry S. Nouidui, Jonathan Coignard, Christoph Gehbauer, Michael Wetter, Jhi-Young Joo & Evangelos Vrettos, Journal of Building Performance Simulation.
-
-**[Co-simulation Framework for Blockchain Based Market Designs and Grid Simulations](https://doi.org/10.1109/PESGM.2018.8586124)**, Jonathan Coignard, Eric Munsing, Jason MacDonald, and Jonathan Mather; PES GM 2018.
-
-**[Projected Electric Vehicle Hourly Loads for the 2017 California Energy Demand Forecast](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwjPzYnE7PboAhVOKBoKHSgPDdIQFjAAegQIAhAB&url=https%3A%2F%2Fww2.energy.ca.gov%2F2018publications%2FCEC-200-2018-007%2FCEC-200-2018-007.pdf&usg=AOvVaw0tCLu8Hw0ihQw-2rxlFzHl)**, Jonathan Coignard, Samveg Saxena, Don Scoffield, Mindy Gerdes, and John Smart; California Energy Commission consultant report.
-
-**[CyDER - A Co-Simulation Platform for Grid Analysis and Planning for High Penetration of Distributed Energy Resources](https://doi.org/10.1109/PESGM.2018.8586006)**, Jonathan Coignard, Thierry Nouidui, Christoph Gehbauer, Michael Wetter, Jhi-Young Joo, Philip Top, Rafael Rivera Soto, Brian Kelley, Emma Stewart; PES GM 2018.
-
-### - 2017 -
-{: style="text-align: center;"}
-**[Clean Vehicles as an Enabler for a Clean Electricity Grid](https://iopscience.iop.org/article/10.1088/1748-9326/aabe97/meta)**, Jonathan Coignard, Samveg Saxena, Jeffery Greenblatt, Dai Wang, Environmental Research Letters.
-
-### - 2016 -
-{: style="text-align: center;"}
-**[Quantifying electric vehicle battery degradation from driving vs. vehicle-to-grid services](https://doi.org/10.1016/j.jpowsour.2016.09.116)**, Dai Wang, Jonathan Coignard, Teng Zeng, Cong Zhang, Samveg Saxena, Journal of Power Sources, 2016.
-
-**[Quantifying electric vehicle battery degradation from driving vs. V2G services](https://doi.org/10.1109/PESGM.2016.7741180)**, Dai Wang, S. Saxena, Jonathan Coignard, E. A. Iosifidou and Xiaohong Guan, 2016 IEEE Power and Energy Society General Meeting (PESGM).
-
-### - 2015 -
-{: style="text-align: center;"}
-**[EMACOP project: characterising the wave energy resources of hot spots in Brittany for on-shore WEC]({{ site.baseurl }}/assets/pdf/Michard_etal_EWTEC2015_paper.pdf)**, Bertrand Michard et al, The European Wave and Tidal Energy Conference (2015 EWTEC).
-
-**[EMACOP project: Digital modeling of the waves toward Esquibien’s dam using SWASH]({{ site.baseurl }}/assets/pdf/Coignard_etal_JNGCGC2014.pdf)**, Jonathan Coignard, Bertrand Michard, Jean-François Filipot, Philippe Sergent, available in the online journal Paralia.
-
-<!-- ## Education
-&nbsp;
-
-!['UGA']({{ site.baseurl }}/assets/image/UGA_logo.png){:width="350px"}
-Currently working on a PhD degree from the [G2ELab](http://www.g2elab.grenoble-inp.fr/) at the **[Communauté Université Grenoble Alpes](http://www.grenoble-inp.fr/)**. On the topic of: "Collective Self-Consumtion: Sharing Energy Resources Connected to the Distribution Grid". I also teach a class on "Electric Energy" at Grenoble INP La prépa.
-&nbsp;
-
-&nbsp;
-
-!['UTC']({{ site.baseurl }}/assets/image/UTC_logo.png){:width="350px"}
-Master degree in urban engineering (with a focus on power systems) from the **[Technical University of Compiegne](https://www.utc.fr/en.html)** (2010-2015). Here is my [transcript]({{ site.baseurl }}/assets/pdf/transcript.pdf). The design of a small scale wind turbine controller has been my biggest academic project ([short report]({{ site.baseurl }}/assets/pdf/Tx_Small_scale_wind_turbine.pdf)).
-
-Through my work at the UTC I obtained recommendation letters from: [Fabrice Locment and Manuela Sechilariu]({{ site.baseurl }}/assets/pdf/1_recommendation_FL.pdf), [Phillipe Sergent]({{ site.baseurl }}/assets/pdf/2_recommendation_CEREMA.pdf) and [Vincent Lanfranchi]({{ site.baseurl }}/assets/pdf/3_recommendation_VL.pdf).
-
-I have also spent a semester of study abroad in Riga (Latvia). Here is a [transcript]({{ site.baseurl }}/assets/pdf/transcript_Riga.jpg).
-&nbsp;
-
-## Work experiences
-&nbsp;
-
-!['Lancey']({{ site.baseurl }}/assets/image/lancey_logo.jpg){:width="300px"}
-**[Lancey Energy Storage](https://www.lancey.fr/en/)** from 2019 to present time. My work is focused on "collective self-consumption". The objective is to foster sobriety and efficient consumption from cooperative interactions within a local community.
-&nbsp;
-
-&nbsp;
-
-!['LBNL']({{ site.baseurl }}/assets/image/LBNL_logo.png){:width="350px"}
-**[Lawrence Berkeley National Laboratory](http://www.lbl.gov/)** from 2015 to 2019, my work was focused on vehicle to grid interactions, and grid reliability assessment. I have participated in several projects: CyDER, V2G-Sim, DERCAM, MyGreenCar and wrote multiple journal papers.   
-&nbsp;
-
-!['CEREMA']({{ site.baseurl }}/assets/image/cerema_logo.jpg){:width="350px"}
-**[CEREMA](http://www.cerema.fr/)** (Centre For Studies and Expertise on Risks, Environment, Mobility, and Urban and Country planning). I studied the best emplacement to harvest wave's energy at the shore in [Audierne's bay](https://www.google.com/maps/place/Esquibien,+France/@48.019122,-4.6068608,1225z/data=!4m2!3m1!1s0x4816e058cded9379:0x40ca5cd36e56db0). The project involved the use of [SWASH](http://swash.sourceforge.net/) to provide a general basis for describing wave transformations from deep water to a beach, port or harbour. [The study (final report in French)]({{ site.baseurl }}/assets/pdf/internship_CEREMA.pdf) also includes a cost analysis for different devices. -->
+**[Lien](https://scholar.google.com/citations?user=FIguFYMAAAAJ&hl=en)** vers mon profil Google Scholar.
 
 *Powered with :heart: by Jekyll and Github Page :octocat:.*
 
@@ -119,18 +45,18 @@ var width = 600,
 var skill = [
     {'name': 'invisible', 'radius': 50},
     <!-- {'name': 'AutoCAD', 'radius': 20}, -->
-    {'name': 'SQL', 'radius': 30},
+    {'name': 'Low-tech', 'radius': 50},
     <!-- {'name': 'Modelica', 'radius': 20}, -->
     <!-- {'name': 'Opal-RT', 'radius': 30}, -->
     <!-- {'name': 'Simulink', 'radius': 40}, -->
-    {'name': 'Energy market', 'radius': 75},
-    {'name': 'Git', 'radius': 50},
-    {'name': 'Power-flow', 'radius': 85},
-    {'name': 'Docker', 'radius': 50},
-    {'name': 'Data science', 'radius': 100},
-    {'name': 'Convex opti.', 'radius': 70},
-    {'name': 'Ethereum', 'radius': 50},
-    {'name': 'Python', 'radius': 95},
+    {'name': 'Réparabilité', 'radius': 90},
+    {'name': 'Énergies', 'radius': 60},
+    {'name': 'Gouvernances', 'radius': 80},
+    {'name': 'Communautés', 'radius': 75},
+    {'name': 'Échelles', 'radius': 65},
+    {'name': 'Sobriété', 'radius': 70},
+    {'name': 'Réseaux', 'radius': 50},
+    {'name': 'Limites', 'radius': 98},
 ];
 var coef = 1;
 var nodes = d3.range(skill.length).map(function(i) {

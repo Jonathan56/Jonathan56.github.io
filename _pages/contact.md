@@ -3,7 +3,7 @@ title: Contact
 permalink: /contact/
 ---
 
-You can contact me at **jonathan.coignard@grenoble-inp.fr**
+You can contact me at **jonathan.coignard@cnrs.fr**
 
 <div style="display:inline-block;">
   <a href="https://github.com/Jonathan56"
